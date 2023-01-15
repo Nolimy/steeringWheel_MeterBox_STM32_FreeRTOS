@@ -21,8 +21,8 @@ Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.0.9.0
 Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
-D:\stm32Projects\streeringWheel_MeterBox_withOS\MDK-ARM\stm32F407zet6.uvprojx
-Project File Date:  01/12/2023
+D:\stm32Projects\streeringWheel_MeterBox_STM32_withOS\MDK-ARM\stm32F407zet6.uvprojx
+Project File Date:  01/15/2023
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
@@ -31,15 +31,15 @@ compiling ui_font_bigNumber40.c...
 compiling ui_font_FastOne.c...
 compiling ui_comp.c...
 compiling ui_helpers.c...
-compiling main.c...
-compiling ui.c...
+compiling freertos.c...
 compiling ui_img_splashmini_png.c...
+compiling ui.c...
 compiling ui_font_bigNumber_18.c...
-compiling ui_font_icon_bettery.c...
 compiling ui_font_bigNumber_25.c...
+compiling ui_font_icon_bettery.c...
 compiling ui_font_PlayFairBig.c...
 linking...
-Program Size: Code=292168 RO-data=113956 RW-data=72 ZI-data=104928  
+Program Size: Code=299444 RO-data=114144 RW-data=72 ZI-data=114224  
 FromELF: creating hex file...
 "stm32F407zet6\stm32F407zet6.axf" - 0 Error(s), 0 Warning(s).
 
@@ -50,18 +50,6 @@ Package Vendor: ARM
                 ARM.CMSIS.5.9.0
                 CMSIS (Common Microcontroller Software Interface Standard)
    * Component: CORE Version: 5.6.0
-
-Package Vendor: ARM
-                https://www.keil.com/pack/ARM.CMSIS-FreeRTOS.10.5.1.pack
-                ARM.CMSIS-FreeRTOS.10.5.1
-                Bundle of FreeRTOS for Cortex-M and Cortex-A
-   * Component: Config Variant: FreeRTOS Version: 10.5.1
-   * Component: Core Variant: Cortex-M Version: 10.5.1
-   * Component: Coroutines Version: 10.5.1
-   * Component: Event Groups Version: 10.5.1
-   * Component: Heap Variant: Heap_4 Version: 10.5.1
-   * Component: Stream Buffer Version: 10.5.1
-   * Component: Timers Version: 10.5.1
 
 Package Vendor: Keil
                 https://www.keil.com/pack/Keil.ARM_Compiler.1.7.2.pack
@@ -75,55 +63,18 @@ Package Vendor: Keil
                 STMicroelectronics STM32F4 Series Device Support, Drivers and Examples
 
 <h2>Collection of Component include folders:</h2>
-  ./RTE/RTOS
   ./RTE/_stm32F407zet6
-  C:/Users/zhaip/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/CMSIS/RTOS2/FreeRTOS/Include
-  C:/Users/zhaip/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/include
-  C:/Users/zhaip/AppData/Local/Arm/Packs/ARM/CMSIS-FreeRTOS/10.5.1/Source/portable/GCC/ARM_CM4F
   C:/Users/zhaip/AppData/Local/Arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include
   C:/Users/zhaip/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include
 
 <h2>Collection of Component Files used:</h2>
-
-   * Component: ARM.FreeRTOS::RTOS:Config:FreeRTOS:10.5.1
-      Include file:  Config/ARMCM/FreeRTOSConfig.h
-
-   * Component: ARM.FreeRTOS::RTOS:Core:Cortex-M:10.5.1
-      Include file:  Source/include/task.h
-      Include file:  Source/include/queue.h
-      Include file:  Source/include/semphr.h
-      Include file:  Source/include/FreeRTOS.h
-      Source file:   Source/list.c
-      Source file:   Source/queue.c
-      Source file:   Source/portable/GCC/ARM_CM4F/port.c
-      Source file:   Source/tasks.c
-      Source file:   CMSIS/RTOS2/FreeRTOS/Source/freertos_evr.c
-
-   * Component: ARM.FreeRTOS::RTOS:Coroutines:10.5.1
-      Include file:  Source/include/croutine.h
-      Source file:   Source/croutine.c
-
-   * Component: ARM.FreeRTOS::RTOS:Event Groups:10.5.1
-      Include file:  Source/include/event_groups.h
-      Source file:   Source/event_groups.c
-
-   * Component: ARM.FreeRTOS::RTOS:Heap:Heap_4:10.5.1
-      Source file:   Source/portable/MemMang/heap_4.c
-
-   * Component: ARM.FreeRTOS::RTOS:Stream Buffer:10.5.1
-      Include file:  Source/include/stream_buffer.h
-      Source file:   Source/stream_buffer.c
-
-   * Component: ARM.FreeRTOS::RTOS:Timers:10.5.1
-      Include file:  Source/include/timers.h
-      Source file:   Source/timers.c
 
    * Component: ARM::CMSIS:CORE:5.6.0
       Include file:  CMSIS/Core/Include/tz_context.h
 
    * Component: Keil.ARM Compiler::Compiler:I/O:STDERR:Breakpoint:1.2.0
       Source file:   Source/retarget_io.c
-Build Time Elapsed:  00:00:11
+Build Time Elapsed:  00:00:13
 </pre>
 </body>
 </html>

@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "can.h"
 #include "crc.h"
 #include "dma.h"
@@ -36,9 +37,6 @@
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "ui.h" 
-#include "FreeRTOSConfig.h"
-#include "FreeRTOS.h"
-#include "task.h"
 
 /* USER CODE END Includes */
 
@@ -51,44 +49,6 @@
 /* USER CODE BEGIN PD */
 #define SPI_FATFS_DEBUG 0
 #define LVGL_DEBUG 1
-
-
-//task priority
-#define START_TASK_PRIO    1
-
-//define task stack/heap size
-#define START_STACK_SIZE  128
-
-//task Handle
-TaskHandle_t StartTask_Handle;
-
-//Task function
-void start_Task(void *pvParameters);
-
-
-//task priority
-#define IOT_TASK_PRIO    2
-
-//define task stack/heap size
-#define IOT_STACK_SIZE  256
-
-//task Handle
-TaskHandle_t IOT_Task_Handle;
-
-//Task function
-void iotUpload_Task(void *pvParameters);
-
-//task priority
-#define LVGL_TASK_PRIO    1
-
-//define task stack/heap size
-#define LVGL_STACK_SIZE  512
-
-//task Handle
-TaskHandle_t LVGL_Task_Handle;
-
-//Task function
-void LVGL_Task(void *pvParameters);
 
 /* USER CODE END PD */
 
@@ -119,6 +79,7 @@ unsigned int read_bytes=0;
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -163,42 +124,6 @@ void SPI_FLASH_WriteTest()
 }
 #endif
 
-
-void start_Task(void *pvParameters)
-{
-	taskENTER_CRITICAL(); //进入临界保护区
-	
-	xTaskCreate( (TaskFunction_t )iotUpload_Task,
-							 (const char*    )"iotUpload_Task",
-							 (uint16_t       )IOT_STACK_SIZE,
-							 (void*          )NULL,
-							 (UBaseType_t    )IOT_TASK_PRIO,
-							 (TaskHandle_t*  )&IOT_Task_Handle);
-	
-	xTaskCreate( (TaskFunction_t )LVGL_Task,
-							 (const char*    )"LVGL_Task",
-							 (uint16_t       )LVGL_STACK_SIZE,
-							 (void*          )NULL,
-							 (UBaseType_t    )LVGL_TASK_PRIO,
-							 (TaskHandle_t*  )&LVGL_Task_Handle);				
-	vTaskDelete(StartTask_Handle);
-	taskEXIT_CRITICAL();
-}
-
-void iotUpload_Task(void *pvParameters)
-{
-	uploadCarData();
-	HAL_Delay(100);
-}
-
-void LVGL_Task(void *pvParameters)
-{
-	if(barFlag == 1)
-			sendEventCode();	
-	lv_task_handler(); // lvgl的事务处理
-	HAL_Delay(1);
-	
-}
 /* USER CODE END 0 */
 
 /**
@@ -239,9 +164,9 @@ int main(void)
   MX_TIM1_Init();
   MX_CAN1_Init();
   MX_USART3_UART_Init();
+  MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 	//   LVGL任务定时器中断
-	//NVIC_PriorityGroupConfig(NVIC_PRIORITYGROUP_4);
 	HAL_TIM_Base_Start_IT(&htim3);	
 	//蓝牙模块开机
 	HAL_GPIO_WritePin(BLT_IN_GPIO_Port, BLT_IN_Pin, GPIO_PIN_SET);
@@ -264,14 +189,6 @@ int main(void)
 	ui_init();
 	
 	lv_event_send(ui_iotStatus, MQTT_INIT_OK, NULL);
-	
-	xTaskCreate( (TaskFunction_t )start_Task,
-							 (const char*    )"start_Task",
-							 (uint16_t       )START_STACK_SIZE,
-							 (void*          )NULL,
-							 (UBaseType_t    )START_TASK_PRIO,
-							 (TaskHandle_t*  )&StartTask_Handle);
-	vTaskStartScheduler();
 #endif
 #if SPI_FATFS_DEBUG
 	formatSTAT = f_mkfs("0:",0,work,sizeof work);
@@ -290,15 +207,24 @@ int main(void)
 #endif
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-		
+		if(barFlag == 1)
+			sendEventCode();	
 #if LVGL_DEBUG		
-		//lv_task_handler(); // lvgl的事务处理	
+		lv_task_handler(); // lvgl的事务处理	
 #endif
-		//HAL_Delay(1);
+		HAL_Delay(1);
 		
     /* USER CODE END WHILE */
 
@@ -374,10 +300,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   }
   /* USER CODE BEGIN Callback 1 */
 	if (htim == (&htim3))
-    {	
-      lv_tick_inc(1);//lvgl的1ms中断
+  {	
+		lv_tick_inc(1);//lvgl的1ms中断
 			//printf("tick\n");
-    }
+  }
   /* USER CODE END Callback 1 */
 }
 

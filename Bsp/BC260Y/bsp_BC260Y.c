@@ -151,19 +151,24 @@ uint8_t mqttServiceStartup()
 //发布消息 QOS = 0
 void MQTT_Pubdata(char *json)
 {
-	usartTxFlag = 2;
+	char pubStr[300]; 
 	char overCh = 0x1a;
-	printf("AT+QMTPUB=0,0,0,1,\"hello\"\r\n");//发布主题
-	HAL_Delay(10);
-	printf("%s\r\n",json);
-	printf("%c", overCh);
+	sprintf(pubStr,"AT+QMTPUB=0,0,0,1,\"hello\",%d,\"%s\"\r\n",strlen(json),json);
+	usartTxFlag = 2;
+	printf("%s",pubStr);//发布主题
+	
+	usartTxFlag = 1;
+	printf("send %s",pubStr);//发布主题
+//	HAL_Delay(10);
+//	printf("%s\r\n",json);
+//	printf("%c", overCh);
 }
 //FrontSpeed,PedalTravel,batAlarm,MotorSpeed,batTemp,batLevel,gearMode,carMode,time_Count,batVol,carTravel,mcu1Temp,mcu2Temp,breakTravel,lmotorTemp,rmotorTemp,lmotorSpeed,rmotorSpeed,motorTemp
 
 void jsonPack(void)//json打包 分段 heap太小一次性打包不下
 {
 	char json[] = "{\"cSpeed\": %d,\"Pos\": %d,\"bAlarm\": %d,\"lmSpeed\": %d,\"rmSpeed\": %d,\"bTemp\": %d,\"bLevel\": %d,\"gMode\": %d,\"cMode\": %d,\"lmTorque\":%d,\"rmTorque\":%d,\"batVol\": %d,\"carDistce\": %d,\"mcu1Temp\": %d,\"mcu2Temp\": %d,\"brakeTravel\": %d,\"lmoTemp\": %d,\"rmoTemp\": %d}";
-	char t_json[256];
+	char t_json[300];
 	sprintf(t_json, json, racingCarData.FrontSpeed,\
 	racingCarData.PedalTravel, \
 	racingCarData.batAlarm, \
@@ -182,8 +187,8 @@ void jsonPack(void)//json打包 分段 heap太小一次性打包不下
 	racingCarData.brakeTravel, \
 	racingCarData.lmotorTemp, \
 	racingCarData.rmotorTemp);
-	usartTxFlag = 1;
-	printf("%s\r\n",t_json);
+	//usartTxFlag = 1;
+	//printf("%s\r\n",t_json);
 	MQTT_Pubdata(t_json);
 	memset(t_json,0x00,sizeof(t_json)); //清空数组
 }

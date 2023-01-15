@@ -66,7 +66,7 @@ LV_FONT_DECLARE(ui_font_PlayFairSmall);
 
 void ui_init(void);
 void sendEventCode();
-
+void meterAnimation();
 
 
 #ifdef __cplusplus
