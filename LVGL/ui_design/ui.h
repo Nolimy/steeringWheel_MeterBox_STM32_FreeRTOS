@@ -49,6 +49,11 @@ extern lv_obj_t * ui_speedMeter;
 
 extern uint8_t barFlag;
 
+extern uint8_t msec;
+extern uint8_t sec;
+extern uint8_t min;
+
+
 extern uint32_t SPEED_CHANGED;
 extern uint32_t MQTT_INIT_OK;
 

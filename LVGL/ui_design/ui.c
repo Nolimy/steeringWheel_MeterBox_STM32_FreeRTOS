@@ -71,30 +71,7 @@ void meterAnimation()
     lv_anim_start(&a);
 }
 ///////////////////// FUNCTIONS //////////////////// 
-void lapTimer_cb(lv_timer_t * tmr)
-{
-	msec+=1;
-	if(msec == 100)
-	{
-		msec = 0;
-		sec+=1;
-	}
-	if(sec == 60)
-	{
-		sec = 0;
-		min+=1;
-		
-	}
-	if(min == 60)
-	{
-		msec = 0;
-		min = 0;
-		sec = 0;
-	}
-	
-	//set label
-	lv_label_set_text_fmt(ui_lapTime, "%02d:%02d:%02d", min, sec, msec);
-}
+
 static void set_value(void * bar, int32_t v)
 {
     lv_bar_set_value(bar, v, LV_ANIM_OFF);
@@ -110,7 +87,7 @@ void ui_event_startup(lv_event_t * e)
     lv_obj_t * target = lv_event_get_target(e);
     if(event_code == BAR_LOAD_OVER) {
       _ui_screen_change(ui_home, LV_SCR_LOAD_ANIM_MOVE_LEFT, 200, 0);
-		lapTimer = lv_timer_create(lapTimer_cb, 10, 0);      // 运行周期为lvgl的10个滴答时钟
+		//lapTimer = lv_timer_create(lapTimer_cb, 10, 0);      // 运行周期为lvgl的10个滴答时钟
     }
 }
 

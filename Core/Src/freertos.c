@@ -31,7 +31,7 @@
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "ui.h" 
-
+#include "tim.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -65,7 +65,7 @@ osThreadId_t LVGL_TaskHandle;
 const osThreadAttr_t LVGL_Task_attributes = {
   .name = "LVGL_Task",
   .stack_size = 1024 * 4,
-  .priority = (osPriority_t) osPriorityHigh,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for LVGL_Meter */
 osThreadId_t LVGL_MeterHandle;
@@ -124,7 +124,32 @@ void MX_FREERTOS_Init(void) {
 	
 	getCarDataHandle = osEventFlagsNew(&getCarData_attributes);
   /* USER CODE END Init */
+/* USER CODE BEGIN Header */
+/**
+  ******************************************************************************
+  * File Name          : freertos.c
+  * Description        : Code for freertos applications
+  ******************************************************************************
+  * @attention
+  *
+  * Copyright (c) 2023 STMicroelectronics.
+  * All rights reserved.
+  *
+  * This software is licensed under terms that can be found in the LICENSE file
+  * in the root directory of this software component.
+  * If no LICENSE file comes with this software, it is provided AS-IS.
+  *
+  ******************************************************************************
+  */
+/* USER CODE END Header */
 
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
 }
 
 /* USER CODE BEGIN Header_Start_IotUploadTask */
@@ -136,10 +161,6 @@ void MX_FREERTOS_Init(void) {
 /* USER CODE END Header_Start_IotUploadTask */
 void Start_IotUploadTask(void *argument)
 {
-//#define UPLOAD_EVENT (0x01 << 0)//设置事件掩码的位 0 
-//#define GUI_UPDATE_EVENT (0x01 << 1)//设置事件掩码的位 1
-//#define LED_EVENT (0x01 << 2)//设置事件掩码的位 1
-
   /* USER CODE BEGIN Start_IotUploadTask */
 	uint32_t r_event;
   /* Infinite loop */
@@ -151,7 +172,14 @@ void Start_IotUploadTask(void *argument)
                               osWaitForever);           /* 指定超时事件,一直等 */ 
 		//5fps
 		if(r_event)
+		{
+			osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
+                          osWaitForever); 
 			uploadCarData();
+			
+			osMutexRelease(lvgl_mutexHandle);
+		}
+			
     //osDelay(200);
   }
   /* USER CODE END Start_IotUploadTask */
@@ -267,10 +295,8 @@ void Start_LVGL_Lap_Timer(void *argument)
   {
 		 osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
                           osWaitForever); 
-		
 		//更新计时器时间显示
-		
-		
+		lv_label_set_text_fmt(ui_lapTime, "%02d:%02d:%02d", min, sec, msec);
 		osMutexRelease(lvgl_mutexHandle); //释放互斥量
 		
     osDelay(1);

@@ -157,8 +157,8 @@ void MQTT_Pubdata(char *json)
 	usartTxFlag = 2;
 	printf("%s",pubStr);//发布主题
 	
-	usartTxFlag = 1;
-	printf("send %s",pubStr);//发布主题
+//	usartTxFlag = 1;
+//	printf("send %s",pubStr);//发布主题
 //	HAL_Delay(10);
 //	printf("%s\r\n",json);
 //	printf("%c", overCh);

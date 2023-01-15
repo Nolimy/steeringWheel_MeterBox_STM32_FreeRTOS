@@ -167,7 +167,8 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 	//   LVGL任务定时器中断
-	HAL_TIM_Base_Start_IT(&htim3);	
+	HAL_TIM_Base_Start_IT(&htim3);
+	HAL_TIM_Base_Start_IT(&htim4);		
 	//蓝牙模块开机
 	HAL_GPIO_WritePin(BLT_IN_GPIO_Port, BLT_IN_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(BLT_OUT_GPIO_Port, BLT_OUT_Pin, GPIO_PIN_RESET);
@@ -304,6 +305,27 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 		lv_tick_inc(1);//lvgl的1ms中断
 			//printf("tick\n");
   }
+	if(htim == (&htim4))
+	{
+		msec+=1;
+		if(msec == 100)
+		{
+			msec = 0;
+			sec+=1;
+		}
+		if(sec == 60)
+		{
+			sec = 0;
+			min+=1;
+			
+		}
+		if(min == 60)
+		{
+			msec = 0;
+			min = 0;
+			sec = 0;
+		}
+	}
   /* USER CODE END Callback 1 */
 }
 
