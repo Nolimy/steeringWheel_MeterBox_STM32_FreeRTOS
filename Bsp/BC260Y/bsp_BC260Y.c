@@ -1,4 +1,5 @@
 #include "bsp_BC260Y.h"
+#include "cmsis_os2.h"
 
 char RxBuffer1[RXBUFFERSIZE];   //接收数据
 char RxBuffer3[RXBUFFERSIZE];   //接收数据
@@ -20,7 +21,7 @@ uint8_t cmdToBC26Y(char *strSource, char *strTarget, uint8_t okCheck)
 	{
 		strBuffer = NULL;
 		printf("%s\r\n", strSource);
-		HAL_Delay(500);
+		osDelay(300);
 		while(strBuffer == NULL && i<5)
 		{
 			strBuffer = strstr((const char*)Buffer,(const char*)strTarget);
@@ -30,7 +31,7 @@ uint8_t cmdToBC26Y(char *strSource, char *strTarget, uint8_t okCheck)
 			memset(Buffer,0x00,sizeof(Buffer)); //清空数组
 			usartTxFlag = 2;
 			printf("%s\r\n", strSource);
-			HAL_Delay(600);
+			osDelay(300);
 			i++;
 			//printf("sending %s\r\n",strSource);		
 		}
@@ -53,7 +54,7 @@ uint8_t cmdToBC26Y(char *strSource, char *strTarget, uint8_t okCheck)
 		{
 			usartTxFlag = 2;
 			printf("%s\r\n", strSource);
-			HAL_Delay(200);
+			osDelay(200);
 			usartTxFlag = 1;
 			printf("sending %s\r\n",strSource);	
 			i++;
@@ -82,10 +83,10 @@ uint8_t BC260Y_init()
 	//4G模块开机
 	HAL_GPIO_WritePin(PWR_4G_GPIO_Port, PWR_4G_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(RST_4G_GPIO_Port, RST_4G_Pin, GPIO_PIN_SET);
-	HAL_Delay(500);
+	osDelay(500);
 	HAL_GPIO_WritePin(RST_4G_GPIO_Port, RST_4G_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(PWR_4G_GPIO_Port, PWR_4G_Pin, GPIO_PIN_RESET);
-	HAL_Delay(5000);
+	osDelay(4000);
   //数据缓冲  
 	memset(Buffer,0x00,sizeof(Buffer)); //清空数组
 //	cmdToBC26Y("AT+CIMI","460",0);

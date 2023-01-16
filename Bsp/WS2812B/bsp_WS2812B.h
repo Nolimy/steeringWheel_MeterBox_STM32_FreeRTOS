@@ -10,7 +10,7 @@ void ws2812_example(void);
 extern void ws2812_blue(uint8_t led_nums);
 extern void ws2812_red(uint8_t led_nums);
 extern void ws2812_green(uint8_t led_nums);
-
+void RPM_LED_Shine();
 
 
 

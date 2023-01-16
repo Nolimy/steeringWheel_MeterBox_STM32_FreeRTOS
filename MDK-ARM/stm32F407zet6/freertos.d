@@ -233,4 +233,4 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\LVGL\src\extra\widgets\span\lv_span.h \
   ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h \
   ..\LVGL\porting\lv_port_disp.h ..\LVGL\ui_design\ui.h \
-  ..\Core\Inc\tim.h
+  ..\Core\Inc\tim.h ..\Bsp\WS2812B\bsp_WS2812B.h

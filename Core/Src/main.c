@@ -167,19 +167,13 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
 	//   LVGL任务定时器中断
-	HAL_TIM_Base_Start_IT(&htim3);
-	HAL_TIM_Base_Start_IT(&htim4);		
+	HAL_TIM_Base_Start_IT(&htim3);	
 	//蓝牙模块开机
 	HAL_GPIO_WritePin(BLT_IN_GPIO_Port, BLT_IN_Pin, GPIO_PIN_SET);
 	HAL_GPIO_WritePin(BLT_OUT_GPIO_Port, BLT_OUT_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(BLT_RST_GPIO_Port, BLT_RST_Pin, GPIO_PIN_SET);	
 	CanFilterInit();
-	//MQTTinitOkFlag = mqttServiceStartup();
-	//ws2812_blue(1);
-	//HAL_Delay(1000);
-	//ws2812_blue(2); 
-	//HAL_Delay(500);
-	//ws2812_blue(1);
+	ws2812_init(12);
 	LCD_Init();
 	LCD_Clear(BLACK);
 #if LVGL_DEBUG	
@@ -189,7 +183,6 @@ int main(void)
 	//lv_bmp_init();
 	ui_init();
 	
-	lv_event_send(ui_iotStatus, MQTT_INIT_OK, NULL);
 #endif
 #if SPI_FATFS_DEBUG
 	formatSTAT = f_mkfs("0:",0,work,sizeof work);

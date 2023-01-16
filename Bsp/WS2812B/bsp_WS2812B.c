@@ -1,5 +1,8 @@
 #include "bsp_WS2812B.h"
 #include "tim.h"
+#include "bsp_CAN.h"
+#include "cmsis_os2.h"
+
 
 #define ONE_PULSE        ((htim1.Init.Period+1)/3*2-1)                          
 #define ZERO_PULSE       ((htim1.Init.Period+1)/3-1)                           
@@ -78,4 +81,26 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 {
 		__HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 0);
     HAL_TIM_PWM_Stop_DMA(&htim1,TIM_CHANNEL_1);
+}
+
+void RPM_LED_Shine()
+{
+	//x / 500
+	uint8_t ledNums, i;
+	ws2812_init(12);
+	ledNums = racingCarData.lmotorSpeed / 400;
+	
+	for(i = 0; i < ledNums; i++)//Öð¸öµãÁÁLED
+	{
+		ws2812_set_RGB(i*25, (12-i)*5, (12-i)*2, i);//RGB
+	}
+	while(ledNums>10)
+	{
+		ws2812_green(ledNums);//RGB
+		osDelay(80);
+		ws2812_init(12);
+		osDelay(80);
+		ledNums = racingCarData.lmotorSpeed / 400;
+	}
+	
 }

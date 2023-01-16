@@ -32,6 +32,7 @@
 #include "lv_port_disp.h"
 #include "ui.h" 
 #include "tim.h"
+#include "bsp_WS2812B.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -65,14 +66,14 @@ osThreadId_t LVGL_TaskHandle;
 const osThreadAttr_t LVGL_Task_attributes = {
   .name = "LVGL_Task",
   .stack_size = 1024 * 4,
-  .priority = (osPriority_t) osPriorityRealtime,
+  .priority = (osPriority_t) osPriorityRealtime2,
 };
 /* Definitions for LVGL_Meter */
 osThreadId_t LVGL_MeterHandle;
 const osThreadAttr_t LVGL_Meter_attributes = {
   .name = "LVGL_Meter",
   .stack_size = 256 * 4,
-  .priority = (osPriority_t) osPriorityRealtime,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for LVGL_Lap_Timer */
 osThreadId_t LVGL_Lap_TimerHandle;
@@ -80,6 +81,20 @@ const osThreadAttr_t LVGL_Lap_Timer_attributes = {
   .name = "LVGL_Lap_Timer",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityRealtime,
+};
+/* Definitions for BC260Y_init */
+osThreadId_t BC260Y_initHandle;
+const osThreadAttr_t BC260Y_init_attributes = {
+  .name = "BC260Y_init",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityRealtime1,
+};
+/* Definitions for RPM_LED_Task */
+osThreadId_t RPM_LED_TaskHandle;
+const osThreadAttr_t RPM_LED_Task_attributes = {
+  .name = "RPM_LED_Task",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for lvgl_mutex */
 osMutexId_t lvgl_mutexHandle;
@@ -101,6 +116,8 @@ void Start_IotUploadTask(void *argument);
 void Start_LVGL_Task(void *argument);
 void Start_LVGL_Meter(void *argument);
 void Start_LVGL_Lap_Timer(void *argument);
+void Start_BC260Y_init(void *argument);
+void Start_RPM_LED(void *argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -114,42 +131,19 @@ void MX_FREERTOS_Init(void) {
 
 	lvgl_mutexHandle = osMutexNew(&lvgl_mutex_attributes);
 	
-	iotUploadTaskHandle = osThreadNew(Start_IotUploadTask, NULL, &iotUploadTask_attributes);
-	
 	LVGL_TaskHandle = osThreadNew(Start_LVGL_Task, NULL, &LVGL_Task_attributes);
 	
 	LVGL_MeterHandle = osThreadNew(Start_LVGL_Meter, NULL, &LVGL_Meter_attributes);
 	
 	LVGL_Lap_TimerHandle = osThreadNew(Start_LVGL_Lap_Timer, NULL, &LVGL_Lap_Timer_attributes);
 	
+	BC260Y_initHandle = osThreadNew(Start_BC260Y_init, NULL, &BC260Y_init_attributes);
+	
+	RPM_LED_TaskHandle = osThreadNew(Start_RPM_LED, NULL, &RPM_LED_Task_attributes);
+	
 	getCarDataHandle = osEventFlagsNew(&getCarData_attributes);
   /* USER CODE END Init */
-/* USER CODE BEGIN Header */
-/**
-  ******************************************************************************
-  * File Name          : freertos.c
-  * Description        : Code for freertos applications
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2023 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
-/* USER CODE END Header */
 
-/**
-  * @}
-  */
-
-/**
-  * @}
-  */
 }
 
 /* USER CODE BEGIN Header_Start_IotUploadTask */
@@ -170,11 +164,14 @@ void Start_IotUploadTask(void *argument)
                               UPLOAD_EVENT,    /* 接收任务感兴趣的事件 */ 
                               osFlagsWaitAll,           /* 退出时清除事件位，同时满足感兴趣的所有事件 */ 
                               osWaitForever);           /* 指定超时事件,一直等 */ 
-		//5fps
+		//进入进程后删除掉初始化MQTT的进程
+		osThreadTerminate(BC260Y_initHandle);
+		
 		if(r_event)
 		{
 			osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
                           osWaitForever); 
+			//5fps
 			uploadCarData();
 			
 			osMutexRelease(lvgl_mutexHandle);
@@ -201,7 +198,10 @@ void Start_LVGL_Task(void *argument)
 		osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
                           osWaitForever); 
 		if(barFlag == 1)
-			sendEventCode();		
+		{
+			sendEventCode();	
+		}
+				
 		lv_task_handler(); // lvgl的事务处理	
 		
 		osMutexRelease(lvgl_mutexHandle);
@@ -302,6 +302,66 @@ void Start_LVGL_Lap_Timer(void *argument)
     osDelay(1);
   }
   /* USER CODE END Start_LVGL_Lap_Timer */
+}
+
+/* USER CODE BEGIN Header_Start_BC260Y_init */
+/**
+* @brief Function implementing the BC260Y_init thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_BC260Y_init */
+void Start_BC260Y_init(void *argument)
+{
+  /* USER CODE BEGIN Start_BC260Y_init */
+  /* Infinite loop */
+  for(;;)
+  {
+		//osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
+    //                      osWaitForever); 
+		//执行MQTT初始化
+		MQTTinitOkFlag = mqttServiceStartup();
+		//事件组  发送信号
+		//osEventFlagsSet(getCarDataHandle, 0x08); // 0000 1000
+		//启动上传进程
+		iotUploadTaskHandle = osThreadNew(Start_IotUploadTask, NULL, &iotUploadTask_attributes);
+		//将MQTT初始化结果发送给UI
+		lv_event_send(ui_iotStatus, MQTT_INIT_OK, NULL);
+		
+		//osMutexRelease(lvgl_mutexHandle); //释放互斥量
+		
+    osDelay(100);
+  }
+  /* USER CODE END Start_BC260Y_init */
+}
+
+/* USER CODE BEGIN Header_Start_RPM_LED */
+/**
+* @brief Function implementing the RPM_LED_Task thread.
+* @param argument: Not used
+* @retval None
+*/
+/* USER CODE END Header_Start_RPM_LED */
+void Start_RPM_LED(void *argument)
+{
+  /* USER CODE BEGIN Start_RPM_LED */
+	uint32_t r_event;
+  /* Infinite loop */
+  for(;;)
+  {
+		r_event = osEventFlagsWait(getCarDataHandle,             /* 事件对象句柄 */ 
+                              UPLOAD_EVENT,    /* 接收任务感兴趣的事件 */ 
+                              osFlagsWaitAll,           /* 退出时清除事件位，同时满足感兴趣的所有事件 */ 
+                              osWaitForever);           /* 指定超时事件,一直等 */ 
+		//osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
+    //                      osWaitForever); 
+		if(r_event)
+			RPM_LED_Shine();
+		
+		//osMutexRelease(lvgl_mutexHandle); //释放互斥量
+    //osDelay(10);
+  }
+  /* USER CODE END Start_RPM_LED */
 }
 
 /* Private application code --------------------------------------------------*/

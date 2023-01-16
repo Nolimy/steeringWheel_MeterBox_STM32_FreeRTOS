@@ -8,6 +8,7 @@
 #include "ui_comp.h"
 #include "bsp_CAN.h"
 #include "bsp_BC260Y.h"
+#include "tim.h"
 
 ///////////////////// VARIABLES ////////////////////
 void ui_event_startup(lv_event_t * e);
@@ -87,52 +88,53 @@ void ui_event_startup(lv_event_t * e)
     lv_obj_t * target = lv_event_get_target(e);
     if(event_code == BAR_LOAD_OVER) {
       _ui_screen_change(ui_home, LV_SCR_LOAD_ANIM_MOVE_LEFT, 200, 0);
+			HAL_TIM_Base_Start_IT(&htim4);	//启动计时器定时中断.
 		//lapTimer = lv_timer_create(lapTimer_cb, 10, 0);      // 运行周期为lvgl的10个滴答时钟
     }
 }
 
-void ui_speedMeter_update(lv_event_t *e)
-{
-	lv_event_code_t event_code = lv_event_get_code(e);
-  lv_obj_t * target = lv_event_get_target(e);
-	if(event_code == SPEED_CHANGED){
-		meterAnimation();
-		lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
-		lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.rmotorSpeed);
-		lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.batTemp);
-		lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.lmotorTemp);
-		lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.rmotorTemp);
-		
-		lv_bar_set_value(ui_socValue, racingCarData.batLevel, LV_ANIM_ON);
-		if(racingCarData.gearMode == 0)
-			lv_label_set_text(ui_gearLable, "N");
-		else if(racingCarData.gearMode == 1)
-			lv_label_set_text(ui_gearLable, "R");
-		else
-			lv_label_set_text(ui_gearLable, "D");
-		if(racingCarData.carMode == 0)
-		{
-			lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x6464F1), LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
-			
-			lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
-		}
-		else
-		{
-			lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
-			
-			lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x80FF80), LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-			lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
-		}
-		
-	}	
-}
+//void ui_speedMeter_update(lv_event_t *e)
+//{
+//	lv_event_code_t event_code = lv_event_get_code(e);
+//  lv_obj_t * target = lv_event_get_target(e);
+//	if(event_code == SPEED_CHANGED){
+//		meterAnimation();
+//		lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
+//		lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.rmotorSpeed);
+//		lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.batTemp);
+//		lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.lmotorTemp);
+//		lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.rmotorTemp);
+//		
+//		lv_bar_set_value(ui_socValue, racingCarData.batLevel, LV_ANIM_ON);
+//		if(racingCarData.gearMode == 0)
+//			lv_label_set_text(ui_gearLable, "N");
+//		else if(racingCarData.gearMode == 1)
+//			lv_label_set_text(ui_gearLable, "R");
+//		else
+//			lv_label_set_text(ui_gearLable, "D");
+//		if(racingCarData.carMode == 0)
+//		{
+//			lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x6464F1), LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+//			
+//			lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+//		}
+//		else
+//		{
+//			lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+//			
+//			lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x80FF80), LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+//			lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+//		}
+//		
+//	}	
+//}
 void iotStatusUpdate(lv_event_t * e)
 {
 	lv_event_code_t event_code = lv_event_get_code(e);
@@ -150,11 +152,11 @@ void iotStatusUpdate(lv_event_t * e)
 		}
 	}		
 }
-void sendEventCode(uint32_t EVENT_CODE)
+void sendEventCode()
 {
 	if(lv_bar_get_value(ui_startupBar) == 100)
 	{
-		barFlag = 0;
+		barFlag = 0; //当该值为0时，进度条停止增长
 		lv_event_send(ui_startup, BAR_LOAD_OVER, NULL);
 	}
 }
@@ -181,7 +183,7 @@ void ui_startup_screen_init(void)
     lv_anim_set_var(&a, ui_startupBar);
     lv_anim_set_values(&a, 0, 100);
     lv_anim_set_exec_cb(&a, set_value);
-		lv_anim_set_time(&a, 4000);
+		lv_anim_set_time(&a, 6000);
 		lv_anim_start(&a);
 		//lv_anim_set_ready_cb(&a, sendEventCode);
 		
@@ -426,9 +428,9 @@ void ui_home_screen_init(void)
 		
 		
 
-		SPEED_CHANGED = lv_event_register_id();
+		//SPEED_CHANGED = lv_event_register_id();
 		MQTT_INIT_OK = lv_event_register_id();
-		lv_obj_add_event_cb(ui_speedMeter, ui_speedMeter_update, LV_EVENT_ALL, NULL);
+		//lv_obj_add_event_cb(ui_speedMeter, ui_speedMeter_update, LV_EVENT_ALL, NULL);
 		lv_obj_add_event_cb(ui_iotStatus, iotStatusUpdate, LV_EVENT_ALL, NULL);
 		
 }

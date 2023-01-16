@@ -19,10 +19,10 @@ void uploadCarData();
 #define Transmitter 0
 #define Receiver    1
 
-#define UPLOAD_EVENT (0x01 << 0)//设置事件掩码的位 0 
+#define UPLOAD_EVENT (0x01)//设置事件掩码的位 0 
 #define GUI_UPDATE_EVENT (0x01 << 1)//设置事件掩码的位 1
-#define LED_EVENT (0x01 << 2)//设置事件掩码的位 1
-
+#define LED_EVENT (0x01 << 2)//设置事件掩码的位 2
+#define MQTT_INIT (0x01 << 3)//设置事件掩码的位 3
 #if Transmitter
 void carDataUpdate();
 void canDataPack();
