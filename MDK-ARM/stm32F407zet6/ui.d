@@ -222,4 +222,4 @@ stm32f407zet6/ui.o: ..\LVGL\ui_design\ui.c ..\LVGL\ui_design\ui.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
-  ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h
+  ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h ..\Core\Inc\tim.h
