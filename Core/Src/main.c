@@ -25,6 +25,7 @@
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
+#include "usb_device.h"
 #include "gpio.h"
 #include "fsmc.h"
 
@@ -211,19 +212,19 @@ int main(void)
   /* We should never get here as control is now taken by the scheduler */
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-		if(barFlag == 1)
-			sendEventCode();	
-#if LVGL_DEBUG		
-		lv_task_handler(); // lvgl的事务处理	
-#endif
-		HAL_Delay(1);
-		
-    /* USER CODE END WHILE */
+//  while (1)
+//  {
+//		if(barFlag == 1)
+//			sendEventCode();	
+//#if LVGL_DEBUG		
+//		lv_task_handler(); // lvgl的事务处理	
+//#endif
+//		HAL_Delay(1);
+//		
+//    /* USER CODE END WHILE */
 
-    /* USER CODE BEGIN 3 */
-  }
+//    /* USER CODE BEGIN 3 */
+//  }
   /* USER CODE END 3 */
 }
 

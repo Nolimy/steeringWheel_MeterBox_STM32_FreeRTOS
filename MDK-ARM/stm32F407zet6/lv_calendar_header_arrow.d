@@ -75,16 +75,4 @@ stm32f407zet6/lv_calendar_header_arrow.o: \
   ..\LVGL\src\extra\widgets\calendar\..\..\..\core\lv_obj_class.h \
   ..\LVGL\src\extra\widgets\calendar\..\..\..\core\lv_event.h \
   ..\LVGL\src\extra\widgets\calendar\..\..\..\core\lv_group.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\core\..\misc\lv_ll.h \
-  ..\LVGL\src\extra\widgets\calendar\lv_calendar.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\lv_btnmatrix.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\..\lv_conf_internal.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\..\core\lv_obj.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\lv_btn.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\lv_label.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\..\font\lv_font.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\..\font\lv_symbol_def.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\..\misc\lv_txt.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\..\widgets\..\draw\lv_draw.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\layouts\flex\lv_flex.h \
-  ..\LVGL\src\extra\widgets\calendar\..\..\layouts\flex\..\..\..\core\lv_obj.h
+  ..\LVGL\src\extra\widgets\calendar\..\..\..\core\..\misc\lv_ll.h

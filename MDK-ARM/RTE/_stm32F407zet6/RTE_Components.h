@@ -19,6 +19,8 @@
 /* Keil.ARM Compiler::Compiler:I/O:STDERR:Breakpoint:1.2.0 */
 #define RTE_Compiler_IO_STDERR          /* Compiler I/O: STDERR */
           #define RTE_Compiler_IO_STDERR_BKPT     /* Compiler I/O: STDERR Breakpoint */
+/* MDK-Packs::Data Exchange:JSON:Jsmn:1.1.0 */
+#define RTE_DataExchange_JSON_Jsmn     /* Jsmn */
 
 
 #endif /* RTE_COMPONENTS_H */

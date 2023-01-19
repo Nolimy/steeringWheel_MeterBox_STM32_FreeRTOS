@@ -65,8 +65,8 @@ LV_FONT_DECLARE(ui_font_bigNumber_18);
 LV_FONT_DECLARE(ui_font_bigNumber_25);
 LV_FONT_DECLARE(ui_font_FastOne);
 LV_FONT_DECLARE(ui_font_icon_bettery);
-LV_FONT_DECLARE(ui_font_PlayFairBig);
-LV_FONT_DECLARE(ui_font_PlayFairSmall);
+LV_FONT_DECLARE(ui_font_smileySans_50);
+//LV_FONT_DECLARE(ui_font_PlayFairSmall);
 
 
 void ui_init(void);

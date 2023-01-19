@@ -96,12 +96,9 @@ stm32f407zet6/lv_msgbox.o: ..\LVGL\src\extra\widgets\msgbox\lv_msgbox.c \
   ..\LVGL\src\widgets\lv_dropdown.h \
   ..\LVGL\src\widgets\..\widgets\lv_label.h \
   ..\LVGL\src\widgets\lv_roller.h ..\LVGL\src\widgets\lv_textarea.h \
-  ..\LVGL\src\widgets\lv_canvas.h \
-  ..\LVGL\src\widgets\..\widgets\lv_img.h \
-  ..\LVGL\src\widgets\..\draw\lv_draw_img.h \
-  ..\LVGL\src\widgets\lv_switch.h ..\LVGL\src\draw\lv_draw.h \
-  ..\LVGL\src\lv_api_map.h ..\LVGL\src\extra\lv_extra.h \
-  ..\LVGL\src\extra\layouts\lv_layouts.h \
+  ..\LVGL\src\widgets\lv_canvas.h ..\LVGL\src\widgets\lv_switch.h \
+  ..\LVGL\src\draw\lv_draw.h ..\LVGL\src\lv_api_map.h \
+  ..\LVGL\src\extra\lv_extra.h ..\LVGL\src\extra\layouts\lv_layouts.h \
   ..\LVGL\src\extra\layouts\flex\lv_flex.h \
   ..\LVGL\src\extra\layouts\flex\..\..\..\core\lv_obj.h \
   ..\LVGL\src\extra\layouts\grid\lv_grid.h \
@@ -182,5 +179,4 @@ stm32f407zet6/lv_msgbox.o: ..\LVGL\src\extra\widgets\msgbox\lv_msgbox.c \
   ..\LVGL\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\LVGL\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\LVGL\src\extra\widgets\span\lv_span.h \
-  ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h \
-  ..\LVGL\src\extra\widgets\msgbox\..\..\..\misc\lv_assert.h
+  ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h

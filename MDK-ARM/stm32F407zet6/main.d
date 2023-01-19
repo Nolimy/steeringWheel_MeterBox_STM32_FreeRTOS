@@ -36,6 +36,9 @@ stm32f407zet6/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
   ..\Core\Inc\FreeRTOSConfig.h \
@@ -49,13 +52,18 @@ stm32f407zet6/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\crc.h ..\Core\Inc\dma.h \
   ..\Core\Inc\spi.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\gpio.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\USB_DEVICE\App\usb_device.h \
+  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h \
+  ..\USB_DEVICE\Target\usbd_conf.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\gpio.h \
   ..\Core\Inc\fsmc.h ..\Bsp\LCD\bsp_LCD.h ..\Bsp\BC260Y\bsp_BC260Y.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Bsp\CAN\bsp_CAN.h \
-  ..\Bsp\WS2812B\bsp_WS2812B.h ..\LVGL\lvgl.h ..\LVGL\src\misc\lv_log.h \
-  ..\LVGL\src\misc\..\lv_conf_internal.h ..\LVGL\src\lv_conf_kconfig.h \
-  ..\LVGL\lv_conf.h ..\LVGL\src\misc\lv_types.h \
-  ..\LVGL\src\misc\lv_timer.h ..\LVGL\src\misc\..\hal\lv_hal_tick.h \
+  ..\Bsp\CAN\bsp_CAN.h ..\Bsp\WS2812B\bsp_WS2812B.h ..\LVGL\lvgl.h \
+  ..\LVGL\src\misc\lv_log.h ..\LVGL\src\misc\..\lv_conf_internal.h \
+  ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
+  ..\LVGL\src\misc\lv_types.h ..\LVGL\src\misc\lv_timer.h \
+  ..\LVGL\src\misc\..\hal\lv_hal_tick.h \
   ..\LVGL\src\misc\..\hal\..\lv_conf_internal.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\misc\lv_math.h ..\LVGL\src\misc\lv_mem.h \
@@ -144,12 +152,10 @@ stm32f407zet6/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\LVGL\src\widgets\lv_dropdown.h \
   ..\LVGL\src\widgets\..\widgets\lv_label.h \
   ..\LVGL\src\widgets\lv_roller.h ..\LVGL\src\widgets\lv_textarea.h \
-  ..\LVGL\src\widgets\lv_canvas.h \
-  ..\LVGL\src\widgets\..\widgets\lv_img.h \
-  ..\LVGL\src\widgets\..\draw\lv_draw_img.h \
-  ..\LVGL\src\widgets\lv_switch.h ..\LVGL\src\draw\lv_draw.h \
-  ..\LVGL\src\lv_api_map.h ..\LVGL\src\..\lvgl.h \
-  ..\LVGL\src\extra\lv_extra.h ..\LVGL\src\extra\layouts\lv_layouts.h \
+  ..\LVGL\src\widgets\lv_canvas.h ..\LVGL\src\widgets\lv_switch.h \
+  ..\LVGL\src\draw\lv_draw.h ..\LVGL\src\lv_api_map.h \
+  ..\LVGL\src\..\lvgl.h ..\LVGL\src\extra\lv_extra.h \
+  ..\LVGL\src\extra\layouts\lv_layouts.h \
   ..\LVGL\src\extra\layouts\flex\lv_flex.h \
   ..\LVGL\src\extra\layouts\flex\..\..\..\core\lv_obj.h \
   ..\LVGL\src\extra\layouts\grid\lv_grid.h \

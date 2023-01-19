@@ -75,8 +75,4 @@ stm32f407zet6/lv_checkbox.o: ..\LVGL\src\widgets\lv_checkbox.c \
   ..\LVGL\src\widgets\..\core\lv_obj_class.h \
   ..\LVGL\src\widgets\..\core\lv_event.h \
   ..\LVGL\src\widgets\..\core\lv_group.h \
-  ..\LVGL\src\widgets\..\core\..\misc\lv_ll.h \
-  ..\LVGL\src\widgets\..\misc\lv_assert.h \
-  ..\LVGL\src\widgets\..\misc\lv_txt_ap.h \
-  ..\LVGL\src\widgets\..\core\..\misc\..\draw\lv_draw.h \
-  ..\LVGL\src\widgets\..\draw\lv_draw.h
+  ..\LVGL\src\widgets\..\core\..\misc\lv_ll.h

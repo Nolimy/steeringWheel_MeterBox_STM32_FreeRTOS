@@ -9,7 +9,7 @@
 #include "bsp_CAN.h"
 #include "bsp_BC260Y.h"
 #include "tim.h"
-
+#include "SH_Data.h"
 ///////////////////// VARIABLES ////////////////////
 void ui_event_startup(lv_event_t * e);
 void iotStatusUpdate(lv_event_t * e);
@@ -61,12 +61,18 @@ uint8_t barFlag = 1;
 ///////////////////// ANIMATIONS ////////////////////
 void meterAnimation()
 {
-		static int8_t lastSpeed;
+		static int32_t lastSpeed;
 	  lv_anim_t a;
     lv_anim_init(&a);
     lv_anim_set_exec_cb(&a, meter_set_value);
+	#if canOPEN
     lv_anim_set_values(&a, lastSpeed, racingCarData.FrontSpeed);
 		lastSpeed = racingCarData.FrontSpeed;
+	#endif
+	#if simhubOPEN
+		lv_anim_set_values(&a, lastSpeed, sh_CarData.speed);
+		lastSpeed = sh_CarData.speed;
+	#endif
     lv_anim_set_time(&a, 5);
     lv_anim_set_var(&a, indic1);
     lv_anim_start(&a);
@@ -254,7 +260,7 @@ void ui_home_screen_init(void)
     lv_label_set_text(ui_gearLable, "N");
     lv_obj_set_style_text_color(ui_gearLable, lv_color_hex(0x4195F4), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_gearLable, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_gearLable, &ui_font_PlayFairBig, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_gearLable, &ui_font_smileySans_50, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_socValue = lv_bar_create(ui_home);
     lv_bar_set_value(ui_socValue, 25, LV_ANIM_OFF);
@@ -423,7 +429,13 @@ void ui_home_screen_init(void)
     lv_meter_scale_t * scale = lv_meter_add_scale(ui_speedMeter);
     lv_meter_set_scale_ticks(ui_speedMeter, scale, 60, 0, 0, lv_color_hex(0x000000));//set the minor tick
     lv_meter_set_scale_major_ticks(ui_speedMeter, scale, 1, 3, 20, lv_color_hex(0x1772b4), -100);
+		#if canOPEN
     lv_meter_set_scale_range(ui_speedMeter, scale, 0, 120, 270, 90);
+		#endif
+		
+		#if simhubOPEN
+		lv_meter_set_scale_range(ui_speedMeter, scale, 0, 280, 270, 90);
+		#endif
 		indic1 = lv_meter_add_arc(ui_speedMeter, scale, 20, lv_color_hex(0x1772b4), 0);
 		
 		

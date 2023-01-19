@@ -95,12 +95,10 @@ stm32f407zet6/ui.o: ..\LVGL\ui_design\ui.c ..\LVGL\ui_design\ui.h \
   ..\LVGL\src\widgets\lv_dropdown.h \
   ..\LVGL\src\widgets\..\widgets\lv_label.h \
   ..\LVGL\src\widgets\lv_roller.h ..\LVGL\src\widgets\lv_textarea.h \
-  ..\LVGL\src\widgets\lv_canvas.h \
-  ..\LVGL\src\widgets\..\widgets\lv_img.h \
-  ..\LVGL\src\widgets\..\draw\lv_draw_img.h \
-  ..\LVGL\src\widgets\lv_switch.h ..\LVGL\src\draw\lv_draw.h \
-  ..\LVGL\src\lv_api_map.h ..\LVGL\src\..\lvgl.h \
-  ..\LVGL\src\extra\lv_extra.h ..\LVGL\src\extra\layouts\lv_layouts.h \
+  ..\LVGL\src\widgets\lv_canvas.h ..\LVGL\src\widgets\lv_switch.h \
+  ..\LVGL\src\draw\lv_draw.h ..\LVGL\src\lv_api_map.h \
+  ..\LVGL\src\..\lvgl.h ..\LVGL\src\extra\lv_extra.h \
+  ..\LVGL\src\extra\layouts\lv_layouts.h \
   ..\LVGL\src\extra\layouts\flex\lv_flex.h \
   ..\LVGL\src\extra\layouts\flex\..\..\..\core\lv_obj.h \
   ..\LVGL\src\extra\layouts\grid\lv_grid.h \
@@ -221,5 +219,9 @@ stm32f407zet6/ui.o: ..\LVGL\ui_design\ui.c ..\LVGL\ui_design\ui.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
-  ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h ..\Core\Inc\tim.h
+  ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h ..\Core\Inc\tim.h \
+  ..\Bsp\shApplication\SH_Data.h

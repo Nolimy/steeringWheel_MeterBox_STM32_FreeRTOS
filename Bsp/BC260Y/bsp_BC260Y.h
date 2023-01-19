@@ -7,7 +7,7 @@
 #include "gpio.h"
 #include "bsp_CAN.h"
 
-#define RXBUFFERSIZE  256     //最大接收字节数
+#define RXBUFFERSIZE  16     //最大接收字节数
 
 extern char RxBuffer1[RXBUFFERSIZE];   //接收数据
 extern char RxBuffer3[RXBUFFERSIZE];   //接收数据

@@ -45,6 +45,9 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Bsp\BC260Y\bsp_BC260Y.h \
@@ -143,12 +146,10 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\LVGL\src\widgets\lv_dropdown.h \
   ..\LVGL\src\widgets\..\widgets\lv_label.h \
   ..\LVGL\src\widgets\lv_roller.h ..\LVGL\src\widgets\lv_textarea.h \
-  ..\LVGL\src\widgets\lv_canvas.h \
-  ..\LVGL\src\widgets\..\widgets\lv_img.h \
-  ..\LVGL\src\widgets\..\draw\lv_draw_img.h \
-  ..\LVGL\src\widgets\lv_switch.h ..\LVGL\src\draw\lv_draw.h \
-  ..\LVGL\src\lv_api_map.h ..\LVGL\src\..\lvgl.h \
-  ..\LVGL\src\extra\lv_extra.h ..\LVGL\src\extra\layouts\lv_layouts.h \
+  ..\LVGL\src\widgets\lv_canvas.h ..\LVGL\src\widgets\lv_switch.h \
+  ..\LVGL\src\draw\lv_draw.h ..\LVGL\src\lv_api_map.h \
+  ..\LVGL\src\..\lvgl.h ..\LVGL\src\extra\lv_extra.h \
+  ..\LVGL\src\extra\layouts\lv_layouts.h \
   ..\LVGL\src\extra\layouts\flex\lv_flex.h \
   ..\LVGL\src\extra\layouts\flex\..\..\..\core\lv_obj.h \
   ..\LVGL\src\extra\layouts\grid\lv_grid.h \
@@ -233,4 +234,12 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\LVGL\src\extra\widgets\span\lv_span.h \
   ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h \
   ..\LVGL\porting\lv_port_disp.h ..\LVGL\ui_design\ui.h \
-  ..\Core\Inc\tim.h ..\Bsp\WS2812B\bsp_WS2812B.h
+  ..\Core\Inc\tim.h ..\Bsp\WS2812B\bsp_WS2812B.h \
+  ..\Bsp\shApplication\SH_Data.h ..\USB_DEVICE\App\usbd_cdc_if.h \
+  ..\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc\usbd_cdc.h \
+  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h \
+  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h \
+  ..\USB_DEVICE\Target\usbd_conf.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h \
+  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h
