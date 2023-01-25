@@ -1561,13 +1561,6 @@
         </Group>
         <Group>
           <GroupName>BSP/Json</GroupName>
-          <Files>
-            <File>
-              <FileName>jsmn.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Bsp\Json\jsmn.h</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>BSP/USB_CDC</GroupName>

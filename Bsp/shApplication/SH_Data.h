@@ -13,6 +13,8 @@ struct SH_CarData
 	uint8_t fuel;
 	uint8_t lfBrake;
 	uint8_t rfBrake;
+	uint8_t *bLapTime;
+	uint8_t *cLapTime;
 };
 
 
