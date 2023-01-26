@@ -93,7 +93,7 @@ void ui_event_startup(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * target = lv_event_get_target(e);
     if(event_code == BAR_LOAD_OVER) {
-      _ui_screen_change(ui_home, LV_SCR_LOAD_ANIM_MOVE_LEFT, 200, 0);
+      _ui_screen_change(ui_home, LV_SCR_LOAD_ANIM_FADE_ON, 600, 0);
 			HAL_TIM_Base_Start_IT(&htim4);	//启动计时器定时中断.
 		//lapTimer = lv_timer_create(lapTimer_cb, 10, 0);      // 运行周期为lvgl的10个滴答时钟
     }

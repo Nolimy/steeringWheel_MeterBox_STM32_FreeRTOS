@@ -2,8 +2,8 @@
 #define _BSP_LCD_H
 
 
-#include "fsmc.h"
-
+//#include "fsmc.h"
+#include "main.h"
 //LCD重要参数集
 typedef struct
 {
