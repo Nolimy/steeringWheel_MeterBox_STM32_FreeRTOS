@@ -53,51 +53,69 @@ uint8_t	parse_data(jsmn_parser *p, char *string)
 //      usb_printf("- Name: %.*s\n", token[i + 1].end -token[i + 1].start,
 //             string + token[i + 1].start);
       i++;
-    } else if (jsoneq(string, &token[i], "speed") == 0) {
+    } 
+		else if (jsoneq(string, &token[i], "redLineRPM") == 0) {
+			sh_CarData.redRpm = strtol(string + token[i + 1].start, &stopStr, 10);
+//      usb_printf("- Admin: %.*s\n", token[i + 1].end - token[i + 1].start,
+//             string + token[i + 1].start);
+      i++;
+    } 
+		else if (jsoneq(string, &token[i], "speed") == 0) {
 			sh_CarData.speed = strtol(string + token[i + 1].start, &stopStr, 10);
 //      usb_printf("- Admin: %.*s\n", token[i + 1].end - token[i + 1].start,
 //             string + token[i + 1].start);
       i++;
-    } else if (jsoneq(string, &token[i], "gear") == 0) {
+    } 
+		else if (jsoneq(string, &token[i], "gear") == 0) {
       /* We may want to do strtol() here to get numeric value */
 			//sh_CarData.Gear = (uint8_t *)(string + token[i + 1].start);
 			//sprintf((char *)sh_CarData.Gear, "%.*s", token[i + 1].end - token[i + 1].start,
       //       string + token[i + 1].start);
 			sh_CarData.Gear = (uint8_t *)(string + token[i + 1].start);
-            usb_printf("- Gear: %.*s\n", token[i + 1].end - token[i + 1].start,
-             string + token[i + 1].start);
+            //usb_printf("- Gear: %.*s\n", token[i + 1].end - token[i + 1].start,
+             //string + token[i + 1].start);
       i++;
-    } else if (jsoneq(string, &token[i], "fuel") == 0){
+    } 
+		else if (jsoneq(string, &token[i], "fuel") == 0){
 			sh_CarData.fuel = strtol(string + token[i + 1].start, &stopStr, 10);
 //      usb_printf("- HeiHei: %.*s\n", token[i + 1].end - token[i + 1].start,
 //             string + token[i + 1].start);
 			i++;
-    } else if (jsoneq(string, &token[i], "L") == 0){
-				sh_CarData.lfBrake = strtol(string + token[i + 1].start, &stopStr, 10);
-//      usb_printf("- HeiHei: %.*s\n", token[i + 1].end - token[i + 1].start,
-//             string + token[i + 1].start);
-			i++;
-		} else if (jsoneq(string, &token[i], "R") == 0){
-				sh_CarData.rfBrake = strtol(string + token[i + 1].start, &stopStr, 10);
-//      usb_printf("- HeiHei: %.*s\n", token[i + 1].end - token[i + 1].start,
-//             string + token[i + 1].start);
-			i++;
-		} 
+    } 
 		else if (jsoneq(string, &token[i], "bLapTime") == 0) {
       /* We may want to do strtol() here to get numeric value */
 			sh_CarData.bLapTime = (uint8_t *)(string + token[i + 1].start);
-            usb_printf("- BestTime: %.*s\n", token[i + 1].end - token[i + 1].start,
-             string + token[i + 1].start);
+            //usb_printf("- BestTime: %.*s\n", token[i + 1].end - token[i + 1].start,
+             //string + token[i + 1].start);
       i++;
     } 
 		else if (jsoneq(string, &token[i], "cLapTime") == 0) {
       /* We may want to do strtol() here to get numeric value */
 			sh_CarData.cLapTime = (uint8_t *)(string + token[i + 1].start);
-            usb_printf("- CurrentTime: %.*s\n", token[i + 1].end - token[i + 1].start,
-             string + token[i + 1].start);
+            //usb_printf("- CurrentTime: %.*s\n", token[i + 1].end - token[i + 1].start,
+             //string + token[i + 1].start);
       i++;
     }
+		else if (jsoneq(string, &token[i], "lap") == 0){
+			sh_CarData.lap = strtol(string + token[i + 1].start, &stopStr, 10);
+//      usb_printf("- HeiHei: %.*s\n", token[i + 1].end - token[i + 1].start,
+//             string + token[i + 1].start);
+			i++;
+    } 
+		else if (jsoneq(string, &token[i], "throttle") == 0){
+			sh_CarData.throttle = strtol(string + token[i + 1].start, &stopStr, 10);
+//      usb_printf("- HeiHei: %.*s\n", token[i + 1].end - token[i + 1].start,
+//             string + token[i + 1].start);
+			i++;
+    } 
+		else if (jsoneq(string, &token[i], "brake") == 0){
+			sh_CarData.brake = strtol(string + token[i + 1].start, &stopStr, 10);
+//      usb_printf("- HeiHei: %.*s\n", token[i + 1].end - token[i + 1].start,
+//             string + token[i + 1].start);
+			i++;
+    } 
 	}
+	usb_printf("c_json parsed lapTime is %s, SPEED is %d, rpm is %d, Gear is %s, bLapTime is %s, fuel is %d, redLineRPM is %d\r\n", sh_CarData.cLapTime,sh_CarData.speed, sh_CarData.rpm, sh_CarData.Gear, sh_CarData.bLapTime, sh_CarData.fuel, sh_CarData.redRpm);
 	free(p);
 	return 0;
 }

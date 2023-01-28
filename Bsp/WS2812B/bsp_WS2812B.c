@@ -108,15 +108,15 @@ void RPM_LED_Shine()
 	#if simhubOPEN
 	uint8_t ledNums, i;
 	ws2812_init(12);
-	ledNums = sh_CarData.rpm / 525;
+	ledNums = sh_CarData.rpm / (sh_CarData.redRpm / 12);
 	
 	for(i = 0; i < ledNums; i++)//Öð¸öµãÁÁLED
 	{
 		ws2812_set_RGB(i*25, (12-i)*5, (12-i)*2, i);//RGB
 	}
-	while(ledNums>10)
+	while(ledNums>10 &&(sh_CarData.rpm > sh_CarData.redRpm) )
 	{
-		ws2812_green(ledNums);//RGB
+		ws2812_red(ledNums);//RGB
 		osDelay(80);
 		ws2812_init(12);
 		osDelay(80);
