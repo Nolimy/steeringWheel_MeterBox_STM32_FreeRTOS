@@ -108,7 +108,7 @@ void RPM_LED_Shine()
 	#if simhubOPEN
 	uint8_t ledNums, i;
 	ws2812_init(12);
-	ledNums = sh_CarData.rpm / 400;
+	ledNums = sh_CarData.rpm / 525;
 	
 	for(i = 0; i < ledNums; i++)//Öð¸öµãÁÁLED
 	{

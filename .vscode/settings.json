@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "fsmc.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}

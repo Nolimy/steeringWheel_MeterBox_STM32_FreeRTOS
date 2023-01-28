@@ -41,6 +41,7 @@
 "stm32f407zet6\bsp_lcd.o"
 "stm32f407zet6\bsp_bc260y.o"
 "stm32f407zet6\bsp_can.o"
+"stm32f407zet6\cjson.o"
 "stm32f407zet6\bsp_usb_cdc.o"
 "stm32f407zet6\sh_data.o"
 "stm32f407zet6\bsp_ws2812b.o"
@@ -236,7 +237,7 @@
 "stm32f407zet6\usbd_ioreq.o"
 "stm32f407zet6\usbd_cdc.o"
 "stm32f407zet6\retarget_io.o"
---strict --scatter "stm32F407zet6\stm32F407zet6.sct"
+--strict --scatter ".\SRAM_Conf.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\listing\stm32F407zet6.map" -o stm32F407zet6\stm32F407zet6.axf

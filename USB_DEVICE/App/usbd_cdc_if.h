@@ -48,8 +48,8 @@
   * @{
   */
 /* Define size for the receive and transmit buffer over CDC */
-#define APP_RX_DATA_SIZE  256
-#define APP_TX_DATA_SIZE  128
+#define APP_RX_DATA_SIZE  2048
+#define APP_TX_DATA_SIZE  2048
 /* USER CODE BEGIN EXPORTED_DEFINES */
 #define BUFSIZE 128
 
@@ -94,8 +94,8 @@
 extern USBD_CDC_ItfTypeDef USBD_Interface_fops_FS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
-extern uint8_t pRx[BUFSIZE]; //这个准备指向接收到的数据缓冲区
-extern uint32_t RxLen; //这个是收到的数据数量
+//extern uint8_t pRx[BUFSIZE]; //这个准备指向接收到的数据缓冲区
+//extern uint32_t RxLen; //这个是收到的数据数量
 /* USER CODE END EXPORTED_VARIABLES */
 
 /**

@@ -9,16 +9,21 @@ struct SH_CarData
 {
 	uint16_t speed;
 	uint16_t rpm;
+	uint16_t redRpm;
 	uint8_t  *Gear;
 	uint8_t fuel;
 	uint8_t lfBrake;
 	uint8_t rfBrake;
 	uint8_t *bLapTime;
 	uint8_t *cLapTime;
+	
 };
 
 
 extern struct SH_CarData sh_CarData;
+extern uint8_t get_data_flag;
+extern uint8_t buf[];
+extern uint32_t data_nums;
 void json_analysis(char *Buf);
-
+void SH_Set_Data();
 #endif // _SH_DATA_H_

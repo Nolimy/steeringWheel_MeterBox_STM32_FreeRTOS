@@ -37,8 +37,8 @@
 extern osEventFlagsId_t getCarDataHandle;
 
 
-uint8_t pRx[BUFSIZE]; //这个准备指向接收到的数据缓冲区
-uint32_t RxLen; //这个是收到的数据数量
+//uint8_t pRx[BUFSIZE]; //这个准备指向接收到的数据缓冲区
+//uint32_t RxLen; //这个是收到的数据数量
 
 /* USER CODE END PV */
 
@@ -96,10 +96,10 @@ uint32_t RxLen; //这个是收到的数据数量
 /* Create buffer for reception and transmission           */
 /* It's up to user to redefine and/or remove those define */
 /** Received data over USB are stored in this buffer      */
-uint8_t UserRxBufferFS[APP_RX_DATA_SIZE];
+uint8_t UserRxBufferFS[APP_RX_DATA_SIZE] __attribute__((section(".CCM_RAM")));
 
 /** Data to send over USB CDC are stored in this buffer   */
-uint8_t UserTxBufferFS[APP_TX_DATA_SIZE];
+uint8_t UserTxBufferFS[APP_TX_DATA_SIZE] __attribute__((section(".CCM_RAM")));
 
 /* USER CODE BEGIN PRIVATE_VARIABLES */
 
@@ -273,13 +273,15 @@ static int8_t CDC_Receive_FS(uint8_t* Buf, uint32_t *Len)
 	//usb_printf("-----%s ----\r\n", Buf);
   USBD_CDC_SetRxBuffer(&hUsbDeviceFS, &Buf[0]);
   USBD_CDC_ReceivePacket(&hUsbDeviceFS);
-	if(strchr((char *)Buf, '!'))//判断接收到的字符串是否完整且有效
+	if(get_data_flag)  osEventFlagsSet(getCarDataHandle, 0x07); // 0000 0111
+	if(!get_data_flag) data_nums = 0;
+	for(int i=0; i<*Len; i++)
 	{
-		json_analysis((char *)Buf);
-		osEventFlagsSet(getCarDataHandle, 0x07); // 0000 0111
+		buf[i+data_nums] = *Buf++;
 	}
-	
-	//memcpy(pRx,Buf,RxLen);
+	data_nums += *Len;
+	buf[data_nums] = '\0';
+	get_data_flag = 1;	
 	
   return (USBD_OK);
   /* USER CODE END 6 */

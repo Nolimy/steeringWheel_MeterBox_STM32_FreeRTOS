@@ -90,7 +90,7 @@ const osThreadAttr_t LVGL_Task_attributes = {
 osThreadId_t LVGL_MeterHandle;
 const osThreadAttr_t LVGL_Meter_attributes = {
   .name = "LVGL_Meter",
-  .stack_size = 512 * 4,
+  .stack_size = 512 * 8,
   .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for RPM_LED_Task */
@@ -274,6 +274,7 @@ void Start_LVGL_Meter(void *argument)
 			}
 			#endif
 			#if simhubOPEN
+			SH_Set_Data();
 			meterAnimation();
 			lv_label_set_text_fmt(ui_speedNum, "%03d", sh_CarData.speed);
 			lv_label_set_text_fmt(ui_rpmNum, "%04d", sh_CarData.rpm);
@@ -285,6 +286,9 @@ void Start_LVGL_Meter(void *argument)
 			lv_label_set_text_fmt(ui_lapTime, "%.*s", 8, sh_CarData.cLapTime);
 			lv_bar_set_value(ui_socValue, sh_CarData.fuel, LV_ANIM_ON);
 			lv_label_set_text_fmt(ui_gearLable, "%.*s", 1, sh_CarData.Gear);
+//			lv_label_set_text(ui_gearLable, (char *)sh_CarData.Gear);
+//			lv_label_set_text(ui_lapTime, (char *)sh_CarData.cLapTime);
+//			lv_label_set_text(ui_bespLapTime, (char *)sh_CarData.bLapTime);
 			
 			
 			
