@@ -3,7 +3,7 @@
 #define jsmnUsing 1
 
 uint8_t get_data_flag = 0;
-uint8_t buf[1024];
+uint8_t buf[1024] __attribute__((section(".CCM_RAM")));
 uint32_t data_nums = 0;
 struct SH_CarData sh_CarData  __attribute__((section(".CCM_RAM")));
 
@@ -124,26 +124,6 @@ void json_analysis(char *Buf)
 {
 	jsmn_init(&p);
 	parse_data(&p, Buf);
-//	json_error_t error;
-//  json_t *root;
-//  json_t *status;
-//	
-//	root = json_loads((const char *)Buf, 0, &error);
-//	if(json_is_object(root))
-//	{
-//		sh_CarData.speed = json_integer_value(json_object_get(root, "SP"));
-//		sh_CarData.rpm = json_integer_value(json_object_get(root, "RP"));
-//		sh_CarData.cLapTime = (uint8_t *)json_string_value(json_object_get(root, "CT"));
-//		//sh_CarData.bLapTime = (uint8_t *)json_string_value(json_object_get(root, "BT"));
-//		sh_CarData.Gear = (uint8_t *)json_string_value(json_object_get(root, "GE"));
-//		//sh_CarData.fuel = json_integer_value(json_object_get(root, "FU"));
-//	}
-//	
-//	else
-//	{
-//		usb_printf("root format error:%d-%s\r\n", error.line, error.text);
-//	}
-	
 }
 
 #else // jsmnUsing

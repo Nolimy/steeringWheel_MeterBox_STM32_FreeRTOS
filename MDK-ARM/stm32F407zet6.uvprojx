@@ -3989,9 +3989,6 @@
         <Group>
           <GroupName>::Compiler</GroupName>
         </Group>
-        <Group>
-          <GroupName>::Data Exchange</GroupName>
-        </Group>
       </Groups>
     </Target>
   </Targets>
@@ -4007,12 +4004,6 @@
       </component>
       <component Cbundle="ARM Compiler" Cclass="Compiler" Cgroup="I/O" Csub="STDERR" Cvariant="Breakpoint" Cvendor="Keil" Cversion="1.2.0" condition="ARMCC Cortex-M">
         <package name="ARM_Compiler" schemaVersion="1.7.7" url="https://www.keil.com/pack/" vendor="Keil" version="1.7.2"/>
-        <targetInfos>
-          <targetInfo name="stm32F407zet6"/>
-        </targetInfos>
-      </component>
-      <component Cclass="Data Exchange" Cgroup="JSON" Csub="Jsmn" Cvendor="MDK-Packs" Cversion="1.1.0">
-        <package name="Jsmn" schemaVersion="1.6" url="https://github.com/MDK-Packs/Pack/raw/master/Jsmn/" vendor="MDK-Packs" version="1.1.0"/>
         <targetInfos>
           <targetInfo name="stm32F407zet6"/>
         </targetInfos>

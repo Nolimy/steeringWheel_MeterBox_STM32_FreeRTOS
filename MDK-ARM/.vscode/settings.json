@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "gpio.h": "c"
+        "gpio.h": "c",
+        "jsmn.h": "c"
     }
 }

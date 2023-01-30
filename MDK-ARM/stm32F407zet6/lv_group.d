@@ -1,14 +1,14 @@
 stm32f407zet6/lv_group.o: ..\LVGL\src\core\lv_group.c \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\LVGL\src\core\lv_group.h ..\LVGL\src\core\..\lv_conf_internal.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\core\..\misc\lv_ll.h ..\LVGL\src\core\..\misc\lv_types.h \
   ..\LVGL\src\core\..\misc\lv_gc.h \
   ..\LVGL\src\core\..\misc\..\lv_conf_internal.h \
   ..\LVGL\src\core\..\misc\lv_mem.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\core\..\misc\lv_timer.h \
   ..\LVGL\src\core\..\misc\..\hal\lv_hal_tick.h \
   ..\LVGL\src\core\..\misc\..\hal\..\lv_conf_internal.h \
@@ -33,9 +33,9 @@ stm32f407zet6/lv_group.o: ..\LVGL\src\core\lv_group.c \
   ..\LVGL\src\core\..\misc\..\font\..\misc\lv_area.h \
   ..\LVGL\src\core\..\misc\lv_color.h ..\LVGL\src\core\..\misc\lv_anim.h \
   ..\LVGL\src\core\..\misc\lv_txt.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\core\..\misc\lv_printf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
   ..\LVGL\src\core\..\misc\lv_bidi.h \
   ..\LVGL\src\core\..\misc\lv_style_gen.h \
   ..\LVGL\src\core\..\hal\lv_hal.h \
