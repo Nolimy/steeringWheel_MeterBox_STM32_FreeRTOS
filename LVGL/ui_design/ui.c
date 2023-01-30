@@ -10,6 +10,7 @@
 #include "bsp_BC260Y.h"
 #include "tim.h"
 #include "SH_Data.h"
+#include "applicationVar.h"
 ///////////////////// VARIABLES ////////////////////
 void ui_event_startup(lv_event_t * e);
 void iotStatusUpdate(lv_event_t * e);
@@ -65,13 +66,22 @@ void meterAnimation()
 	  lv_anim_t a;
     lv_anim_init(&a);
     lv_anim_set_exec_cb(&a, meter_set_value);
+		if(appStatus.canOpenStatus)
+		{
+			lv_anim_set_values(&a, lastSpeed, racingCarData.FrontSpeed);
+			lastSpeed = racingCarData.FrontSpeed;
+		}
 	#if canOPEN
-    lv_anim_set_values(&a, lastSpeed, racingCarData.FrontSpeed);
-		lastSpeed = racingCarData.FrontSpeed;
+    
 	#endif
+		if(appStatus.simhubStatus)
+		{
+			lv_anim_set_values(&a, lastSpeed, sh_CarData.speed);
+			lastSpeed = sh_CarData.speed;
+		}
 	#if simhubOPEN
-		lv_anim_set_values(&a, lastSpeed, sh_CarData.speed);
-		lastSpeed = sh_CarData.speed;
+		
+		
 	#endif
     lv_anim_set_time(&a, 5);
     lv_anim_set_var(&a, indic1);
@@ -429,12 +439,19 @@ void ui_home_screen_init(void)
     lv_meter_scale_t * scale = lv_meter_add_scale(ui_speedMeter);
     lv_meter_set_scale_ticks(ui_speedMeter, scale, 60, 0, 0, lv_color_hex(0x000000));//set the minor tick
     lv_meter_set_scale_major_ticks(ui_speedMeter, scale, 1, 3, 20, lv_color_hex(0x1772b4), -100);
+		if(appStatus.canOpenStatus)
+			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 120, 270, 90);
+		
+		if(appStatus.simhubStatus)
+			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 280, 270, 90);
+		else
+			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 120, 270, 90);
 		#if canOPEN
-    lv_meter_set_scale_range(ui_speedMeter, scale, 0, 120, 270, 90);
+    
 		#endif
 		
 		#if simhubOPEN
-		lv_meter_set_scale_range(ui_speedMeter, scale, 0, 280, 270, 90);
+		
 		#endif
 		indic1 = lv_meter_add_arc(ui_speedMeter, scale, 20, lv_color_hex(0x1772b4), 0);
 		

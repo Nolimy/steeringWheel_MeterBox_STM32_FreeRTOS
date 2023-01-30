@@ -38,6 +38,7 @@
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "ui.h" 
+#include "applicationVar.h"
 
 /* USER CODE END Includes */
 
@@ -75,7 +76,6 @@ unsigned int write_bytes=0;
 char read_buff[8192];
 unsigned int read_bytes=0;
 #endif
-
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -134,10 +134,10 @@ void SPI_FLASH_WriteTest()
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	
 //	uint8_t barUpdataFlag = 1;
   /* USER CODE END 1 */
-
+	
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
@@ -170,10 +170,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	//   LVGL任务定时器中断
 	HAL_TIM_Base_Start_IT(&htim3);	
-	//蓝牙模块开机
-	HAL_GPIO_WritePin(BLT_IN_GPIO_Port, BLT_IN_Pin, GPIO_PIN_SET);
-	HAL_GPIO_WritePin(BLT_OUT_GPIO_Port, BLT_OUT_Pin, GPIO_PIN_RESET);
-	HAL_GPIO_WritePin(BLT_RST_GPIO_Port, BLT_RST_Pin, GPIO_PIN_SET);	
+	appStatus.initOK_Flag = 0;
+	appStatus.standByStatus = 1; //打开待机模式
+	appStatus.canOpenStatus = 0; //关闭实车模式
+	appStatus.simhubStatus  = 0; //关闭模拟器模式	
 	CanFilterInit();
 	ws2812_init(12);
 	LCD_Init();

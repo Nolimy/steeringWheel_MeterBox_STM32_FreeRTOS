@@ -974,6 +974,11 @@
                 </FileArmAds>
               </FileOption>
             </File>
+            <File>
+              <FileName>applicationVar.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Core\Src\applicationVar.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -3319,12 +3324,6 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>::CMSIS</GroupName>
-        </Group>
-        <Group>
-          <GroupName>::Compiler</GroupName>
-        </Group>
-        <Group>
           <GroupName>Middlewares/Composite/USB/COMPOSITE/COMPOSITE</GroupName>
           <GroupOption>
             <CommonProperty>
@@ -4179,6 +4178,12 @@
               </FileOption>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>::CMSIS</GroupName>
+        </Group>
+        <Group>
+          <GroupName>::Compiler</GroupName>
         </Group>
       </Groups>
     </Target>

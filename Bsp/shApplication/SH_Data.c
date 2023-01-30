@@ -115,7 +115,7 @@ uint8_t	parse_data(jsmn_parser *p, char *string)
 			i++;
     } 
 	}
-	usb_printf("c_json parsed lapTime is %s, SPEED is %d, rpm is %d, Gear is %s, bLapTime is %s, fuel is %d, redLineRPM is %d\r\n", sh_CarData.cLapTime,sh_CarData.speed, sh_CarData.rpm, sh_CarData.Gear, sh_CarData.bLapTime, sh_CarData.fuel, sh_CarData.redRpm);
+	//usb_printf("c_json parsed lapTime is %s, SPEED is %d, rpm is %d, Gear is %s, bLapTime is %s, fuel is %d, redLineRPM is %d\r\n", sh_CarData.cLapTime,sh_CarData.speed, sh_CarData.rpm, sh_CarData.Gear, sh_CarData.bLapTime, sh_CarData.fuel, sh_CarData.redRpm);
 	free(p);
 	return 0;
 }

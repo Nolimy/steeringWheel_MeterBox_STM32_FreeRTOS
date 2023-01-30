@@ -26,6 +26,7 @@
 #include "cmsis_os2.h"
 #include "SH_Data.h"
 #include "Bsp_USB_Composite.h"
+#include "applicationVar.h"
 /* USER CODE END INCLUDE */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -35,6 +36,7 @@
 /* USER CODE BEGIN PV */
 /* Private variables ---------------------------------------------------------*/
 extern osEventFlagsId_t getCarDataHandle;
+extern struct osStatus_t osStatus;
 /* USER CODE END PV */
 
 /** @addtogroup STM32_USB_OTG_DEVICE_LIBRARY
@@ -290,7 +292,10 @@ static int8_t CDC_Receive(uint8_t cdc_ch, uint8_t *Buf, uint32_t *Len)
   //HAL_UART_Transmit_DMA(CDC_CH_To_UART_Handle(cdc_ch), Buf, *Len);
   //CDC_Transmit(cdc_ch, Buf, *Len); // echo back on same channel
 
-	usb_printf("%s", Buf);
+	//usb_printf("%s", Buf);
+	appStatus.standByStatus = 0; //关闭待机模式
+	appStatus.canOpenStatus = 0; //关闭实车模式
+	appStatus.simhubStatus  = 1; //开模拟器模式
   USBD_CDC_SetRxBuffer(cdc_ch, &hUsbDevice, &Buf[0]);
   USBD_CDC_ReceivePacket(cdc_ch, &hUsbDevice);
 	if(get_data_flag)  osEventFlagsSet(getCarDataHandle, 0x07); // 0000 0111

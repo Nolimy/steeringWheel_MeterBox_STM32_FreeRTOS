@@ -14,6 +14,7 @@
 "stm32f407zet6\stm32f4xx_it.o"
 "stm32f407zet6\stm32f4xx_hal_msp.o"
 "stm32f407zet6\stm32f4xx_hal_timebase_tim.o"
+"stm32f407zet6\applicationvar.o"
 "stm32f407zet6\stm32f4xx_hal_rcc.o"
 "stm32f407zet6\stm32f4xx_hal_rcc_ex.o"
 "stm32f407zet6\stm32f4xx_hal_flash.o"
@@ -45,7 +46,7 @@
 "stm32f407zet6\cjson.o"
 "stm32f407zet6\bsp_usb_composite.o"
 "stm32f407zet6\sh_data.o"
-"stm32f407zet6\bsp_ws2812b_1.o"
+"stm32f407zet6\bsp_ws2812b.o"
 "stm32f407zet6\lv_port_disp.o"
 "stm32f407zet6\lv_port_fs.o"
 "stm32f407zet6\lv_port_indev.o"
@@ -229,7 +230,6 @@
 "stm32f407zet6\cmsis_os2.o"
 "stm32f407zet6\heap_4.o"
 "stm32f407zet6\port.o"
-"stm32f407zet6\retarget_io.o"
 "stm32f407zet6\usbd_composite.o"
 "stm32f407zet6\usbd_core.o"
 "stm32f407zet6\usbd_ctlreq.o"
@@ -240,6 +240,7 @@
 "stm32f407zet6\usbd_cdc_acm.o"
 "stm32f407zet6\usbd_cdc_acm_if.o"
 "stm32f407zet6\usbd_hid_mouse.o"
+"stm32f407zet6\retarget_io.o"
 --strict --scatter "stm32F407zet6\stm32F407zet6.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

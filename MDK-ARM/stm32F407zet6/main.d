@@ -6,16 +6,16 @@ stm32f407zet6/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h \
   ..\Drivers\CMSIS\Include\core_cm4.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\Drivers\CMSIS\Include\cmsis_version.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   ..\Drivers\CMSIS\Include\cmsis_armclang.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
   ..\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h \
@@ -52,21 +52,21 @@ stm32f407zet6/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   ..\Core\Inc\can.h ..\Core\Inc\crc.h ..\Core\Inc\dma.h \
   ..\Core\Inc\spi.h ..\Core\Inc\tim.h ..\Core\Inc\usart.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usb_otg.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usb_otg.h \
   ..\Core\Inc\gpio.h ..\Core\Inc\fsmc.h ..\Bsp\LCD\bsp_LCD.h \
   ..\Bsp\BC260Y\bsp_BC260Y.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Bsp\CAN\bsp_CAN.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Bsp\CAN\bsp_CAN.h \
   ..\Bsp\WS2812B\bsp_WS2812B.h ..\LVGL\lvgl.h ..\LVGL\src\misc\lv_log.h \
   ..\LVGL\src\misc\..\lv_conf_internal.h ..\LVGL\src\lv_conf_kconfig.h \
   ..\LVGL\lv_conf.h ..\LVGL\src\misc\lv_types.h \
   ..\LVGL\src\misc\lv_timer.h ..\LVGL\src\misc\..\hal\lv_hal_tick.h \
   ..\LVGL\src\misc\..\hal\..\lv_conf_internal.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\misc\lv_math.h ..\LVGL\src\misc\lv_mem.h \
   ..\LVGL\src\misc\lv_async.h ..\LVGL\src\misc\lv_anim_timeline.h \
   ..\LVGL\src\misc\lv_anim.h ..\LVGL\src\misc\lv_printf.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\hal\lv_hal.h ..\LVGL\src\misc\..\hal\lv_hal_disp.h \
   ..\LVGL\src\misc\..\hal\lv_hal.h \
   ..\LVGL\src\misc\..\hal\..\draw\lv_draw.h \
@@ -235,4 +235,5 @@ stm32f407zet6/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\LVGL\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\LVGL\src\extra\widgets\span\lv_span.h \
   ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h \
-  ..\LVGL\porting\lv_port_disp.h ..\LVGL\ui_design\ui.h
+  ..\LVGL\porting\lv_port_disp.h ..\LVGL\ui_design\ui.h \
+  ..\Core\Inc\applicationVar.h
