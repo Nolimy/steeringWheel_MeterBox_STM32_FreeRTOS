@@ -1,6 +1,7 @@
-stm32f407zet6/usbd_desc.o: ..\USB_DEVICE\App\usbd_desc.c \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h \
-  ..\USB_DEVICE\Target\usbd_conf.h \
+stm32f407zet6/usbd_desc.o: \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_desc.c \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_core.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Target\usbd_conf.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\main.h \
@@ -44,7 +45,13 @@ stm32f407zet6/usbd_desc.o: ..\USB_DEVICE\App\usbd_desc.c \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h \
-  ..\USB_DEVICE\App\usbd_desc.h
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_def.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ioreq.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ctlreq.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_desc.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\COMPOSITE\Inc\usbd_composite.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  ..\Composite\AL94.I-CUBE-USBD-COMPOSITE_conf.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_cdc_acm_if.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\CDC_ACM\Inc\usbd_cdc_acm.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\HID_MOUSE\Inc\usbd_hid_mouse.h

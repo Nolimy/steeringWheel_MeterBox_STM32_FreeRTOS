@@ -25,7 +25,7 @@
 #include "spi.h"
 #include "tim.h"
 #include "usart.h"
-#include "usb_device.h"
+#include "usb_otg.h"
 #include "gpio.h"
 #include "fsmc.h"
 
@@ -166,6 +166,7 @@ int main(void)
   MX_CAN1_Init();
   MX_USART3_UART_Init();
   MX_TIM4_Init();
+  MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
 	//   LVGL任务定时器中断
 	HAL_TIM_Base_Start_IT(&htim3);	
@@ -221,9 +222,9 @@ int main(void)
 //#endif
 //		HAL_Delay(1);
 //		
-//    /* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-//    /* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
 //  }
   /* USER CODE END 3 */
 }

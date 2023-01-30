@@ -34,7 +34,9 @@
 #include "tim.h"
 #include "bsp_WS2812B.h"
 #include "SH_Data.h"
-#include "usbd_cdc_if.h"
+#include "usbd_cdc_acm_if.h"
+#include "usb_device.h"
+#include "Bsp_USB_Composite.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -56,13 +58,26 @@
 /* USER CODE BEGIN Variables */
 
 /* USER CODE END Variables */
-#if canOPEN
 /* Definitions for iotUploadTask */
 osThreadId_t iotUploadTaskHandle;
 const osThreadAttr_t iotUploadTask_attributes = {
   .name = "iotUploadTask",
   .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityAboveNormal,
+};
+/* Definitions for LVGL_Task */
+osThreadId_t LVGL_TaskHandle;
+const osThreadAttr_t LVGL_Task_attributes = {
+  .name = "LVGL_Task",
+  .stack_size = 512 * 6,
+  .priority = (osPriority_t) osPriorityRealtime,
+};
+/* Definitions for LVGL_Meter */
+osThreadId_t LVGL_MeterHandle;
+const osThreadAttr_t LVGL_Meter_attributes = {
+  .name = "LVGL_Meter",
+  .stack_size = 512 * 12,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for LVGL_Lap_Timer */
 osThreadId_t LVGL_Lap_TimerHandle;
@@ -77,21 +92,6 @@ const osThreadAttr_t BC260Y_init_attributes = {
   .name = "BC260Y_init",
   .stack_size = 128 * 4,
   .priority = (osPriority_t) osPriorityRealtime1,
-};
-#endif
-/* Definitions for LVGL_Task */
-osThreadId_t LVGL_TaskHandle;
-const osThreadAttr_t LVGL_Task_attributes = {
-  .name = "LVGL_Task",
-  .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityRealtime,
-};
-/* Definitions for LVGL_Meter */
-osThreadId_t LVGL_MeterHandle;
-const osThreadAttr_t LVGL_Meter_attributes = {
-  .name = "LVGL_Meter",
-  .stack_size = 512 * 8,
-  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for RPM_LED_Task */
 osThreadId_t RPM_LED_TaskHandle;
@@ -123,7 +123,6 @@ void Start_LVGL_Lap_Timer(void *argument);
 void Start_BC260Y_init(void *argument);
 void Start_RPM_LED(void *argument);
 
-extern void MX_USB_DEVICE_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /**
@@ -179,6 +178,42 @@ void MX_FREERTOS_Init(void) {
   */
 }
 
+/* USER CODE BEGIN Header_Start_IotUploadTask */
+/**
+  * @brief  Function implementing the iotUploadTask thread.
+  * @param  argument: Not used
+  * @retval None
+  */
+/* USER CODE END Header_Start_IotUploadTask */
+void Start_IotUploadTask(void *argument)
+{
+  /* USER CODE BEGIN Start_IotUploadTask */
+	uint32_t r_event;
+  /* Infinite loop */
+  for(;;)
+  {
+		r_event = osEventFlagsWait(getCarDataHandle,             /* 事件对象句柄 */ 
+                              UPLOAD_EVENT,    /* 接收任务感兴趣的事件 */ 
+                              osFlagsWaitAll,           /* 退出时清除事件位，同时满足感兴趣的所有事件 */ 
+                              osWaitForever);           /* 指定超时事件,一直等 */ 
+		//进入进程后删除掉初始化MQTT的进程
+		osThreadTerminate(BC260Y_initHandle);
+		
+		if(r_event)
+		{
+			osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
+                          osWaitForever); 
+			//5fps
+			uploadCarData();
+			
+			osMutexRelease(lvgl_mutexHandle);
+		}
+			
+    //osDelay(200);
+  }
+  /* USER CODE END Start_IotUploadTask */
+}
+
 /* USER CODE BEGIN Header_Start_LVGL_Task */
 /**
 * @brief Function implementing the LVGL_Task thread.
@@ -200,7 +235,7 @@ void Start_LVGL_Task(void *argument)
 		{
 			sendEventCode();	
 		}
-				
+		USB_ControlData_Send();		
 		//json_analysis((char *)pRx);
 		lv_task_handler(); // lvgl的事务处理	
 		
@@ -311,7 +346,6 @@ void Start_LVGL_Meter(void *argument)
 * @retval None
 */
 /* USER CODE END Header_Start_LVGL_Lap_Timer */
-#if canOPEN
 void Start_LVGL_Lap_Timer(void *argument)
 {
   /* USER CODE BEGIN Start_LVGL_Lap_Timer */
@@ -328,44 +362,6 @@ void Start_LVGL_Lap_Timer(void *argument)
   }
   /* USER CODE END Start_LVGL_Lap_Timer */
 }
-
-/* USER CODE BEGIN Header_Start_IotUploadTask */
-/**
-  * @brief  Function implementing the iotUploadTask thread.
-  * @param  argument: Not used
-  * @retval None
-  */
-/* USER CODE END Header_Start_IotUploadTask */
-void Start_IotUploadTask(void *argument)
-{
-  
-  /* USER CODE BEGIN Start_IotUploadTask */
-	uint32_t r_event;
-  /* Infinite loop */
-  for(;;)
-  {
-		r_event = osEventFlagsWait(getCarDataHandle,             /* 事件对象句柄 */ 
-                              UPLOAD_EVENT,    /* 接收任务感兴趣的事件 */ 
-                              osFlagsWaitAll,           /* 退出时清除事件位，同时满足感兴趣的所有事件 */ 
-                              osWaitForever);           /* 指定超时事件,一直等 */ 
-		//进入进程后删除掉初始化MQTT的进程
-		osThreadTerminate(BC260Y_initHandle);
-		
-		if(r_event)
-		{
-			osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
-                          osWaitForever); 
-			//5fps
-			uploadCarData();
-			
-			osMutexRelease(lvgl_mutexHandle);
-		}
-			
-    //osDelay(200);
-  }
-  /* USER CODE END Start_IotUploadTask */
-}
-
 
 /* USER CODE BEGIN Header_Start_BC260Y_init */
 /**
@@ -400,7 +396,7 @@ void Start_BC260Y_init(void *argument)
   }
   /* USER CODE END Start_BC260Y_init */
 }
-#endif
+
 /* USER CODE BEGIN Header_Start_RPM_LED */
 /**
 * @brief Function implementing the RPM_LED_Task thread.

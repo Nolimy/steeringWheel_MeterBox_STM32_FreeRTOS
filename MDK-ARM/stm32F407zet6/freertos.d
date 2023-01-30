@@ -235,11 +235,15 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h \
   ..\LVGL\porting\lv_port_disp.h ..\LVGL\ui_design\ui.h \
   ..\Core\Inc\tim.h ..\Bsp\WS2812B\bsp_WS2812B.h \
-  ..\Bsp\shApplication\SH_Data.h ..\USB_DEVICE\App\usbd_cdc_if.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Class\CDC\Inc\usbd_cdc.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ioreq.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_def.h \
-  ..\USB_DEVICE\Target\usbd_conf.h \
+  ..\Bsp\shApplication\SH_Data.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_cdc_acm_if.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\CDC_ACM\Inc\usbd_cdc_acm.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ioreq.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_def.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Target\usbd_conf.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_core.h \
-  ..\Middlewares\ST\STM32_USB_Device_Library\Core\Inc\usbd_ctlreq.h
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_core.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ctlreq.h \
+  ..\Composite\AL94.I-CUBE-USBD-COMPOSITE_conf.h \
+  ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usb_device.h \
+  ..\Bsp\USB_Composite\Bsp_USB_Composite.h
