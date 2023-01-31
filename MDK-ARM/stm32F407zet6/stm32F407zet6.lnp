@@ -43,7 +43,6 @@
 "stm32f407zet6\bsp_lcd.o"
 "stm32f407zet6\bsp_bc260y.o"
 "stm32f407zet6\bsp_can.o"
-"stm32f407zet6\cjson.o"
 "stm32f407zet6\bsp_usb_composite.o"
 "stm32f407zet6\sh_data.o"
 "stm32f407zet6\bsp_ws2812b.o"

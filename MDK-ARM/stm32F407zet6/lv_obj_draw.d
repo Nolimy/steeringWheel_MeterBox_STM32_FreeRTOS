@@ -1,13 +1,13 @@
 stm32f407zet6/lv_obj_draw.o: ..\LVGL\src\core\lv_obj_draw.c \
   ..\LVGL\src\core\lv_obj_draw.h ..\LVGL\src\core\..\draw\lv_draw.h \
   ..\LVGL\src\core\..\draw\..\lv_conf_internal.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_style.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\core\..\draw\..\misc\..\font\lv_font.h \
   ..\LVGL\src\core\..\draw\..\misc\..\font\..\lv_conf_internal.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\LVGL\src\core\..\draw\..\misc\..\font\lv_symbol_def.h \
   ..\LVGL\src\core\..\draw\..\misc\..\font\..\misc\lv_area.h \
   ..\LVGL\src\core\..\draw\..\misc\..\lv_conf_internal.h \
@@ -16,14 +16,14 @@ stm32f407zet6/lv_obj_draw.o: ..\LVGL\src\core\lv_obj_draw.c \
   ..\LVGL\src\core\..\draw\..\misc\lv_log.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_types.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_mem.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_math.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_area.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_anim.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_txt.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_printf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_bidi.h \
   ..\LVGL\src\core\..\draw\..\misc\lv_style_gen.h \
   ..\LVGL\src\core\..\draw\lv_img_decoder.h \

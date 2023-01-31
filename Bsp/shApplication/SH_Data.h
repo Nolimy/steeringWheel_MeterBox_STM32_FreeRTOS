@@ -5,20 +5,6 @@
 //#include "jansson.h"
 	
 
-struct SH_CarData
-{
-	uint16_t speed;
-	uint16_t rpm;
-	uint16_t redRpm;
-	uint8_t  *Gear;
-	uint8_t fuel;
-	uint8_t *bLapTime;
-	uint8_t *cLapTime;
-	uint8_t lap;
-	uint8_t brake;
-	uint8_t throttle;
-	
-};
 
 
 extern struct SH_CarData sh_CarData;

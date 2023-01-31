@@ -2,9 +2,9 @@ stm32f407zet6/usbd_desc.o: \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_desc.c \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_core.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Target\usbd_conf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\main.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
@@ -12,16 +12,16 @@ stm32f407zet6/usbd_desc.o: \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h \
   ..\Drivers\CMSIS\Include\core_cm4.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\Drivers\CMSIS\Include\cmsis_version.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   ..\Drivers\CMSIS\Include\cmsis_armclang.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
   ..\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h \
@@ -50,7 +50,7 @@ stm32f407zet6/usbd_desc.o: \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ctlreq.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_desc.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\COMPOSITE\Inc\usbd_composite.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\Composite\AL94.I-CUBE-USBD-COMPOSITE_conf.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_cdc_acm_if.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\CDC_ACM\Inc\usbd_cdc_acm.h \

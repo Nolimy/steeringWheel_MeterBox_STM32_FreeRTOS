@@ -6,20 +6,13 @@
 #include "usart.h"
 #include "gpio.h"
 #include "bsp_CAN.h"
+#include "applicationVar.h"
 
-#define RXBUFFERSIZE  16     //最大接收字节数
 
-extern char RxBuffer1[RXBUFFERSIZE];   //接收数据
-extern char RxBuffer3[RXBUFFERSIZE];   //接收数据
-extern char Buffer[RXBUFFERSIZE];   //接收数据
-extern uint8_t aRxBuffer1;   //接收中断缓冲
-extern uint8_t aRxBuffer3;   //接收中断缓冲
-extern uint8_t Uart1_Rx_Cnt;  //接收缓冲计数
-extern uint8_t Uart3_Rx_Cnt;  //接收缓冲计数
-extern uint8_t okFlag;
-extern uint8_t MQTTinitOkFlag;
 
-extern struct RacingCarData racingCarData;
+
+
+//extern struct RacingCarData racingCarData;
 
 uint8_t BC260Y_init();
 uint8_t MQTT_Init();

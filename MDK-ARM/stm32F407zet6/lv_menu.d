@@ -2,10 +2,10 @@ stm32f407zet6/lv_menu.o: ..\LVGL\src\extra\widgets\menu\lv_menu.c \
   ..\LVGL\src\extra\widgets\menu\lv_menu.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\lv_obj.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\lv_conf_internal.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_style.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\..\font\lv_font.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\..\font\..\lv_conf_internal.h \
@@ -17,14 +17,14 @@ stm32f407zet6/lv_menu.o: ..\LVGL\src\extra\widgets\menu\lv_menu.c \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_log.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_types.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_mem.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_math.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_area.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_anim.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_txt.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_printf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_bidi.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\misc\lv_style_gen.h \
   ..\LVGL\src\extra\widgets\menu\..\..\..\core\..\hal\lv_hal.h \

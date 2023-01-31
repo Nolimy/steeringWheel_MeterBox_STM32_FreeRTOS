@@ -1,15 +1,7 @@
 #include "bsp_BC260Y.h"
 #include "cmsis_os2.h"
 
-char RxBuffer1[RXBUFFERSIZE];   //接收数据
-char RxBuffer3[RXBUFFERSIZE];   //接收数据
-uint8_t aRxBuffer1;   //接收中断缓冲
-uint8_t aRxBuffer3;   //接收中断缓冲
-char Buffer[RXBUFFERSIZE];
-uint8_t Uart1_Rx_Cnt = 0;  //接收缓冲计数
-uint8_t Uart3_Rx_Cnt = 0;  //接收缓冲计数
-uint8_t okFlag = 0; //是否查询OK字符标志位
-uint8_t MQTTinitOkFlag = 0; //初始化是否OK标志位
+
 
 /*失败： 0  成功 ： 1  */
 uint8_t cmdToBC26Y(char *strSource, char *strTarget, uint8_t okCheck)
@@ -158,8 +150,9 @@ void MQTT_Pubdata(char *json)
 	usartTxFlag = 2;
 	printf("%s",pubStr);//发布主题
 	
-//	usartTxFlag = 1;
-//	printf("send %s",pubStr);//发布主题
+	usartTxFlag = 1;
+	printf("send %s",pubStr);//发布主题
+	memset(pubStr,0x00,sizeof(pubStr)); //清空数组
 //	HAL_Delay(10);
 //	printf("%s\r\n",json);
 //	printf("%c", overCh);

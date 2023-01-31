@@ -1,11 +1,13 @@
 #include "SH_Data.h"
 #include "Bsp_USB_Composite.h"
+#include "applicationVar.h"
+
 #define jsmnUsing 1
 
 uint8_t get_data_flag = 0;
-uint8_t buf[1024] __attribute__((section(".CCM_RAM")));
+uint8_t buf[1024] ;//__attribute__((section(".CCM_RAM")));
 uint32_t data_nums = 0;
-struct SH_CarData sh_CarData  __attribute__((section(".CCM_RAM")));
+
 
 
 //½âÎöÊý¾Ý

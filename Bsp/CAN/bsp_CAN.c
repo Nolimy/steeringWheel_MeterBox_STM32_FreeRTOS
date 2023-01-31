@@ -5,26 +5,8 @@
 #include "cmsis_os2.h"
 #include "applicationVar.h"
 
-#define  SPEED_RATIO  4 	//主减速比
-#define  PI  3.14	       	//圆周率
-#define  WHEEL_R  0.2286	   	//车轮半径
-#define  NUM_OF_TEETH 20.0    //码盘齿数
 
-
-uint8_t upSpeedFlag = 1;
-uint8_t uploadFlag = 1;
-struct RacingCarData racingCarData;
 extern osEventFlagsId_t getCarDataHandle;
-
-extern void Start_LVGL_Lap_Timer(void *argument);
-extern void Start_BC260Y_init(void *argument);
-extern void Start_IotUploadTask(void *argument);
-extern osThreadId_t BC260Y_initHandle;
-extern osThreadId_t LVGL_Lap_TimerHandle;
-extern osThreadId_t iotUploadTaskHandle;
-extern const osThreadAttr_t iotUploadTask_attributes;
-extern const osThreadAttr_t LVGL_Lap_Timer_attributes;
-extern const osThreadAttr_t BC260Y_init_attributes;
 
 void CANFilter_Config(void)//无论发啥我都照单全收。
 {
@@ -63,16 +45,12 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			appStatus.standByStatus = 0; //关闭待机模式
 			appStatus.canOpenStatus = 1; //打开实车模式
 			appStatus.simhubStatus  = 0; //关闭模拟器模式
-			if(!appStatus.initOK_Flag)
-			{
-				LVGL_Lap_TimerHandle = osThreadNew(Start_LVGL_Lap_Timer, NULL, &LVGL_Lap_Timer_attributes);	
-				BC260Y_initHandle = osThreadNew(Start_BC260Y_init, NULL, &BC260Y_init_attributes);
-			}
+			
 			
 			#if Receiver
 			decodeCanData(RxMessage.StdId, data);
 			
-			osEventFlagsSet(getCarDataHandle, 0x07); // 0000 0111
+			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111
 			//lv_event_send(ui_speedMeter, SPEED_CHANGED, NULL);
 			uploadFlag = 1;
 			#endif

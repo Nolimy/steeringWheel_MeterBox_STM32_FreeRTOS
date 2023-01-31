@@ -64,21 +64,21 @@ osThreadId_t iotUploadTaskHandle;
 const osThreadAttr_t iotUploadTask_attributes = {
   .name = "iotUploadTask",
   .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityAboveNormal,
+  .priority = (osPriority_t) osPriorityRealtime3,
 };
 /* Definitions for LVGL_Task */
 osThreadId_t LVGL_TaskHandle;
 const osThreadAttr_t LVGL_Task_attributes = {
   .name = "LVGL_Task",
-  .stack_size = 512 * 6,
-  .priority = (osPriority_t) osPriorityRealtime,
+  .stack_size = 512 * 8,
+  .priority = (osPriority_t) osPriorityRealtime2,
 };
 /* Definitions for LVGL_Meter */
 osThreadId_t LVGL_MeterHandle;
 const osThreadAttr_t LVGL_Meter_attributes = {
   .name = "LVGL_Meter",
   .stack_size = 512 * 12,
-  .priority = (osPriority_t) osPriorityRealtime,
+  .priority = (osPriority_t) osPriorityHigh,
 };
 /* Definitions for LVGL_Lap_Timer */
 osThreadId_t LVGL_Lap_TimerHandle;
@@ -91,7 +91,7 @@ const osThreadAttr_t LVGL_Lap_Timer_attributes = {
 osThreadId_t BC260Y_initHandle;
 const osThreadAttr_t BC260Y_init_attributes = {
   .name = "BC260Y_init",
-  .stack_size = 128 * 4,
+  .stack_size = 128 * 8,
   .priority = (osPriority_t) osPriorityRealtime1,
 };
 /* Definitions for RPM_LED_Task */
@@ -111,7 +111,6 @@ osEventFlagsId_t getCarDataHandle;
 const osEventFlagsAttr_t getCarData_attributes = {
   .name = "getCarData"
 };
-
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 extern struct SH_CarData sh_CarData;
@@ -139,6 +138,10 @@ void MX_FREERTOS_Init(void) {
 	LVGL_TaskHandle = osThreadNew(Start_LVGL_Task, NULL, &LVGL_Task_attributes);
 	
 	LVGL_MeterHandle = osThreadNew(Start_LVGL_Meter, NULL, &LVGL_Meter_attributes);
+	
+	LVGL_Lap_TimerHandle = osThreadNew(Start_LVGL_Lap_Timer, NULL, &LVGL_Lap_Timer_attributes);	
+	
+	BC260Y_initHandle = osThreadNew(Start_BC260Y_init, NULL, &BC260Y_init_attributes);
 	#if canOPEN
 	
 	
@@ -208,7 +211,7 @@ void Start_IotUploadTask(void *argument)
 			osMutexRelease(lvgl_mutexHandle);
 		}
 			
-    //osDelay(200);
+    osDelay(200);
   }
   /* USER CODE END Start_IotUploadTask */
 }
@@ -225,6 +228,11 @@ void Start_LVGL_Task(void *argument)
   /* USER CODE BEGIN Start_LVGL_Task */
 	/* init code for USB_DEVICE */
 	MX_USB_DEVICE_Init();
+	appStatus.initOK_Flag = 0;
+	appStatus.standByStatus = 1; //打开待机模式
+	appStatus.canOpenStatus = 0; //关闭实车模式
+	appStatus.simhubStatus  = 0; //关闭模拟器模式	
+	ws2812_blue(12);//RGB
   /* Infinite loop */
   for(;;)
   {
@@ -359,17 +367,21 @@ void Start_LVGL_Meter(void *argument)
 void Start_LVGL_Lap_Timer(void *argument)
 {
   /* USER CODE BEGIN Start_LVGL_Lap_Timer */
-  /* Infinite loop */
-  for(;;)
-  {
+	
+	for(;;)
+	{
 		 osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
-                          osWaitForever); 
+													osWaitForever); 
 		//更新计时器时间显示
-		lv_label_set_text_fmt(ui_lapTime, "%02d:%02d:%02d", min, sec, msec);
+		if(appStatus.canOpenStatus)
+			lv_label_set_text_fmt(ui_lapTime, "%02d:%02d:%02d", min, sec, msec);
 		osMutexRelease(lvgl_mutexHandle); //释放互斥量
 		
-    osDelay(1);
-  }
+		osDelay(1);
+	}
+	
+  /* Infinite loop */
+  
   /* USER CODE END Start_LVGL_Lap_Timer */
 }
 
@@ -383,25 +395,39 @@ void Start_LVGL_Lap_Timer(void *argument)
 void Start_BC260Y_init(void *argument)
 {
   /* USER CODE BEGIN Start_BC260Y_init */
+	uint32_t r_event;
   /* Infinite loop */
   for(;;)
   {
-		//osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
-    //                      osWaitForever); 
-		//执行MQTT初始化
-		MQTTinitOkFlag = mqttServiceStartup();
-		//启动上传进程
-		iotUploadTaskHandle = osThreadNew(Start_IotUploadTask, NULL, &iotUploadTask_attributes);
-		//将MQTT初始化结果发送给UI
-		lv_event_send(ui_iotStatus, MQTT_INIT_OK, NULL);
+		r_event = osEventFlagsWait(getCarDataHandle,             /* 事件对象句柄 */ 
+                              MQTT_INIT,    					/* 接收任务感兴趣的事件 */ 
+                              osFlagsWaitAll,           /* 退出时清除事件位，同时满足感兴趣的所有事件 */ 
+                              osWaitForever);           /* 指定超时事件,一直等 */ 
+		//获取事件组状态
 		
-		osThreadSuspend(BC260Y_initHandle);
+		if(r_event)
+		//更新界面显示
+		{
+		//osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
+		//                      osWaitForever); 
+		//执行MQTT初始化
+			MQTTinitOkFlag = mqttServiceStartup();
+		//启动上传进程
+			iotUploadTaskHandle = osThreadNew(Start_IotUploadTask, NULL, &iotUploadTask_attributes);
+		//将MQTT初始化结果发送给UI
+			lv_event_send(ui_iotStatus, MQTT_INIT_OK, NULL);
+		
+			osThreadSuspend(BC260Y_initHandle);
+		}
 		//osThreadExit();
 		
 		//osMutexRelease(lvgl_mutexHandle); //释放互斥量
 		
-    //osDelay(100);
-  }
+		//osDelay(100);
+	}
+	
+  /* Infinite loop */
+  
   /* USER CODE END Start_BC260Y_init */
 }
 

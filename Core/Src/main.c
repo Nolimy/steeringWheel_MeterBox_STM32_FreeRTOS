@@ -170,10 +170,6 @@ int main(void)
   /* USER CODE BEGIN 2 */
 	//   LVGL任务定时器中断
 	HAL_TIM_Base_Start_IT(&htim3);	
-	appStatus.initOK_Flag = 0;
-	appStatus.standByStatus = 1; //打开待机模式
-	appStatus.canOpenStatus = 0; //关闭实车模式
-	appStatus.simhubStatus  = 0; //关闭模拟器模式	
 	CanFilterInit();
 	ws2812_init(12);
 	LCD_Init();
