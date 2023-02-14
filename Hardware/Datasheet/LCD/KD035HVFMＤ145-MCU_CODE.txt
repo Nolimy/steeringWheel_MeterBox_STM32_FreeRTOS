@@ -1,0 +1,126 @@
+//NOTE£∫VCC=3.3V,IOVCC=1.8-3.3V
+//*******************÷∏¡Ó***************************
+void initi(void)
+{
+   res=1;
+   delay(1);
+   res=0;
+   delay(10);
+   res=1;
+   delay(120);
+/***************************************/ 
+write_command(0xF0); //Command Set Control       
+write_data(0xC3);   
+
+write_command(0xF0); //Command Set Control     
+write_data(0x96);   
+
+write_command(0x36);//Memory Data Access Control        
+write_data(0x48);   
+
+write_command(0x3A);//Interface Pixel Format        
+write_data(0x05);//65K  
+
+write_command(0xB4); //1-dot Inversion
+write_data(0x01);  //01  1dot   00 column  02 2ot  
+
+write_command(0xB1);//FRMCTR1     
+write_data(0x80);   //FRS[D7-D4], DIVA[D1-D0] 81 for 15Hz
+write_data(0x10);   //RTNA[4:0]
+
+write_command(0xC0);//Power Control 1      
+write_data(0x80);  //AVDD ,AVCL  									   `
+write_data(0x64); //VGH=15V VGL=-10V  
+
+write_command(0xC1);  //Power Control 2        
+write_data(0x13);  //VOP=4.5V
+
+write_command(0xC2); //Power Control 3      
+write_data(0xA7);   
+
+write_command(0xC5);//VCOM Control      
+write_data(0x09);   
+
+write_command(0xE8); //Display Output Ctrl Adjust     
+write_data(0x40);   
+write_data(0x8a);   
+write_data(0x00);   
+write_data(0x00);   
+write_data(0x29);   
+write_data(0x19);   
+write_data(0xA5);   
+write_data(0x33);   
+
+write_command(0xE0);//GAMMA
+write_data(0xF0);
+write_data(0x06);
+write_data(0x0B);
+write_data(0x07);
+write_data(0x06);
+write_data(0x05);
+write_data(0x2E);
+write_data(0x33);
+write_data(0x47);
+write_data(0x3A);
+write_data(0x17);
+write_data(0x16);
+write_data(0x2E);
+write_data(0x31);
+
+write_command(0xE1);//GAMMA
+write_data(0xF0);
+write_data(0x09);
+write_data(0x0D);
+write_data(0x09);
+write_data(0x08);
+write_data(0x23);
+write_data(0x2E);
+write_data(0x33);
+write_data(0x46);
+write_data(0x38);
+write_data(0x13);
+write_data(0x13);
+write_data(0x2C);
+write_data(0x32);
+
+write_command(0xF0); //Command Set Control     
+write_data(0x3C);   
+
+write_command(0xF0);//Command Set Control      
+write_data(0x69);  
+
+write_command(0x21); //Enter_invert_mode 
+ //**********************320*480**********************  
+write_command(0x2A);    //320 
+write_data(0x00);   
+write_data(0x00);   
+write_data(0x01);   
+write_data(0x3F);   
+
+write_command(0x2B);    //480
+write_data(0x00);   
+write_data(0x00);   
+write_data(0x01);   
+write_data(0xDF);  
+
+write_command(0x11); // Exit Sleep    
+ delay(120);  //ms
+write_command(0x29);//DISPLAY ON       
+ delay(50); 
+write_command(0x2c); //Write memory start   
+	   
+}
+//******************************************
+void LCD_Enter_Standby(void)
+{
+   write_command(0x28);//display off
+   delay(10);
+  write_command(0x10);
+   delay(120);
+   }
+void LCD_Exit_Standby (void)
+{
+   write_command(0x11);// Exit Sleep/ Standby mode
+   delay(120);
+   write_command(0x29);
+  }
