@@ -19,15 +19,15 @@
 
 方向盘的外形和结构依照大学生方程式赛事规则进行设计：
 
-![背面](README_md_files/b6490f50-ac3c-11ed-a83f-e5b4ea8247db_20230214155347.jpeg?v=1&type=image&token=V1:uPyrtLfuoX9Gf8YNbS66Tf_nTc3vJGR6n8Ltcy9P-p0)
+![steeringWheel_2023_Release v2_back_up.png](readme%20md/steeringWheel_2023_Release_v2_back_up.png)
 
-![输入图片描述](README_md_files/d20c4c70-ac3c-11ed-a83f-e5b4ea8247db_20230214155434.jpeg?v=1&type=image&token=V1:hZbUcnhfFrpEFSsxWEsi8dpReqXUMu8zdpUomGgmLNI)
+![steeringWheel_2023_Release v2_back.png](readme%20md/steeringWheel_2023_Release_v2_back.png)
 
-![输入图片描述](README_md_files/db4f5ca0-ac3c-11ed-a83f-e5b4ea8247db_20230214155449.jpeg?v=1&type=image&token=V1:EZTy8AwpmqXvu3b18-Adg4PVoRo2cFnMy6XEuh_xiMY)
-![输入图片描述](README_md_files/e8f68a40-ac3c-11ed-a83f-e5b4ea8247db_20230214155512.jpeg?v=1&type=image&token=V1:VGK9DjiI64mcqvocUUSUgPAOOBzWkaJQGFHlk-u016U)
 ---
 
+![20230214153308.png](readme%20md/20230214153308.png)
 
+![steeringWheel_2023_Release_front.png](readme%20md/steeringWheel_2023_Release_front.png)
 
 方向盘盘体宽度为250mm，高度170mm。屏幕尺寸为3.5英寸。盘体正面有8个可编程控制器按键。背面安装两个换挡拨片。方向盘上壳体和下壳体使用碳纤维板进行CNC加工，其余零部件如握把、屏幕安装罩、方向盘边缘外壳、换挡拨片连杆及换挡拨片壳体使用黑色树脂进行3D打印加工。
 
@@ -43,6 +43,24 @@ BOM配料单请戳👉[我](https://github.com/Nolimy/steeringWheel_MeterBox_STM
 
 # 关于电路设计
 
-主控使用STM32F407ZET6(裆燃也可以使用ROM更大的STM32F407ZGT6)，鉴于STM32系列芯片的价格偏高，大家也可以选择其他的如GD32等国产芯片进行替代（本人没有测试过）。
+主控使用STM32F407ZET6(裆燃也可以使用ROM更大的STM32F407ZGT6)，鉴于STM32系列芯片的价格偏高，大家也可以选择其他的如GD32等国产芯片进行替代（目前我还没有测试过）。
+
+![STM32F407.png](readme%20md/STM32F407.png)
 
 无线数传功能上，使用4G模块，采用移远的BC260Y，使用串口与STM32主控进行通信，将主控采集到的数据通过MQTT发送给服务器。
+
+![BC260Y.png](readme%20md/BC260Y.png)
+
+屏幕使用了柯达科的KD035HVFMD145-01（[datasheet](https://github.com/Nolimy/steeringWheel_MeterBox_STM32_FreeRTOS/blob/main/Hardware/Datasheet/LCD/1707022343KD035HVFMD145-01%20SPEC%20V1.0.pdf)）,屏幕使用ST7796s控制器，MCU通过8080时序对屏幕进行控制。该屏幕的亮度最高为950尼特，基本满足了阳光下的可视需求。
+
+![LCD.png](readme%20md/LCD.png)
+
+换挡提示灯条使用WS2812B LED，通过STM32的TIM定时器 DMA对LED进行控制。
+
+![WS2812B.png](readme%20md/WS2812B.png)
+
+使用NXP的TJA1050收发器，对实车跑动数据使用CAN进行采集。
+
+![CAN原理图.png](readme%20md/CAN%25E5%258E%259F%25E7%2590%2586%25E5%259B%25BE.png)
+
+方向盘为USB复合设备，通过USB虚拟串口，对模拟器的跑动数据进行采集。此功能依赖于Simhub软件。同时，还包括一路joystick控制器功能，能够对游戏中的车辆进行控制，如换挡，DRS等功能。
