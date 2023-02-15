@@ -37,6 +37,7 @@ void USB_ControlData_Send()
 	if(HAL_GPIO_ReadPin(INPUT7_GPIO_Port, INPUT7_Pin) == RESET) joyStick_HID.button_group0 |= 0x01 << 6;
 	if(HAL_GPIO_ReadPin(INPUT8_GPIO_Port, INPUT8_Pin) == RESET) joyStick_HID.button_group0 |= 0x01 << 7;
 	if(HAL_GPIO_ReadPin(INPUT9_GPIO_Port, INPUT9_Pin) == RESET) joyStick_HID.button_group1 |= 0x01 << 0;
+	if(HAL_GPIO_ReadPin(INPUTA_GPIO_Port, INPUTA_Pin) == RESET) joyStick_HID.button_group1 |= 0x01 << 1;
 	
 	USBD_HID_Mouse_SendReport(&hUsbDevice, (uint8_t*)&joyStick_HID, sizeof(struct joyStick_HID_t));
 }
