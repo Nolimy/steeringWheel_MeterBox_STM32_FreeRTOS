@@ -91,8 +91,8 @@ const osThreadAttr_t LVGL_Lap_Timer_attributes = {
 osThreadId_t BC260Y_initHandle;
 const osThreadAttr_t BC260Y_init_attributes = {
   .name = "BC260Y_init",
-  .stack_size = 128 * 8,
-  .priority = (osPriority_t) osPriorityRealtime1,
+  .stack_size = 512 * 8,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for RPM_LED_Task */
 osThreadId_t RPM_LED_TaskHandle;
@@ -142,11 +142,6 @@ void MX_FREERTOS_Init(void) {
 	LVGL_Lap_TimerHandle = osThreadNew(Start_LVGL_Lap_Timer, NULL, &LVGL_Lap_Timer_attributes);	
 	
 	BC260Y_initHandle = osThreadNew(Start_BC260Y_init, NULL, &BC260Y_init_attributes);
-	#if canOPEN
-	
-	
-	
-	#endif
 	
 	RPM_LED_TaskHandle = osThreadNew(Start_RPM_LED, NULL, &RPM_LED_Task_attributes);
 	
@@ -407,13 +402,14 @@ void Start_BC260Y_init(void *argument)
 		
 		if(r_event)
 		//更新界面显示
-		{
+		 {
 		//osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
 		//                      osWaitForever); 
 		//执行MQTT初始化
 			MQTTinitOkFlag = mqttServiceStartup();
 		//启动上传进程
-			iotUploadTaskHandle = osThreadNew(Start_IotUploadTask, NULL, &iotUploadTask_attributes);
+			if(MQTTinitOkFlag)
+				iotUploadTaskHandle = osThreadNew(Start_IotUploadTask, NULL, &iotUploadTask_attributes);
 		//将MQTT初始化结果发送给UI
 			lv_event_send(ui_iotStatus, MQTT_INIT_OK, NULL);
 		

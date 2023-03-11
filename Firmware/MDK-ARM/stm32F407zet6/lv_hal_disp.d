@@ -1,8 +1,8 @@
 stm32f407zet6/lv_hal_disp.o: ..\LVGL\src\hal\lv_hal_disp.c \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\LVGL\src\hal\lv_hal.h ..\LVGL\src\hal\lv_hal_disp.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\hal\..\draw\lv_draw.h \
   ..\LVGL\src\hal\..\draw\..\lv_conf_internal.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
@@ -17,14 +17,14 @@ stm32f407zet6/lv_hal_disp.o: ..\LVGL\src\hal\lv_hal_disp.c \
   ..\LVGL\src\hal\..\draw\..\misc\lv_log.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_types.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_mem.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_math.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_area.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_anim.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_txt.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_printf.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_bidi.h \
   ..\LVGL\src\hal\..\draw\..\misc\lv_style_gen.h \
   ..\LVGL\src\hal\..\draw\lv_img_decoder.h \

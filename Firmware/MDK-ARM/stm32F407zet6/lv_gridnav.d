@@ -2,10 +2,10 @@ stm32f407zet6/lv_gridnav.o: ..\LVGL\src\extra\others\gridnav\lv_gridnav.c \
   ..\LVGL\src\extra\others\gridnav\lv_gridnav.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\lv_obj.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\lv_conf_internal.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_style.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\..\font\lv_font.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\..\font\..\lv_conf_internal.h \
@@ -17,14 +17,14 @@ stm32f407zet6/lv_gridnav.o: ..\LVGL\src\extra\others\gridnav\lv_gridnav.c \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_log.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_types.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_mem.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_math.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_area.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_anim.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_txt.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_printf.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_bidi.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\misc\lv_style_gen.h \
   ..\LVGL\src\extra\others\gridnav\..\..\..\core\..\hal\lv_hal.h \

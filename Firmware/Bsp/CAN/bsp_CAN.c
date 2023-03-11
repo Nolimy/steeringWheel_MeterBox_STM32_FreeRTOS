@@ -52,7 +52,8 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			
 			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111
 			//lv_event_send(ui_speedMeter, SPEED_CHANGED, NULL);
-			uploadFlag = 1;
+			if(MQTTinitOkFlag)
+				uploadFlag = 1;
 			#endif
 		}
 	}

@@ -1,10 +1,10 @@
 stm32f407zet6/lv_draw_line.o: ..\LVGL\src\draw\lv_draw_line.c \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\draw\..\core\lv_refr.h ..\LVGL\src\draw\..\core\lv_obj.h \
   ..\LVGL\src\draw\..\core\..\lv_conf_internal.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_style.h \
   ..\LVGL\src\draw\..\core\..\misc\..\font\lv_font.h \
   ..\LVGL\src\draw\..\core\..\misc\..\font\..\lv_conf_internal.h \
@@ -16,14 +16,14 @@ stm32f407zet6/lv_draw_line.o: ..\LVGL\src\draw\lv_draw_line.c \
   ..\LVGL\src\draw\..\core\..\misc\lv_log.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_types.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_mem.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_math.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_area.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_anim.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_txt.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_printf.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_bidi.h \
   ..\LVGL\src\draw\..\core\..\misc\lv_style_gen.h \
   ..\LVGL\src\draw\..\core\..\hal\lv_hal.h \
