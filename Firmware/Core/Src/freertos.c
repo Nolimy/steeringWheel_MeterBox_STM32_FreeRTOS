@@ -283,7 +283,7 @@ void Start_LVGL_Meter(void *argument)
 				meterAnimation();
 				lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
 				lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.rmotorSpeed);
-				lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.batTemp);
+				lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.batVol);
 				lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.lmotorTemp);
 				lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.rmotorTemp);
 				
