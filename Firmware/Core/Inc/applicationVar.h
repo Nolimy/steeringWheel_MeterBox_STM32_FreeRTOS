@@ -75,4 +75,9 @@ extern uint8_t okFlag;
 extern uint8_t MQTTinitOkFlag;
 
 
+extern uint8_t BC260Y_ConnectFlag;  //BC260Y联网标志位
+extern uint8_t QMOPEN_Flag; //MQTT服务器打开状态位，0未打开，1打开。
+extern uint8_t QMCONN_Flag; //MQTT服务器连接状态位，0未连接，1连接。
+extern uint8_t QMPUBF_Flag; //MQTT消息发布失败位，该位置1则重新连接MQTT服务器
+
 #endif //_APPLICATIONVAR_H_

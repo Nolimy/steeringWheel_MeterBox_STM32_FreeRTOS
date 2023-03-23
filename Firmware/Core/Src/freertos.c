@@ -57,7 +57,52 @@
 
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
-
+void uploadCarData()
+{
+		if(QMPUBF_Flag) //上传出现失败，则重新连接服务器
+		{
+			usartTxFlag = 1;
+			printf("\r\n **********Message Publish Failed!Reconnceting the client.!**********\r\n");
+			
+			
+			osDelay(500);
+			memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组
+			usartTxFlag = 2;
+			printf("AT+QMTOPEN=0,\"82.156.207.102\",1883\r\n");
+			usartTxFlag = 1;
+			printf("\n Waiting for the MQTT client Open");
+			while(!QMOPEN_Flag)
+			{
+				printf(".");
+				osDelay(200);
+			}
+			printf("\r\n");
+			printf("\nQMTOPEN OK.\r\n");
+			osDelay(500);
+			
+			memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组
+			usartTxFlag = 2;
+			printf("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"\r\n");
+			usartTxFlag = 1;
+			printf("\n Waiting for the MQTT client Conncet");
+			while(!QMCONN_Flag)
+			{
+				printf(".");
+				osDelay(200);
+			}
+			printf("\r\n");
+			printf("MQTT Conncet OK.\r\n");
+			osDelay(500);
+			
+			QMPUBF_Flag = 0;
+		}
+		else  //正常连接时上传0
+		{
+			if(uploadFlag)
+				jsonPack();
+			uploadFlag = 0;
+		}
+}
 /* USER CODE END Variables */
 /* Definitions for iotUploadTask */
 osThreadId_t iotUploadTaskHandle;
@@ -206,7 +251,7 @@ void Start_IotUploadTask(void *argument)
 			osMutexRelease(lvgl_mutexHandle);
 		}
 			
-    osDelay(500);
+    osDelay(200);
   }
   /* USER CODE END Start_IotUploadTask */
 }

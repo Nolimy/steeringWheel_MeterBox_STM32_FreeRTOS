@@ -1,9 +1,6 @@
 #include "bsp_BC260Y.h"
 #include "cmsis_os2.h"
 
-uint8_t BC260Y_ConnectFlag = 0;
-uint8_t QMOPEN_Flag = 0;
-uint8_t QMCONN_Flag = 0;
 /*失败： 0  成功 ： 1  */
 uint8_t cmdToBC26Y(char *strSource, char *strTarget, uint8_t okCheck)
 {
@@ -116,6 +113,7 @@ uint8_t MQTT_Init()
 		printf(".");
 		osDelay(200);
 	}
+	printf("\r\n");
 	printf("\nQMTOPEN OK.\r\n");
 	osDelay(500);
 	
@@ -129,7 +127,8 @@ uint8_t MQTT_Init()
 		printf(".");
 		osDelay(200);
 	}
-	
+	printf("\r\n");
+	printf("MQTT Conncet OK.\r\n");
 //	cmdToBC26Y("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"", "N: 0,0", 0);
 	
 	return 1;
@@ -228,6 +227,43 @@ void jsonPack(void)//json打包 分段 heap太小一次性打包不下
 	//printf("%s\r\n",t_json);
 	MQTT_Pubdata(t_json);
 	memset(t_json,0x00,sizeof(t_json)); //清空数组
+	
+//	if(QMPUBF_Flag)  //有消息发布失败则重新连接服务器
+//	{
+//		
+//		usartTxFlag = 1;
+//		printf("\r\n **********Message Publish Failed!Reconnceting the client.!**********\r\n");
+//		
+//		osDelay(500);
+//		usartTxFlag = 2;
+//		printf("AT+QMTOPEN=0,\"82.156.207.102\",1883\r\n");
+//		usartTxFlag = 1;
+//		printf("\n Waiting for the MQTT client Open");
+//		while(!QMOPEN_Flag)
+//		{
+//			printf(".");
+//			osDelay(200);
+//		}
+//		printf("\r\n");
+//		printf("\nQMTOPEN OK.\r\n");
+//		osDelay(500);
+//		
+//		
+//		usartTxFlag = 2;
+//		printf("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"\r\n");
+//		usartTxFlag = 1;
+//		printf("\n Waiting for the MQTT client Conncet");
+//		while(!QMCONN_Flag)
+//		{
+//			printf(".");
+//			osDelay(200);
+//		}
+//		printf("\r\n");
+//		printf("MQTT Conncet OK.\r\n");
+//		osDelay(500);
+//		
+//		QMPUBF_Flag = 0;
+//	}
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
@@ -296,6 +332,15 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 						if(strstr((const char*)RxBuffer3, (const char*)"CONN")) ////判断MQTT服务器是否连接
 						{
 							QMCONN_Flag = 1;
+							memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组
+							HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer3, 1);   //再开启接收中断
+						}
+						
+						if(strstr((const char*)RxBuffer3, (const char*)"T: 0,6")) ////判断是否有消息发布失败
+						{
+							QMPUBF_Flag = 1;
+							QMCONN_Flag = 0;
+							QMOPEN_Flag = 0;
 							memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组
 							HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer3, 1);   //再开启接收中断
 						}

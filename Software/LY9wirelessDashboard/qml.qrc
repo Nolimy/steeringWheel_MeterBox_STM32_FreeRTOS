@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>CircelBar.qml</file>
+        <file>big-numbers.ttf</file>
+        <file>Cinzel-Regular.ttf</file>
+        <file>Cookie-Regular.ttf</file>
+        <file>FasterOne-Regular.ttf</file>
+        <file>Lobster-Regular.ttf</file>
+        <file>TTZhiHeiJ-W4.ttf</file>
+        <file>lingyun.png</file>
+        <file>me.jpg</file>
+        <file>me1.jpg</file>
+        <file>Message.qml</file>
+    </qresource>
+</RCC>

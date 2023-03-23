@@ -185,6 +185,11 @@
           <WinNumber>1</WinNumber>
           <ItemText>racingCarData,0x0A</ItemText>
         </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>QMPUBF_Flag</ItemText>
+        </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
@@ -928,7 +933,7 @@
 
   <Group>
     <GroupName>BSP/SHAPP</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -3560,7 +3565,7 @@
 
   <Group>
     <GroupName>Middlewares/Composite/USB/COMPOSITE/CDC_ACM</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
