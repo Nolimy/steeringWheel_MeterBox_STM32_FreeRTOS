@@ -116,20 +116,23 @@ uint8_t MQTT_Init()
 		printf(".");
 		osDelay(200);
 	}
+	printf("\nQMTOPEN OK.\r\n");
+	osDelay(500);
 	
-//	usartTxFlag = 2;
-//	printf("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"\r\n");
-//	usartTxFlag = 1;
-//	printf("\n Waiting for the MQTT client Conncet");
-//	while(!QMCONN_Flag)
-//	{
-//		printf(".");
-//		osDelay(200);
-//	}
-//	
-	cmdToBC26Y("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"", "N: 0,0", 0);
 	
-	return cmdToBC26Y("AT+QMTPUB=0,0,0,1,\"hello\",11,\"hello world\"","0,0,0", 0);
+	usartTxFlag = 2;
+	printf("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"\r\n");
+	usartTxFlag = 1;
+	printf("\n Waiting for the MQTT client Conncet");
+	while(!QMCONN_Flag)
+	{
+		printf(".");
+		osDelay(200);
+	}
+	
+//	cmdToBC26Y("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"", "N: 0,0", 0);
+	
+	return 1;
 //	return cmdToBC26Y("AT+QMTOPEN=0,\"82.156.207.102\",1883", "N: 0,0", 0)\
 //					& cmdToBC26Y("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"", "N: 0,0", 0)\
 //					& cmdToBC26Y("AT+QMTPUB=0,0,0,1,\"hello\",11,\"hello world\"","0,0,0", 0);
@@ -283,14 +286,14 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 							HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer3, 1);   //再开启接收中断
 						}
 						
-						if(strstr((const char*)RxBuffer3, (const char*)"N: 0,0")) //判断MQTT服务器是否打开
+						if(strstr((const char*)RxBuffer3, (const char*)"OPEN: 0,0")) //判断MQTT服务器是否打开
 						{
 							QMOPEN_Flag = 1;
 							memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组
 							HAL_UART_Receive_IT(&huart3, (uint8_t *)&aRxBuffer3, 1);   //再开启接收中断
 						}
 						
-						if(strstr((const char*)RxBuffer3, (const char*)"CONN")) //判断MQTT服务器是否打开
+						if(strstr((const char*)RxBuffer3, (const char*)"CONN")) ////判断MQTT服务器是否连接
 						{
 							QMCONN_Flag = 1;
 							memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组

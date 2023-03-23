@@ -206,7 +206,7 @@ void Start_IotUploadTask(void *argument)
 			osMutexRelease(lvgl_mutexHandle);
 		}
 			
-    osDelay(200);
+    osDelay(500);
   }
   /* USER CODE END Start_IotUploadTask */
 }

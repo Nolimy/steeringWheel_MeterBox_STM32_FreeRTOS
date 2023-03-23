@@ -194,12 +194,13 @@ void ui_startup_screen_init(void)
     lv_obj_set_align(ui_startupBar, LV_ALIGN_CENTER);
     //lv_obj_set_style_anim_time(ui_startupBar, 4000, LV_PART_MAIN | LV_STATE_DEFAULT);
 	
+	//系统开机界面动画
 		lv_anim_t a;
     lv_anim_init(&a);
     lv_anim_set_var(&a, ui_startupBar);
-    lv_anim_set_values(&a, 0, 100);
-    lv_anim_set_exec_cb(&a, set_value);
-		lv_anim_set_time(&a, 6000);
+    lv_anim_set_values(&a, 0, 100);//0~100进行增长
+    lv_anim_set_exec_cb(&a, set_value); 
+		lv_anim_set_time(&a, 6000); //2s时长
 		lv_anim_start(&a);
 		//lv_anim_set_ready_cb(&a, sendEventCode);
 		
