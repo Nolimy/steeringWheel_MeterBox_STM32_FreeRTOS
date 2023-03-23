@@ -59,6 +59,7 @@
 /* USER CODE BEGIN Variables */
 void uploadCarData()
 {
+		uint16_t failureCount = 0;
 		if(QMPUBF_Flag) //上传出现失败，则重新连接服务器
 		{
 			usartTxFlag = 1;
@@ -74,10 +75,14 @@ void uploadCarData()
 			while(!QMOPEN_Flag)
 			{
 				printf(".");
+				failureCount++;
 				osDelay(200);
+				if(failureCount > 30)
+					return;
 			}
 			printf("\r\n");
 			printf("\nQMTOPEN OK.\r\n");
+			failureCount = 0;
 			osDelay(500);
 			
 			memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组
@@ -88,10 +93,14 @@ void uploadCarData()
 			while(!QMCONN_Flag)
 			{
 				printf(".");
+				failureCount++;
 				osDelay(200);
+				if(failureCount > 30)
+					return;
 			}
 			printf("\r\n");
 			printf("MQTT Conncet OK.\r\n");
+			failureCount = 0;
 			osDelay(500);
 			
 			QMPUBF_Flag = 0;

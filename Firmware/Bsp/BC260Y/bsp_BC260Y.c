@@ -203,67 +203,41 @@ void MQTT_Pubdata(char *json)
 
 void jsonPack(void)//json打包 分段 heap太小一次性打包不下
 {
-	char json[] = "{\"cSpeed\": %d,\"Pos\": %d,\"bAlarm\": %d,\"lmSpeed\": %d,\"rmSpeed\": %d,\"bTemp\": %d,\"bLevel\": %d,\"gMode\": %d,\"cMode\": %d,\"lmTorque\":%d,\"rmTorque\":%d,\"batVol\": %d,\"carDistce\": %d,\"mcu1Temp\": %d,\"mcu2Temp\": %d,\"brakeTravel\": %d,\"lmoTemp\": %d,\"rmoTemp\": %d}";
+	static uint8_t changeFlag;
+	char json0[] = "{\"cSpeed\": %d,\"Pos\": %d,\"bAlarm\": %d,\"lmSpeed\": %d,\"rmSpeed\": %d,\"bTemp\": %d,\"bLevel\": %d,\"gMode\": %d,\"cMode\": %d}";
+	char json1[] = "{\"lmTorque\":%d,\"rmTorque\":%d,\"batVol\": %d,\"carDistce\": %d,\"mcu1Temp\": %d,\"mcu2Temp\": %d,\"brakeTravel\": %d,\"lmoTemp\": %d,\"rmoTemp\": %d}";
 	char t_json[300];
-	sprintf(t_json, json, racingCarData.FrontSpeed,\
-	racingCarData.PedalTravel, \
-	racingCarData.batAlarm, \
-	racingCarData.lmotorSpeed, \
-	racingCarData.rmotorSpeed, \
-	racingCarData.batTemp, \
-	racingCarData.batLevel, \
-	racingCarData.gearMode, \
-	racingCarData.carMode, \
-	racingCarData.l_motor_torque, \
-	racingCarData.r_motor_torque, \
-	racingCarData.batVol, \
-	racingCarData.carTravel, \
-	racingCarData.mcu1Temp, \
-	racingCarData.mcu2Temp, \
-	racingCarData.brakeTravel, \
-	racingCarData.lmotorTemp, \
-	racingCarData.rmotorTemp);
-	//usartTxFlag = 1;
-	//printf("%s\r\n",t_json);
-	MQTT_Pubdata(t_json);
-	memset(t_json,0x00,sizeof(t_json)); //清空数组
+	if(!changeFlag)
+	{
+		sprintf(t_json, json0, racingCarData.FrontSpeed,\
+		racingCarData.PedalTravel, \
+		racingCarData.batAlarm, \
+		racingCarData.lmotorSpeed, \
+		racingCarData.rmotorSpeed, \
+		racingCarData.batTemp, \
+		racingCarData.batLevel, \
+		racingCarData.gearMode, \
+		racingCarData.carMode);
+		
+		changeFlag = 1;
+	}
 	
-//	if(QMPUBF_Flag)  //有消息发布失败则重新连接服务器
-//	{
-//		
-//		usartTxFlag = 1;
-//		printf("\r\n **********Message Publish Failed!Reconnceting the client.!**********\r\n");
-//		
-//		osDelay(500);
-//		usartTxFlag = 2;
-//		printf("AT+QMTOPEN=0,\"82.156.207.102\",1883\r\n");
-//		usartTxFlag = 1;
-//		printf("\n Waiting for the MQTT client Open");
-//		while(!QMOPEN_Flag)
-//		{
-//			printf(".");
-//			osDelay(200);
-//		}
-//		printf("\r\n");
-//		printf("\nQMTOPEN OK.\r\n");
-//		osDelay(500);
-//		
-//		
-//		usartTxFlag = 2;
-//		printf("AT+QMTCONN=0,\"BC260Y\",\"lingyun\",\"lingyun666\"\r\n");
-//		usartTxFlag = 1;
-//		printf("\n Waiting for the MQTT client Conncet");
-//		while(!QMCONN_Flag)
-//		{
-//			printf(".");
-//			osDelay(200);
-//		}
-//		printf("\r\n");
-//		printf("MQTT Conncet OK.\r\n");
-//		osDelay(500);
-//		
-//		QMPUBF_Flag = 0;
-//	}
+	else if(changeFlag)
+	{
+		sprintf(t_json, json1,racingCarData.l_motor_torque, \
+		racingCarData.r_motor_torque, \
+		racingCarData.batVol, \
+		racingCarData.carTravel, \
+		racingCarData.mcu1Temp, \
+		racingCarData.mcu2Temp, \
+		racingCarData.brakeTravel, \
+		racingCarData.lmotorTemp, \
+		racingCarData.rmotorTemp);
+		
+		changeFlag = 0;
+	}
+	MQTT_Pubdata(t_json);
+	memset(t_json,0x00,sizeof(t_json)); //清空数组98
 }
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
