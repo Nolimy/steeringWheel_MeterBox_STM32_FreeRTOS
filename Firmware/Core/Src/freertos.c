@@ -77,7 +77,7 @@ void uploadCarData()
 				printf(".");
 				failureCount++;
 				osDelay(200);
-				if(failureCount > 30)
+				if(failureCount > 30)  //超时则等待下一次重连
 					return;
 			}
 			printf("\r\n");
@@ -95,7 +95,7 @@ void uploadCarData()
 				printf(".");
 				failureCount++;
 				osDelay(200);
-				if(failureCount > 30)
+				if(failureCount > 60) //超时则等待下一次重连
 					return;
 			}
 			printf("\r\n");
@@ -118,7 +118,7 @@ osThreadId_t iotUploadTaskHandle;
 const osThreadAttr_t iotUploadTask_attributes = {
   .name = "iotUploadTask",
   .stack_size = 512 * 4,
-  .priority = (osPriority_t) osPriorityRealtime3,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for LVGL_Task */
 osThreadId_t LVGL_TaskHandle;
@@ -132,14 +132,14 @@ osThreadId_t LVGL_MeterHandle;
 const osThreadAttr_t LVGL_Meter_attributes = {
   .name = "LVGL_Meter",
   .stack_size = 512 * 12,
-  .priority = (osPriority_t) osPriorityHigh,
+  .priority = (osPriority_t) osPriorityRealtime1,
 };
 /* Definitions for LVGL_Lap_Timer */
 osThreadId_t LVGL_Lap_TimerHandle;
 const osThreadAttr_t LVGL_Lap_Timer_attributes = {
   .name = "LVGL_Lap_Timer",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityRealtime,
+  .priority = (osPriority_t) osPriorityRealtime1,
 };
 /* Definitions for BC260Y_init */
 osThreadId_t BC260Y_initHandle;
@@ -252,12 +252,12 @@ void Start_IotUploadTask(void *argument)
 		
 		if(r_event)
 		{
-			osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
-                          osWaitForever); 
+			//osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
+       //                   osWaitForever); 
 			//5fps
 			uploadCarData();
 			
-			osMutexRelease(lvgl_mutexHandle);
+			//osMutexRelease(lvgl_mutexHandle);
 		}
 			
     osDelay(200);
