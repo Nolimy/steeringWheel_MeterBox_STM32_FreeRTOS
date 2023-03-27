@@ -62,27 +62,21 @@ uint8_t barFlag = 1;
 ///////////////////// ANIMATIONS ////////////////////
 void meterAnimation()
 {
-		static int32_t lastSpeed;
+		static uint16_t lastSpeed;
+		static uint8_t lastThrottle;
 	  lv_anim_t a;
     lv_anim_init(&a);
     lv_anim_set_exec_cb(&a, meter_set_value);
-		if(appStatus.canOpenStatus)
+	if(appStatus.canOpenStatus)  //实车模式 仪表指针指示速度
 		{
 			lv_anim_set_values(&a, lastSpeed, racingCarData.FrontSpeed);
 			lastSpeed = racingCarData.FrontSpeed;
 		}
-	#if canOPEN
-    
-	#endif
-		if(appStatus.simhubStatus)
+		if(appStatus.simhubStatus)  //模拟器模式 仪表指针指示油门开度
 		{
-			lv_anim_set_values(&a, lastSpeed, sh_CarData.speed);
-			lastSpeed = sh_CarData.speed;
+			lv_anim_set_values(&a, lastThrottle, sh_CarData.throttle);
+			lastThrottle = sh_CarData.throttle;
 		}
-	#if simhubOPEN
-		
-		
-	#endif
     lv_anim_set_time(&a, 5);
     lv_anim_set_var(&a, indic1);
     lv_anim_start(&a);
@@ -444,9 +438,9 @@ void ui_home_screen_init(void)
 			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 120, 270, 90);
 		
 		if(appStatus.simhubStatus)
-			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 280, 270, 90);
+			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 100, 270, 90);
 		else
-			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 120, 270, 90);
+			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 100, 270, 90);
 		#if canOPEN
     
 		#endif

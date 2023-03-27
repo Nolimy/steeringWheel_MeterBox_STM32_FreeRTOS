@@ -380,18 +380,13 @@ void Start_LVGL_Meter(void *argument)
 				meterAnimation();
 				lv_label_set_text_fmt(ui_speedNum, "%03d", sh_CarData.speed);
 				lv_label_set_text_fmt(ui_rpmNum, "%04d", sh_CarData.rpm);
-				//lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.batTemp);
 				lv_label_set_text_fmt(ui_batTemp, "%03d", sh_CarData.lap);
 				lv_label_set_text_fmt(ui_lMotorTemp, "%03d", sh_CarData.throttle);
 				lv_label_set_text_fmt(ui_rMotorTemp, "%03d", sh_CarData.brake);
 				lv_label_set_text_fmt(ui_bespLapTime, "%.*s", 8, sh_CarData.bLapTime);
-				//lv_label_set_text(ui_lapTime, (char *)sh_CarData.cLapTime);
 				lv_label_set_text_fmt(ui_lapTime, "%.*s", 8, sh_CarData.cLapTime);
 				lv_bar_set_value(ui_socValue, sh_CarData.fuel, LV_ANIM_ON);
 				lv_label_set_text_fmt(ui_gearLable, "%.*s", 1, sh_CarData.Gear);
-//			lv_label_set_text(ui_gearLable, (char *)sh_CarData.Gear);
-//			lv_label_set_text(ui_lapTime, (char *)sh_CarData.cLapTime);
-//			lv_label_set_text(ui_bespLapTime, (char *)sh_CarData.bLapTime);
 			}
 			#if simhubOPEN
 
