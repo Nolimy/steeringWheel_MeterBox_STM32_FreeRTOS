@@ -242,7 +242,7 @@ void ui_home_screen_init(void)
     ui_rpmNum = lv_label_create(ui_home);
     lv_obj_set_width(ui_rpmNum, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_rpmNum, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_rpmNum, 72);
+    lv_obj_set_x(ui_rpmNum, 60);
     lv_obj_set_y(ui_rpmNum, -107);
     lv_obj_set_align(ui_rpmNum, LV_ALIGN_CENTER);
     lv_label_set_text(ui_rpmNum, "0000");
@@ -255,7 +255,7 @@ void ui_home_screen_init(void)
     ui_rpmUnit = lv_label_create(ui_home);
     lv_obj_set_width(ui_rpmUnit, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_rpmUnit, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_rpmUnit, 173);
+    lv_obj_set_x(ui_rpmUnit, 180);
     lv_obj_set_y(ui_rpmUnit, -95);
     lv_obj_set_align(ui_rpmUnit, LV_ALIGN_CENTER);
     lv_label_set_text(ui_rpmUnit, "RPM");

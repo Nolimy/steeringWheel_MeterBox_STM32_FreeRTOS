@@ -152,8 +152,8 @@ const osThreadAttr_t BC260Y_init_attributes = {
 osThreadId_t RPM_LED_TaskHandle;
 const osThreadAttr_t RPM_LED_Task_attributes = {
   .name = "RPM_LED_Task",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 128 * 8,
+  .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for lvgl_mutex */
 osMutexId_t lvgl_mutexHandle;

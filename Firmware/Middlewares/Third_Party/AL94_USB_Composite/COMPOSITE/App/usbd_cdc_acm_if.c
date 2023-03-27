@@ -292,7 +292,6 @@ static int8_t CDC_Receive(uint8_t cdc_ch, uint8_t *Buf, uint32_t *Len)
   //HAL_UART_Transmit_DMA(CDC_CH_To_UART_Handle(cdc_ch), Buf, *Len);
   //CDC_Transmit(cdc_ch, Buf, *Len); // echo back on same channel
 
-	//usb_printf("%s", Buf);
 	appStatus.standByStatus = 0; //关闭待机模式
 	appStatus.canOpenStatus = 0; //关闭实车模式
 	appStatus.simhubStatus  = 1; //开模拟器模式

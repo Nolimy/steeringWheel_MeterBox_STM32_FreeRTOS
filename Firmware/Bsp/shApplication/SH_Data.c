@@ -161,6 +161,7 @@ void SH_Set_Data()
 	if(get_data_flag && buf[data_nums-1] == '}')
 	{
 		json_analysis((char *)buf);
+		//usb_printf("%s\r\n", buf);
 		get_data_flag = 0;
 	}
 }

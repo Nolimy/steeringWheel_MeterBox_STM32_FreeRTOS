@@ -87,7 +87,7 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 
 void RPM_LED_Shine()
 {
-	uint8_t ledNums, i;
+	uint16_t ledNums, i;
 	ws2812_init(12);
 	#if canOPEN
 	#endif
@@ -125,7 +125,7 @@ void RPM_LED_Shine()
 			osDelay(80);
 			ws2812_init(12);
 			osDelay(80);
-			ledNums = sh_CarData.rpm / 400;
+			ledNums = sh_CarData.rpm / (sh_CarData.redRpm / 12);
 		}
 	}
 	
