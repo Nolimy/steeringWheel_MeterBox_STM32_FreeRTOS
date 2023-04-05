@@ -1,10 +1,10 @@
-import QtQuick 2.12
-import QtQuick.Window 2.12
+import QtQuick 2.0
+import QtQuick.Window 2.0
 import QtQuick.Extras 1.4
 import QtQuick.Controls 2.1
 import QtQuick.Controls.Styles 1.2
 import QtQuick.Extras.Private 1.0
-import QtCharts 2.14
+import QtCharts 2.3
 import MqttClient 1.0
 
 
@@ -1407,13 +1407,12 @@ Window {
         x: 1433
         y: 893
         //tooltip: qsTr("")
-        ButtonStyle {
             background: Rectangle {
                 implicitWidth: 100
                 implicitHeight: 25
-                border.width: control.activeFocus ? 2 : 1
-                border.color: control.pressed ? "#99ccff" : "#0099cc"
-                color: control.pressed ? "#99ccff" : "#0099cc"
+
+                border.color: "#0099cc"
+                color: "#0099cc"
                 radius: 10
 
                 Text {
@@ -1424,19 +1423,18 @@ Window {
                 }
             }
         }
-    }
 
     Button {
         id: connectBut
         x: 1720
         y: 893
-        ButtonStyle {
+        //ButtonStyle {
             background: Rectangle {
                 implicitWidth: 100
                 implicitHeight: 25
-                border.width: control.activeFocus ? 2 : 1
-                border.color: control.pressed ? "#99ccff" : "#0099cc"
-                color: control.pressed ? "#99ccff" : "#0099cc"
+
+                border.color: "#0099cc"
+                color: "#0099cc"
                 radius: 10
 
                 Text {
@@ -1446,7 +1444,7 @@ Window {
                     color: "white"
                 }
             }
-        }
+       // }
         onClicked: {
             if (carData.state === MqttClient.Connected) {
                 carData.disconnectFromHost()

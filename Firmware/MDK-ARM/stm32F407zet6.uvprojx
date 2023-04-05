@@ -1618,6 +1618,16 @@
               <FileType>5</FileType>
               <FilePath>..\Bsp\CAN\bsp_CAN.h</FilePath>
             </File>
+            <File>
+              <FileName>motec_ecu_Can.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Bsp\CAN\motec_ecu_Can.c</FilePath>
+            </File>
+            <File>
+              <FileName>motec_ecu_Can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Bsp\CAN\motec_ecu_Can.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

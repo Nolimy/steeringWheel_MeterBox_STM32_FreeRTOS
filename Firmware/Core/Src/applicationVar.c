@@ -23,7 +23,6 @@ uint8_t Uart1_Rx_Cnt = 0;  //接收缓冲计数
 uint8_t Uart3_Rx_Cnt = 0;  //接收缓冲计数
 uint8_t okFlag = 0; //是否查询OK字符标志位
 
-
 uint8_t BC260Y_ConnectFlag = 0;  //BC260Y联网标志位
 uint8_t QMOPEN_Flag = 0; //MQTT服务器打开状态位，0未打开，1打开。
 uint8_t QMCONN_Flag = 0; //MQTT服务器连接状态位，0未连接，1连接。
