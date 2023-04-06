@@ -41,13 +41,13 @@ stm32f407zet6/bsp_can.o: ..\Bsp\CAN\bsp_CAN.c ..\Bsp\CAN\bsp_CAN.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
+  ..\Core\Inc\applicationVar.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
-  ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h \
-  ..\Core\Inc\applicationVar.h ..\LVGL\ui_design\ui.h ..\LVGL\lvgl.h \
-  ..\LVGL\src\misc\lv_log.h ..\LVGL\src\misc\..\lv_conf_internal.h \
-  ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
-  ..\LVGL\src\misc\lv_types.h ..\LVGL\src\misc\lv_timer.h \
-  ..\LVGL\src\misc\..\hal\lv_hal_tick.h \
+  ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h ..\LVGL\ui_design\ui.h \
+  ..\LVGL\lvgl.h ..\LVGL\src\misc\lv_log.h \
+  ..\LVGL\src\misc\..\lv_conf_internal.h ..\LVGL\src\lv_conf_kconfig.h \
+  ..\LVGL\lv_conf.h ..\LVGL\src\misc\lv_types.h \
+  ..\LVGL\src\misc\lv_timer.h ..\LVGL\src\misc\..\hal\lv_hal_tick.h \
   ..\LVGL\src\misc\..\hal\..\lv_conf_internal.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\misc\lv_math.h ..\LVGL\src\misc\lv_mem.h \

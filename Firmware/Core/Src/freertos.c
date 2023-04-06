@@ -294,8 +294,12 @@ void Start_LVGL_Task(void *argument)
 		{
 			sendEventCode();	
 		}
+		/*************模拟器模式则打开USB控制器函数**************/
 		if(appStatus.simhubStatus)
-			USB_ControlData_Send();		
+			USB_ControlData_Send();	
+		/*************实车模式则开启按键控制CAN报文发送函数**************/
+		if(appStatus.canOpenStatus)
+			keyControlCanSend();
 		//json_analysis((char *)pRx);
 		lv_task_handler(); // lvgl的事务处理	
 		

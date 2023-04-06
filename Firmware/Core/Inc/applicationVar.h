@@ -159,6 +159,7 @@ union ECU_Data;
 extern struct RacingCarData racingCarData;
 extern struct appStatus_t appStatus;
 extern uint8_t uploadFlag;
+extern uint8_t canControlData[8];  //按键控制，CAN报文数组
 
 extern char RxBuffer1[RXBUFFERSIZE];   //接收数据
 extern char RxBuffer3[RXBUFFERSIZE];   //接收数据

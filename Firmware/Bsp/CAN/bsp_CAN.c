@@ -5,6 +5,17 @@
 #include "cmsis_os2.h"
 #include "applicationVar.h"
 
+#define LY9_VCU  0
+#define LY8_M800 1
+
+
+
+
+
+union {
+  struct Motec_Data M84_Data; //MoTeC报文结构体
+  uint8_t Frames[22][8]; //CAN帧缓存，每帧8字节，共22帧
+}ECU_Data;
 
 extern osEventFlagsId_t getCarDataHandle;
 
@@ -31,33 +42,61 @@ void CANFilter_Config(void)//无论发啥我都照单全收。
 
 }
 
-/***接收函数***/
+/***接收中断***/
 void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 {
-	uint8_t  data[8];
+	uint8_t  RxData[8];
+	uint8_t static Counter = 0;  //帧计数器
+	uint8_t i;
+	
 	HAL_StatusTypeDef	status;
 	
 	if (hcan == &hcan1) {	
 
-		status = HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxMessage, data);
+		status = HAL_CAN_GetRxMessage(hcan, CAN_RX_FIFO0, &RxMessage, RxData);
 
 		if (HAL_OK == status){ 
+			
+			/************切换显示模式************/
 			appStatus.standByStatus = 0; //关闭待机模式
 			appStatus.canOpenStatus = 1; //打开实车模式
 			appStatus.simhubStatus  = 0; //关闭模拟器模式
 			
+			#if LY9_VCU
+			/************解析CAN报文，LY9号赛车报文解析************/
+			decodeCanData(RxMessage.StdId, RxData);
+			#endif
 			
-			#if Receiver
-			decodeCanData(RxMessage.StdId, data);
+			#if LY8_M800
 			
-			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111
-			//lv_event_send(ui_speedMeter, SPEED_CHANGED, NULL);
+			/************帧计数器到达22自动清零，避免越界************/
+			if(Counter >= 22) Counter = 0; 
+			
+			/************判断是否为报文头部，若是，则计数器清零************/
+			if(RxData[0] == 0x82 && RxData[1] == 0x81 && RxData[2] == 0x80) Counter = 0;
+			
+			/************将收到的帧存储到帧缓存区************/
+			for(i=0; i<8; i++){
+				ECU_Data.Frames[Counter][i] = RxData[i];
+			}
+			#endif
+			/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
+			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
+			
+			/************若MQTT初始化成功则4G模块开始数据上报************/
 			if(MQTTinitOkFlag)
 				uploadFlag = 1;
+			
+			#if LY8_M800
+			/************更新计数器************/
+			Counter++;
 			#endif
+			
 		}
 	}
 }
+//if(HAL_GPIO_ReadPin(INPUT9_GPIO_Port, INPUT9_Pin) == RESET) 
+//if(HAL_GPIO_ReadPin(INPUTA_GPIO_Port, INPUTA_Pin) == RESET) 
 void CAN1_Send(uint32_t CAN_ID, uint8_t *CAN_DATA)
 {
 	//uint8_t data[4] = {0x01, 0x02, 0x03, 0x04};
@@ -73,6 +112,24 @@ void CAN1_Send(uint32_t CAN_ID, uint8_t *CAN_DATA)
     }
     printf("CAN send test data success!\r\n");
 		
+}
+/*10个KEY对应10Bit数据，从低位依次置1*/
+void keyControlCanSend()
+{
+	canControlData[0] = 000;
+	canControlData[1] = 0x00;
+	if(HAL_GPIO_ReadPin(INPUT1_GPIO_Port, INPUT1_Pin) == RESET) canControlData[0] |= 0x01 << 0; 
+	if(HAL_GPIO_ReadPin(INPUT2_GPIO_Port, INPUT2_Pin) == RESET) canControlData[0] |= 0x01 << 1;
+	if(HAL_GPIO_ReadPin(INPUT3_GPIO_Port, INPUT3_Pin) == RESET) canControlData[0] |= 0x01 << 2;
+	if(HAL_GPIO_ReadPin(INPUT4_GPIO_Port, INPUT4_Pin) == RESET) canControlData[0] |= 0x01 << 3;
+	if(HAL_GPIO_ReadPin(INPUT5_GPIO_Port, INPUT5_Pin) == RESET) canControlData[0] |= 0x01 << 4;
+	if(HAL_GPIO_ReadPin(INPUT6_GPIO_Port, INPUT6_Pin) == RESET) canControlData[0] |= 0x01 << 5;
+	if(HAL_GPIO_ReadPin(INPUT7_GPIO_Port, INPUT7_Pin) == RESET) canControlData[0] |= 0x01 << 6;
+	if(HAL_GPIO_ReadPin(INPUT8_GPIO_Port, INPUT8_Pin) == RESET) canControlData[0] |= 0x01 << 7;
+	if(HAL_GPIO_ReadPin(INPUT9_GPIO_Port, INPUT9_Pin) == RESET) canControlData[1] |= 0x01 << 0;
+	if(HAL_GPIO_ReadPin(INPUTA_GPIO_Port, INPUTA_Pin) == RESET) canControlData[1] |= 0x01 << 1;
+	
+	CAN1_Send(0X155, canControlData);
 }
 void CanFilterInit()
 {
@@ -231,40 +288,10 @@ void canDataPack()
 
 void decodeCanData(uint32_t canID, uint8_t *canData)
 {
+	
+	
 	switch(canID)
 	{
-//		case 0x191:
-//			racingCarData.lmotorSpeed = (canData[0] + canData[1]*256)/2 - 10000;
-//			break;
-//		case 0x192:
-//			racingCarData.lmotorTemp = canData[0] - 50;
-//			racingCarData.mcu1Temp = canData[1] - 50;
-//			break;
-//		case 0x193:
-//			racingCarData.FrontSpeed = canData[0];
-//			racingCarData.PedalTravel = canData[1];
-//			racingCarData.brakeTravel = canData[2];
-//			racingCarData.carTravel = canData[3];
-//			racingCarData.l_motor_torque = canData[4] + canData[5] * 256;
-//			racingCarData.r_motor_torque = canData[6] + canData[7] * 256;
-//			break;
-//		case 0x194:
-//			racingCarData.rmotorSpeed = (canData[0] + canData[1]*256)/2 - 10000;
-//			break;
-//		case 0x195:
-//			racingCarData.rmotorTemp = canData[0] - 50;
-//			racingCarData.mcu2Temp = canData[1] - 50;
-//			break;
-//		case 0x196:
-//			racingCarData.batAlarm = canData[0];
-//			racingCarData.batTemp = canData[1] - 40;
-//			racingCarData.batLevel = canData[2];
-//			racingCarData.gearMode = canData[3];
-//			racingCarData.carMode = canData[4];
-//			racingCarData.batVol = (canData[6] + canData[5] * 256) / 10;
-//			break;	
-
-		
 		case 0x211:
 			racingCarData.FrontSpeed = canData[0];
 			racingCarData.PedalTravel = canData[1];
@@ -291,6 +318,13 @@ void decodeCanData(uint32_t canID, uint8_t *canData)
 			racingCarData.gearMode = canData[5];
 			racingCarData.carMode = canData[6];
 			break;	
+		default:
+			racingCarData.lmotorSpeed = ECU_Data.M84_Data.RPM;
+			racingCarData.gearMode = ECU_Data.M84_Data.Gear / 10;
+			racingCarData.FrontSpeed = ECU_Data.M84_Data.Drive_Speed / 10;
+			racingCarData.batVol = ECU_Data.M84_Data.Battery_Volt;
+			break;
+			
 	}	
 }
 #endif

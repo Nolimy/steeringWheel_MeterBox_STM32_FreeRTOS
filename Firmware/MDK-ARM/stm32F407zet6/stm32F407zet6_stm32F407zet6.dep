@@ -67,8 +67,8 @@ I (..\Core\Inc\fsmc.h)(0x63DFB999)
 I (..\Bsp\LCD\bsp_LCD.h)(0x63DFB999)
 I (..\Bsp\BC260Y\bsp_BC260Y.h)(0x63DFB999)
 I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625260D6)
-I (..\Bsp\CAN\bsp_CAN.h)(0x63DFB999)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
+I (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (..\Bsp\WS2812B\bsp_WS2812B.h)(0x63DFB999)
 I (..\LVGL\lvgl.h)(0x63DFB99A)
 I (..\LVGL\src\misc\lv_log.h)(0x63DFB99A)
@@ -323,7 +323,7 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x63DFB99A)
-F (../Core/Src/freertos.c)(0x642D1C89)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/freertos.o -MD)
+F (../Core/Src/freertos.c)(0x642EA6C7)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/freertos.o -MD)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h)(0x63DFB99B)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x625260D6)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x625260D8)
@@ -381,9 +381,9 @@ I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625260D6)
 I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625260D6)
 I (..\Core\Inc\usart.h)(0x63DFB999)
 I (..\Core\Inc\gpio.h)(0x63DFB999)
-I (..\Bsp\CAN\bsp_CAN.h)(0x63DFB999)
+I (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)
 I (..\Core\Inc\can.h)(0x63DFB999)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (..\LVGL\lvgl.h)(0x63DFB99A)
 I (..\LVGL\src\misc\lv_log.h)(0x63DFB99A)
 I (..\LVGL\src\misc\..\lv_conf_internal.h)(0x63DFB99A)
@@ -608,7 +608,7 @@ I (..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ctlreq.
 I (..\Composite\AL94.I-CUBE-USBD-COMPOSITE_conf.h)(0x63DFB999)
 I (..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usb_device.h)(0x63DFB99B)
 I (..\Bsp\USB_Composite\Bsp_USB_Composite.h)(0x63DFB999)
-F (../Core/Src/can.c)(0x6405B841)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/can.o -MD)
+F (../Core/Src/can.c)(0x642E9722)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/can.o -MD)
 I (..\Core\Inc\can.h)(0x63DFB999)
 I (..\Core\Inc\main.h)(0x63F2DA6C)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63DFB99A)
@@ -1079,8 +1079,8 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x63DFB99A)
-F (..\Core\Src\applicationVar.c)(0x642D1C8A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/applicationvar.o -MD)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
+F (..\Core\Src\applicationVar.c)(0x642EA5FE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/applicationvar.o -MD)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (..\Core\Inc\main.h)(0x63F2DA6C)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63DFB99A)
 I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x63DFB999)
@@ -2240,13 +2240,13 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x63DFB99A)
 I (..\Core\Inc\gpio.h)(0x63DFB999)
-I (..\Bsp\CAN\bsp_CAN.h)(0x63DFB999)
+I (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)
 I (..\Core\Inc\can.h)(0x63DFB999)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x63DFB99B)
 F (..\Bsp\BC260Y\bsp_BC260Y.h)(0x63DFB999)()
-F (..\Bsp\CAN\bsp_CAN.c)(0x641C26CE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/bsp_can.o -MD)
-I (..\Bsp\CAN\bsp_CAN.h)(0x63DFB999)
+F (..\Bsp\CAN\bsp_CAN.c)(0x642EA8F9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/bsp_can.o -MD)
+I (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)
 I (..\Core\Inc\can.h)(0x63DFB999)
 I (..\Core\Inc\main.h)(0x63F2DA6C)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63DFB99A)
@@ -2291,10 +2291,10 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x63DFB99A)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625260D6)
 I (..\Core\Inc\usart.h)(0x63DFB999)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625260D6)
 I (..\Bsp\BC260Y\bsp_BC260Y.h)(0x63DFB999)
 I (..\Core\Inc\gpio.h)(0x63DFB999)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
 I (..\LVGL\ui_design\ui.h)(0x63DFB99A)
 I (..\LVGL\lvgl.h)(0x63DFB99A)
 I (..\LVGL\src\misc\lv_log.h)(0x63DFB99A)
@@ -2505,8 +2505,55 @@ I (..\LVGL\src\extra\widgets\imgbtn\..\..\..\lvgl.h)(0x63DFB99A)
 I (..\LVGL\src\extra\widgets\span\lv_span.h)(0x63DFB99A)
 I (..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h)(0x63DFB99A)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x63DFB99B)
-F (..\Bsp\CAN\bsp_CAN.h)(0x63DFB999)()
-F (..\Bsp\CAN\motec_ecu_Can.c)(0x642A3B17)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/motec_ecu_can.o -MD)
+F (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)()
+F (..\Bsp\CAN\motec_ecu_Can.c)(0x642E8AD9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/motec_ecu_can.o -MD)
+I (..\Bsp\CAN\motec_ecu_Can.h)(0x642AD716)
+I (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)
+I (..\Core\Inc\can.h)(0x63DFB999)
+I (..\Core\Inc\main.h)(0x63F2DA6C)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63DFB99A)
+I (..\Core\Inc\stm32f4xx_hal_conf.h)(0x63DFB999)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h)(0x63DFB99A)
+I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h)(0x63DFB99A)
+I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f407xx.h)(0x63DFB99A)
+I (..\Drivers\CMSIS\Include\core_cm4.h)(0x63DFB99A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x625260D8)
+I (..\Drivers\CMSIS\Include\cmsis_version.h)(0x63DFB99A)
+I (..\Drivers\CMSIS\Include\cmsis_compiler.h)(0x63DFB99A)
+I (..\Drivers\CMSIS\Include\cmsis_armclang.h)(0x63DFB99A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x625260D6)
+I (D:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x625260D6)
+I (..\Drivers\CMSIS\Include\mpu_armv7.h)(0x63DFB99A)
+I (..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h)(0x63DFB99A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stddef.h)(0x625260D6)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc_ex.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_gpio_ex.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_exti.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_dma_ex.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_cortex.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_can.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_crc.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ex.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_flash_ramfunc.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_sram.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_fsmc.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pwr_ex.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_spi.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x63DFB99A)
+I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x63DFB99A)
+I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625260D6)
+I (..\Core\Inc\usart.h)(0x63DFB999)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 F (..\Bsp\CAN\motec_ecu_Can.h)(0x642AD716)()
 F (..\Bsp\USB_Composite\Bsp_USB_Composite.c)(0x63F2DA6C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/bsp_usb_composite.o -MD)
 I (..\Bsp\USB_Composite\Bsp_USB_Composite.h)(0x63DFB999)
@@ -2617,7 +2664,7 @@ I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625260D6)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x625260D6)
 I (D:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x625260D6)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x625260D8)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (..\Bsp\Json\jsmn.h)(0x63DFB999)
 F (..\Bsp\shApplication\SH_Data.h)(0x63DFB999)()
 F (..\Bsp\WS2812B\bsp_WS2812B.c)(0x642140CE)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/bsp_ws2812b.o -MD)
@@ -2664,13 +2711,13 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x63DFB99A)
-I (..\Bsp\CAN\bsp_CAN.h)(0x63DFB999)
+I (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)
 I (..\Core\Inc\can.h)(0x63DFB999)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625260D6)
 I (..\Core\Inc\usart.h)(0x63DFB999)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h)(0x63DFB99B)
 I (..\Bsp\shApplication\SH_Data.h)(0x63DFB999)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
 F (..\Bsp\WS2812B\bsp_WS2812B.h)(0x63DFB999)()
 F (..\Bsp\W25Q16\bsp_spi_bus.c)(0x63DFB999)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/bsp_spi_bus.o -MD)
 I (..\Bsp\W25Q16\bsp_spi_bus.h)(0x63DFB999)
@@ -21690,7 +21737,7 @@ I (..\LVGL\src\extra\widgets\span\lv_span.h)(0x63DFB99A)
 I (..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h)(0x63DFB99A)
 I (..\LVGL\ui_design\ui_helpers.h)(0x63DFB99A)
 I (..\LVGL\ui_design\ui_comp.h)(0x63DFB99A)
-I (..\Bsp\CAN\bsp_CAN.h)(0x63DFB999)
+I (..\Bsp\CAN\bsp_CAN.h)(0x642EA5FE)
 I (..\Core\Inc\can.h)(0x63DFB999)
 I (..\Core\Inc\main.h)(0x63F2DA6C)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h)(0x63DFB99A)
@@ -21733,9 +21780,9 @@ I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h)(0x63DFB99A)
 I (..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h)(0x63DFB99A)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x625260D6)
 I (..\Core\Inc\usart.h)(0x63DFB999)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 I (..\Bsp\BC260Y\bsp_BC260Y.h)(0x63DFB999)
 I (..\Core\Inc\gpio.h)(0x63DFB999)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
 I (..\Core\Inc\tim.h)(0x63DFB999)
 I (..\Bsp\shApplication\SH_Data.h)(0x63DFB999)
 F (..\LVGL\ui_design\ui.h)(0x63DFB99A)()
@@ -24332,7 +24379,7 @@ I (..\Bsp\shApplication\SH_Data.h)(0x63DFB999)
 I (..\Bsp\USB_Composite\Bsp_USB_Composite.h)(0x63DFB999)
 I (..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usb_device.h)(0x63DFB99B)
 I (D:\Keil_v5\ARM\ARMCLANG\include\stdarg.h)(0x625260D8)
-I (..\Core\Inc\applicationVar.h)(0x642D1C18)
+I (..\Core\Inc\applicationVar.h)(0x642EA5FE)
 F (../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Src/usbd_hid_mouse.c)(0x63F2DA6C)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -flto -funsigned-char -fshort-enums -fshort-wchar-gdwarf-4 -Oz -ffunction-sections -Wno-packed -Wno-missing-variable-declarations -Wno-missing-prototypes -Wno-missing-noreturn -Wno-sign-conversion -Wno-nonportable-include-path -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -Wno-reserved-identifier -Wno-covered-switch-default -Wno-unreachable-code-break -I ../Core/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc -I ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I ../Drivers/CMSIS/Include -I ../LVGL -I ../LVGL/demos -I ../LVGL/porting -I ../LVGL/src -I ../LVGL/ui_design -I ../Bsp/W25Q16_Bsp -I ../FATFS -I ../Bsp/LCD -I ../Bsp/BC260Y -I ../Bsp/CAN -I ../Bsp/WS2812B -I ../Middlewares/Third_Party/FreeRTOS/Source/include -I ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F -I ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I ../Bsp/Json -I ../Bsp/USB_Composite -I ../Bsp/shApplication -I ../Composite -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc -I ../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc-I./RTE/_stm32F407zet6-I"D:/Program Files/arm/Packs/ARM/CMSIS/5.9.0/CMSIS/Core/Include"-I"D:/Program Files/arm/Packs/Keil/STM32F4xx_DFP/2.16.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include"-D__UVISION_VERSION="537" -D_RTE_ -DSTM32F407xx -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F407xx-o stm32f407zet6/usbd_hid_mouse.o -MD)
 I (..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\HID_MOUSE\Inc\usbd_hid_mouse.h)(0x63DFB99B)
 I (..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ioreq.h)(0x63DFB99B)

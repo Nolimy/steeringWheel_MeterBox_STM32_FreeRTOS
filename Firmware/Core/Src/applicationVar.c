@@ -13,6 +13,7 @@ struct appStatus_t appStatus;
 uint8_t upSpeedFlag = 1;
 uint8_t uploadFlag = 0;  //接收CAN报文上传标志位，只有接收到CAN报文该变量会置1
 struct RacingCarData racingCarData;
+uint8_t canControlData[8];  //按键控制，CAN报文数组
 
 char RxBuffer1[RXBUFFERSIZE];   //接收数据
 char RxBuffer3[RXBUFFERSIZE];   //接收数据
