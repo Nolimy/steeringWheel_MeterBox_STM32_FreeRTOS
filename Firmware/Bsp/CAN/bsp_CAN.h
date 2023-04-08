@@ -16,7 +16,7 @@ void CANFilter_Config(void);
 void CanFilterInit(void);
 void uploadCarData();
 void keyControlCanSend();
-
+void motec_ECU_decode();
 #define Transmitter 0
 #define Receiver    1
 

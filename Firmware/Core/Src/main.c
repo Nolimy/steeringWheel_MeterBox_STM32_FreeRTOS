@@ -163,23 +163,22 @@ int main(void)
   MX_SPI3_Init();
   MX_USART1_UART_Init(); 
   MX_TIM1_Init();
-  MX_CAN1_Init();
   MX_USART3_UART_Init();
   MX_TIM4_Init();
   MX_USB_OTG_FS_PCD_Init();
   /* USER CODE BEGIN 2 */
 	//   LVGL任务定时器中断
-	HAL_TIM_Base_Start_IT(&htim3);	
-	CanFilterInit();
 	ws2812_init(12);
 	LCD_Init();
 	LCD_Clear(BLACK);
+	
 #if LVGL_DEBUG	
 	lv_init();
 	lv_port_disp_init();  // lvgl显示接口初始化,放在lv_init()的后面
 	//lv_port_fs_init();
 	//lv_bmp_init();
 	ui_init();
+	//HAL_Delay(3000);
 	
 #endif
 #if SPI_FATFS_DEBUG

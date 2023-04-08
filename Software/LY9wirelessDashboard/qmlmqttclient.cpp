@@ -10,6 +10,9 @@ QmlMqttClient::QmlMqttClient(QObject *parent)
 {
 
 }
+
+//{"cSpeed": 122,"Pos": 0,"bAlarm": 0,"lmSpeed": 5700,"rmSpeed": 5700,"bTemp": 40,"bLevel": 100,"gMode": 17,"cMode": 148}
+//{"lmTorque":1000,"rmTorque":1000,"batVol": 51,"carDistce": 199,"mcu1Temp": 40,"mcu2Temp": 40,"brakeTravel": 0,"lmoTemp": 40,"rmoTemp": 40}
 void QmlMqttClient::parse(QByteArray package)
 {
     qDebug()<<package;
@@ -28,8 +31,8 @@ void QmlMqttClient::parse(QByteArray package)
         setThroPos(root_Obj.value("Pos").toInt());
         setLmotorTemp(root_Obj.value("lmoTemp").toInt());
         setRmotorTemp(root_Obj.value("rmoTemp").toInt());
-        setLmotorSpeed(root_Obj.value("lmoSpeed").toInt());
-        setRmotorSpeed(root_Obj.value("rmoSpeed").toInt());
+        setLmotorSpeed(root_Obj.value("lmSpeed").toInt());
+        setRmotorSpeed(root_Obj.value("rmSpeed").toInt());
         setMcu1Temp(root_Obj.value("mcu1Temp").toInt());
         setMcu2Temp(root_Obj.value("mcu2Temp").toInt());
         setBatTemp(root_Obj.value("bTemp").toInt());
@@ -37,7 +40,7 @@ void QmlMqttClient::parse(QByteArray package)
         setGearMode(root_Obj.value("gMode").toInt());
         setCarMode(root_Obj.value("cMode").toInt());
         setBatAlarm(root_Obj.value("bAlarm").toInt());
-        setMotorSpeed(root_Obj.value("mSpeed").toInt());
+        setMotorSpeed(root_Obj.value("lmSpeed").toInt());
         setTimeCount(root_Obj.value("timeCount").toInt());
         setBatVol(root_Obj.value("batVol").toInt());
         setCarDistance(root_Obj.value("carDistce").toInt());

@@ -5,17 +5,13 @@
 #include "cmsis_os2.h"
 #include "applicationVar.h"
 
-#define LY9_VCU  0
+#define LY9_VCU  1
 #define LY8_M800 1
 
 
 
+uint8_t frameEofFlag;
 
-
-union {
-  struct Motec_Data M84_Data; //MoTeC报文结构体
-  uint8_t Frames[22][8]; //CAN帧缓存，每帧8字节，共22帧
-}ECU_Data;
 
 extern osEventFlagsId_t getCarDataHandle;
 
@@ -70,26 +66,42 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			#if LY8_M800
 			
 			/************帧计数器到达22自动清零，避免越界************/
-			if(Counter >= 22) Counter = 0; 
-			
-			/************判断是否为报文头部，若是，则计数器清零************/
-			if(RxData[0] == 0x82 && RxData[1] == 0x81 && RxData[2] == 0x80) Counter = 0;
-			
-			/************将收到的帧存储到帧缓存区************/
-			for(i=0; i<8; i++){
-				ECU_Data.Frames[Counter][i] = RxData[i];
+			if(RxMessage.StdId == 0x5F0)
+			{
+				if(Counter >= 18) Counter = 0; 
+				
+				/************判断是否为报文头部，若是，则计数器清零************/
+				if(RxData[4] == 0XFC && RxData[5] == 0XFB && RxData[6] == 0XFA) 
+				{
+					Counter = 17;
+					frameEofFlag = 1; //表示接收到了帧报文尾部，此时开始接收新的一帧报文。
+				}					
+				
+				/************将收到的帧存储到帧缓存区************/
+				if(frameEofFlag)
+				{
+					for(i=0; i<8; i++){
+						motec_CanFrame[Counter][i] = RxData[i];
+					}
+				}
+				
+				/************解析CAN报文************/
+				motec_ECU_decode();
+				#endif
+				
+				/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
+				osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
+				
+				/************若MQTT初始化成功则4G模块开始数据上报************/
+				if(MQTTinitOkFlag)
+					uploadFlag = 1;
+				
+				#if LY8_M800
+				/************更新计数器************/
+				Counter++;
+				
 			}
-			#endif
-			/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
-			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
 			
-			/************若MQTT初始化成功则4G模块开始数据上报************/
-			if(MQTTinitOkFlag)
-				uploadFlag = 1;
-			
-			#if LY8_M800
-			/************更新计数器************/
-			Counter++;
 			#endif
 			
 		}
@@ -107,10 +119,10 @@ void CAN1_Send(uint32_t CAN_ID, uint8_t *CAN_DATA)
 	TxMessage.DLC = 8;              //设置数据长度
     
 	if (HAL_CAN_AddTxMessage(&hcan1, &TxMessage, CAN_DATA, (uint32_t*)CAN_TX_MAILBOX0) != HAL_OK) {
-        printf("CAN send test data fail!\r\n");
+        //printf("CAN send test data fail!\r\n");
         Error_Handler();
     }
-    printf("CAN send test data success!\r\n");
+    //printf("CAN send test data success!\r\n");
 		
 }
 /*10个KEY对应10Bit数据，从低位依次置1*/
@@ -284,7 +296,19 @@ void canDataPack()
 #endif
 
 #if Receiver
+//0X5F0
 
+void motec_ECU_decode()
+{
+	racingCarData.oil_temp = (motec_CanFrame[2][2] | motec_CanFrame[2][3]) / 10;  //燃油温度
+	racingCarData.oil_presure = (motec_CanFrame[2][4] | motec_CanFrame[2][5]) / 10;  //燃油压力
+	racingCarData.EngOil_temp = (motec_CanFrame[2][6] | motec_CanFrame[2][7]) / 10;  //机油温度
+	racingCarData.EngOil_presure = (motec_CanFrame[3][0] | motec_CanFrame[3][1]) / 10;  //机油压力
+	racingCarData.lmotorSpeed = motec_CanFrame[0][0] |motec_CanFrame[0][1];   //发动机转速
+  racingCarData.gearMode = (motec_CanFrame[13][0] |motec_CanFrame[13][1]) / 10;    //挡位
+	racingCarData.Throttle_Angel = (motec_CanFrame[0][2] |motec_CanFrame[0][3]) / 10; //节气门开度
+	
+}
 
 void decodeCanData(uint32_t canID, uint8_t *canData)
 {
@@ -293,6 +317,7 @@ void decodeCanData(uint32_t canID, uint8_t *canData)
 	switch(canID)
 	{
 		case 0x211:
+			carType = 0; //电车
 			racingCarData.FrontSpeed = canData[0];
 			racingCarData.PedalTravel = canData[1];
 			racingCarData.brakeTravel = canData[2];
@@ -318,13 +343,16 @@ void decodeCanData(uint32_t canID, uint8_t *canData)
 			racingCarData.gearMode = canData[5];
 			racingCarData.carMode = canData[6];
 			break;	
-		default:
-			racingCarData.lmotorSpeed = ECU_Data.M84_Data.RPM;
-			racingCarData.gearMode = ECU_Data.M84_Data.Gear / 10;
-			racingCarData.FrontSpeed = ECU_Data.M84_Data.Drive_Speed / 10;
-			racingCarData.batVol = ECU_Data.M84_Data.Battery_Volt;
-			break;
-			
+		case 0x5F0:
+			carType = 1; 
+			racingCarData.oil_temp = (motec_CanFrame[2][2] | motec_CanFrame[2][3]) / 10;  //燃油温度
+			racingCarData.oil_presure = (motec_CanFrame[2][4] | motec_CanFrame[2][5]) / 10;  //燃油压力
+			racingCarData.EngOil_temp = (motec_CanFrame[2][6] | motec_CanFrame[2][7]) / 10;  //机油温度
+			racingCarData.EngOil_presure = (motec_CanFrame[3][0] | motec_CanFrame[3][1]) / 10;  //机油压力
+			racingCarData.lmotorSpeed = motec_CanFrame[0][0] |motec_CanFrame[0][1];   //发动机转速
+			racingCarData.gearMode = (motec_CanFrame[13][0] |motec_CanFrame[13][1]) / 10;    //挡位
+			racingCarData.Throttle_Angel = (motec_CanFrame[0][2] |motec_CanFrame[0][3]) / 10; //节气门开度
+			break;	
 	}	
 }
 #endif

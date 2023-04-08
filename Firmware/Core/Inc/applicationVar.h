@@ -41,7 +41,13 @@ struct RacingCarData
 	uint8_t rmotorTemp;          //右电机温度
 	uint8_t mcu2Temp;            //电机控制器2温度
 	
-
+	//Motec
+	uint8_t oil_temp;
+	uint8_t oil_presure;
+	uint8_t EngOil_temp;
+	uint8_t EngOil_presure;
+	uint8_t Throttle_Angel;
+	uint8_t lowBatVol;
 };
 
 struct SH_CarData
@@ -59,103 +65,9 @@ struct SH_CarData
 	
 };
 
-struct Motec_Data {
-  uint8_t Header1;
-  uint8_t Header2;
-  uint8_t Header3;
-  uint8_t Data_Length;
-  uint16_t RPM;
-  uint16_t Throttle_Position;
-  uint16_t Mainfold_Pressure;
-  uint16_t Air_Temperature;
-  uint16_t Engine_Temperature;
-  uint16_t Lambda1;
-  uint16_t Lambda2;
-  uint16_t Exhaust_Mainfold_Pressure;
-  uint16_t Mass_Air_Flow;
-  uint16_t Fuel_Temperature;
-  uint16_t Fuel_Pressure;
-  uint16_t Oil_Temperature;
-  uint16_t Oil_Pressure;
-  uint16_t Gear_Voltage;
-  uint16_t Knock_Voltage;
-  uint16_t Gear_Shift_Force;
-  uint16_t Exhaust_Gas_Temp_1;
-  uint16_t Exhaust_Gas_Temp_2;
-  uint16_t User_Channel_1;
-  uint16_t User_Channel_2;
-  uint16_t User_Channel_3;
-  uint16_t User_Channel_4;
-  uint16_t Battery_Volt;
-  uint16_t ECU_Temperature;
-  uint16_t Speed_1;
-  uint16_t Speed_2;
-  uint16_t Speed_3;
-  uint16_t Speed_4;
-  uint16_t Drive_Speed;
-  uint16_t Ground_Speed;
-  uint16_t Slip;
-  uint16_t Aim_Slip;
-  uint16_t Launch_RPM;
-  uint16_t Lambda_1_Short_term_trim;
-  uint16_t Lambda_2_Short_term_trim;
-  uint16_t Lambda_1_Long_term_trim;
-  uint16_t Lambda_2_Long_term_trim;
-  uint16_t Aim_Lambda_1;
-  uint16_t Aim_Lambda_2;
-  uint16_t Fuel_Cut_Level;
-  uint16_t Ignition_Cut_Level;
-  uint16_t Ignition_Advance;
-  uint16_t Load_Point;
-  uint16_t Efficiency_Point;
-  uint16_t Fuel_Used;
-  uint16_t AUX_1;
-  uint16_t AUX_2;
-  uint16_t AUX_3;
-  uint16_t AUX_4;
-  uint16_t AUX_5;
-  uint16_t AUX_6;
-  uint16_t AUX_7;
-  uint16_t AUX_8;
-  uint16_t Fuel_Actual_Pulse_Width;
-  uint16_t Fuel_Effective_Pulse_Width;
-  uint16_t Fuel_Injector_Duty_Cycle;
-  uint16_t Gear;
-  uint16_t Sync_Position;
-  uint16_t Fuel_Comp_1;
-  uint16_t Fuel_Comp_2;
-  uint16_t DEG_1;
-  uint16_t DEG_2;
-  uint16_t DEG_3;
-  uint16_t DEG_4;
-  uint16_t DEG_5;
-  uint16_t DEG_6;
-  uint16_t DEG_7;
-  uint16_t DEG_8;
-  uint16_t DEG_9;
-  uint16_t DEG_10;
-  uint16_t DEG_11;
-  uint16_t DEG_12;
-  uint16_t DEG_13;
-  uint16_t DEG_14;
-  uint16_t DEG_15;
-  uint16_t DEG_16;
-  uint16_t SFG_1;
-  uint16_t SFG_2;
-  uint16_t SFG_3;
-  uint16_t SFG_4;
-  uint16_t SFG_5;
-  uint16_t SFG_6;
-  uint16_t SFG_7;
-  uint16_t SFG_8;
-  uint8_t CRC_1;
-  uint8_t CRC_2;
-  uint8_t CRC_3;
-  uint8_t CRC_4;
-};
 
-union ECU_Data;
-
+extern uint8_t carType;//驾驶车辆类型：0.电车 1.油车
+extern uint8_t motec_CanFrame[18][8];
 extern struct RacingCarData racingCarData;
 extern struct appStatus_t appStatus;
 extern uint8_t uploadFlag;

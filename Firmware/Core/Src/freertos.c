@@ -124,14 +124,14 @@ const osThreadAttr_t iotUploadTask_attributes = {
 osThreadId_t LVGL_TaskHandle;
 const osThreadAttr_t LVGL_Task_attributes = {
   .name = "LVGL_Task",
-  .stack_size = 512 * 8,
+  .stack_size = 512 * 18,
   .priority = (osPriority_t) osPriorityRealtime2,
 };
 /* Definitions for LVGL_Meter */
 osThreadId_t LVGL_MeterHandle;
 const osThreadAttr_t LVGL_Meter_attributes = {
   .name = "LVGL_Meter",
-  .stack_size = 512 * 12,
+  .stack_size = 512 * 8,
   .priority = (osPriority_t) osPriorityRealtime1,
 };
 /* Definitions for LVGL_Lap_Timer */
@@ -276,6 +276,9 @@ void Start_LVGL_Task(void *argument)
 {
   /* USER CODE BEGIN Start_LVGL_Task */
 	/* init code for USB_DEVICE */
+	MX_CAN1_Init();
+	HAL_TIM_Base_Start_IT(&htim3);	
+	CanFilterInit();
 	MX_USB_DEVICE_Init();
 	appStatus.initOK_Flag = 0;
 	appStatus.standByStatus = 1; //打开待机模式
@@ -299,7 +302,10 @@ void Start_LVGL_Task(void *argument)
 			USB_ControlData_Send();	
 		/*************实车模式则开启按键控制CAN报文发送函数**************/
 		if(appStatus.canOpenStatus)
+		{
 			keyControlCanSend();
+			
+		}
 		//json_analysis((char *)pRx);
 		lv_task_handler(); // lvgl的事务处理	
 		
@@ -337,46 +343,88 @@ void Start_LVGL_Meter(void *argument)
                           osWaitForever); 
 			if(appStatus.canOpenStatus)
 			{
+				
 				appStatus.simhubStatus = 0;
 				meterAnimation();
-				lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
-				lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.rmotorSpeed);
-				lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.batVol);
-				lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.lmotorTemp);
-				lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.rmotorTemp);
-				
-				lv_bar_set_value(ui_socValue, racingCarData.batLevel, LV_ANIM_ON);
-				if(racingCarData.gearMode == 0)
-					lv_label_set_text(ui_gearLable, "N");
-				else if(racingCarData.gearMode == 1)
-					lv_label_set_text(ui_gearLable, "R");
-				else
-					lv_label_set_text(ui_gearLable, "D");
-				if(racingCarData.carMode == 0)
+				if(carType == 0) //电车
 				{
-					lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x6464F1), LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
+					lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.rmotorSpeed);
+					lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.batVol);
+					lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.lmotorTemp);
+					lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.rmotorTemp);
 					
-					lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					lv_bar_set_value(ui_socValue, racingCarData.batLevel, LV_ANIM_ON);
+					if(racingCarData.gearMode == 0)
+						lv_label_set_text(ui_gearLable, "N");
+					else if(racingCarData.gearMode == 1)
+						lv_label_set_text(ui_gearLable, "R");
+					else
+						lv_label_set_text(ui_gearLable, "D");
+					if(racingCarData.carMode == 0)
+					{
+						lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x6464F1), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+						
+						lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					}
+					else
+					{
+						lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+						
+						lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x80FF80), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					}
 				}
-				else
+				else if(carType == 1) //油车
 				{
-					lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
+					lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.lmotorSpeed);
+					lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.Throttle_Angel);
+					lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.oil_temp);
+					lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.EngOil_temp);
 					
-					lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x80FF80), LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-					lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					lv_bar_set_value(ui_socValue, racingCarData.Throttle_Angel, LV_ANIM_ON);
+					if(racingCarData.gearMode == 0)
+						lv_label_set_text(ui_gearLable, "N");
+					else if(racingCarData.gearMode == 1)
+						lv_label_set_text(ui_gearLable, "1");
+					else if(racingCarData.gearMode == 2)
+						lv_label_set_text(ui_gearLable, "2");
+					else if(racingCarData.gearMode == 3)
+						lv_label_set_text(ui_gearLable, "3");
+					else if(racingCarData.gearMode == 4)
+						lv_label_set_text(ui_gearLable, "4");
+					else if(racingCarData.gearMode == 5)
+						lv_label_set_text(ui_gearLable, "5");
+					if(racingCarData.carMode == 0)
+					{
+						lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x6464F1), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+						
+						lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					}
+					else
+					{
+						lv_obj_set_style_text_color(ui_speedMode, lv_color_hex(0x808080), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_speedMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_speedMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+						
+						lv_obj_set_style_text_color(ui_ecoMode, lv_color_hex(0x80FF80), LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_opa(ui_ecoMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+						lv_obj_set_style_text_font(ui_ecoMode, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+					}
 				}
 			}
-			#if canOPEN
-			
-			
-			#endif
 			if(appStatus.simhubStatus)
 			{
 				appStatus.canOpenStatus = 0;
@@ -392,10 +440,6 @@ void Start_LVGL_Meter(void *argument)
 				lv_bar_set_value(ui_socValue, sh_CarData.fuel, LV_ANIM_ON);
 				lv_label_set_text_fmt(ui_gearLable, "%.*s", 1, sh_CarData.Gear);
 			}
-			#if simhubOPEN
-
-			#endif
-			
 			osMutexRelease(lvgl_mutexHandle);
 		}
 		
@@ -501,7 +545,14 @@ void Start_RPM_LED(void *argument)
 		//osMutexWait(lvgl_mutexHandle,     /* 互斥量句柄 */ 
     //                      osWaitForever); 
 		if(r_event)
-			RPM_LED_Shine();
+		{
+				//if(appStatus.canOpenStatus)
+			//keyControlCanSend();
+					//motec_ECU_decode();
+				
+				RPM_LED_Shine();
+		}
+			
 		
 		//osMutexRelease(lvgl_mutexHandle); //释放互斥量
     //osDelay(10);

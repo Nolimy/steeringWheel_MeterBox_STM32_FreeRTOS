@@ -10,6 +10,9 @@ struct appStatus_t appStatus;
 #define  NUM_OF_TEETH 20.0    //码盘齿数
 
 
+
+uint8_t motec_CanFrame[18][8];
+uint8_t carType;//驾驶车辆类型：0.电车 1.油车
 uint8_t upSpeedFlag = 1;
 uint8_t uploadFlag = 0;  //接收CAN报文上传标志位，只有接收到CAN报文该变量会置1
 struct RacingCarData racingCarData;
