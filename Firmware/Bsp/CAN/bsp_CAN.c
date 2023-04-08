@@ -79,7 +79,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 				}
 				
 				/************更新计数器************/
-			Counter++;
+				Counter++;
 			}	
 			/************解析CAN报文************/
 			//motec_ECU_decode();
@@ -289,13 +289,13 @@ void canDataPack()
 
 void motec_ECU_decode()
 {
-	racingCarData.oil_temp = (motec_CanFrame[2][2] | motec_CanFrame[2][3]) / 10;  //燃油温度
-	racingCarData.oil_presure = (motec_CanFrame[2][4] | motec_CanFrame[2][5]) / 10;  //燃油压力
-	racingCarData.EngOil_temp = (motec_CanFrame[2][6] | motec_CanFrame[2][7]) / 10;  //机油温度
-	racingCarData.EngOil_presure = (motec_CanFrame[3][0] | motec_CanFrame[3][1]) / 10;  //机油压力
-	racingCarData.lmotorSpeed = motec_CanFrame[0][0] |motec_CanFrame[0][1];   //发动机转速
-  racingCarData.gearMode = (motec_CanFrame[13][0] |motec_CanFrame[13][1]) / 10;    //挡位
-	racingCarData.Throttle_Angel = (motec_CanFrame[0][2] |motec_CanFrame[0][3]) / 10; //节气门开度
+	racingCarData.oil_temp = (motec_CanFrame[2][2] << 8 | motec_CanFrame[2][3]) / 10;  //燃油温度
+	racingCarData.oil_presure = (motec_CanFrame[2][4] << 8 | motec_CanFrame[2][5]) / 10;  //燃油压力
+	racingCarData.EngOil_temp = (motec_CanFrame[2][6] << 8 | motec_CanFrame[2][7]) / 10;  //机油温度
+	racingCarData.EngOil_presure = (motec_CanFrame[3][0] << 8 | motec_CanFrame[3][1]) / 10;  //机油压力
+	racingCarData.lmotorSpeed = motec_CanFrame[0][0] << 8 |motec_CanFrame[0][1];   //发动机转速
+  racingCarData.gearMode = (motec_CanFrame[13][0] << 8 |motec_CanFrame[13][1]) / 10;    //挡位
+	racingCarData.Throttle_Angel = (motec_CanFrame[0][2] << 8 |motec_CanFrame[0][3]) / 10; //节气门开度
 	
 }
 
@@ -334,13 +334,12 @@ void decodeCanData(uint32_t canID, uint8_t *canData)
 			break;	
 		case 0x5F0:
 			carType = 1; 
-			racingCarData.oil_temp = (motec_CanFrame[2][2] | motec_CanFrame[2][3]) / 10;  //燃油温度
-			racingCarData.oil_presure = (motec_CanFrame[2][4] | motec_CanFrame[2][5]) / 10;  //燃油压力
-			racingCarData.EngOil_temp = (motec_CanFrame[2][6] | motec_CanFrame[2][7]) / 10;  //机油温度
-			racingCarData.EngOil_presure = (motec_CanFrame[3][0] | motec_CanFrame[3][1]) / 10;  //机油压力
-			racingCarData.lmotorSpeed = motec_CanFrame[0][0] |motec_CanFrame[0][1];   //发动机转速
-			racingCarData.gearMode = (motec_CanFrame[13][0] |motec_CanFrame[13][1]) / 10;    //挡位
-			racingCarData.Throttle_Angel = (motec_CanFrame[0][2] |motec_CanFrame[0][3]) / 10; //节气门开度
+			
+			racingCarData.EngOil_temp = (motec_CanFrame[2][6] << 8 | motec_CanFrame[2][7]) / 10;  //机油温度
+			racingCarData.EngOil_presure = (motec_CanFrame[3][0] << 8 | motec_CanFrame[3][1]) / 10;  //机油压力
+			racingCarData.lmotorSpeed = motec_CanFrame[0][0] << 8 | motec_CanFrame[0][1];   //发动机转速
+			racingCarData.gearMode = (motec_CanFrame[13][0] << 8 |motec_CanFrame[13][1]) / 10;    //挡位
+			racingCarData.Throttle_Angel = (motec_CanFrame[0][2] << 8 |motec_CanFrame[0][3]) / 10; //节气门开度
 			break;	
 	}	
 }
