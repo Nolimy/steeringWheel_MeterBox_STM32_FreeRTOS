@@ -6,7 +6,7 @@
 #include "applicationVar.h"
 
 #define LY9_VCU  1
-#define LY8_M800 1
+#define LY8_M800 0
 
 
 
@@ -57,14 +57,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			appStatus.standByStatus = 0; //关闭待机模式
 			appStatus.canOpenStatus = 1; //打开实车模式
 			appStatus.simhubStatus  = 0; //关闭模拟器模式
-			
-			#if LY9_VCU
-			/************解析CAN报文，LY9号赛车报文解析************/
-			decodeCanData(RxMessage.StdId, RxData);
-			#endif
-			
-			#if LY8_M800
-			
+	
 			/************帧计数器到达22自动清零，避免越界************/
 			if(RxMessage.StdId == 0x5F0)
 			{
@@ -85,24 +78,20 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 					}
 				}
 				
-				/************解析CAN报文************/
-				motec_ECU_decode();
-				#endif
-				
-				/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
-				osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
-				
-				/************若MQTT初始化成功则4G模块开始数据上报************/
-				if(MQTTinitOkFlag)
-					uploadFlag = 1;
-				
-				#if LY8_M800
 				/************更新计数器************/
-				Counter++;
-				
-			}
+			Counter++;
+			}	
+			/************解析CAN报文************/
+			//motec_ECU_decode();
+			decodeCanData(RxMessage.StdId, RxData);
 			
-			#endif
+			/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
+			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
+			
+			/************若MQTT初始化成功则4G模块开始数据上报************/
+			if(MQTTinitOkFlag)
+				uploadFlag = 1;
+			
 			
 		}
 	}
