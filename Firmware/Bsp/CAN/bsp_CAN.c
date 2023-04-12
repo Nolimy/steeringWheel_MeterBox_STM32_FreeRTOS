@@ -64,36 +64,36 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 				/************帧计数器到达18自动清零，避免越界************/
 				if(Counter == 18) 
 				{
-					//Counter = 0; 
-					frameEofFlag = 0; //表示接收到了帧报文尾部，此时开始接收新的一帧报文。
+					/************一组报文接收完毕，接收标志位置0，等待新一组报文头部。************/
+					frameEofFlag = 0;
+					
 					/************解析CAN报文************/
 					motec_ECU_decode(); //完整解析上一组CAN报文
+					
+					/************清零************/
+					memset(motec_CanFrame, 0x00, sizeof(motec_CanFrame));
+					
 				}
 				/************判断是否为报文头部，若是，则计数器清零************/
 				if(RxData[4] == 0XFC && RxData[5] == 0XFB && RxData[6] == 0XFA) 
 				{
+					/************则计数器清零************/
 					Counter = 0;
-					frameEofFlag = 1; //表示接收到了帧报文尾部，此时开始接收新的一帧报文。
-					
-					
+					frameEofFlag = 1; //表示接收到了帧报文头部，此时开始接收新的一帧报文。
 				}					
 				
 				/************将收到的帧存储到帧缓存区************/
-				if(frameEofFlag)
+				if(frameEofFlag && (Counter >= 0 && Counter <=17))
 				{
 					for(i=0; i<8; i++){
 						motec_CanFrame[Counter][i] = RxData[i];
 					}
+					/************更新计数器************/
 					Counter++;
-				}
-				
-				/************更新计数器************/
-				
+				}		
 			}	
-			
-			//motec_ECU_decode();
-			else
-				decodeCanData(RxMessage.StdId, RxData);
+//			else
+//				decodeCanData(RxMessage.StdId, RxData);
 			
 			/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
 			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
@@ -322,8 +322,6 @@ void motec_ECU_decode()
 					racingCarData.FrontSpeed = racingCarData.lmotorSpeed / 1.350 / (36 / 11);
 					break;
 			}
-	
-	
 }
 
 void decodeCanData(uint32_t canID, uint8_t *canData)

@@ -11,6 +11,8 @@ struct appStatus_t appStatus;
 
 
 
+uint8_t m800_ECU_canData[144];
+
 uint8_t motec_CanFrame[18][8];
 uint8_t carType;//驾驶车辆类型：0.电车 1.油车
 uint8_t upSpeedFlag = 1;
