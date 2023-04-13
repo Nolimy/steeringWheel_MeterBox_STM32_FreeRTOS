@@ -22,7 +22,7 @@ void CANFilter_Config(void)//无论发啥我都照单全收。
     sFilterConfig.FilterBank = 0;                       //CAN过滤器编号，范围0-27
     sFilterConfig.FilterMode = CAN_FILTERMODE_IDMASK;   //CAN过滤器模式，掩码模式或列表模式
     sFilterConfig.FilterScale = CAN_FILTERSCALE_32BIT;  //CAN过滤器尺度，16位或32位
-    sFilterConfig.FilterIdHigh = 0x000 << 5;			//32位下，存储要过滤ID的高16位
+    sFilterConfig.FilterIdHigh = 0x5F0 << 5;			//32位下，存储要过滤ID的高16位
     sFilterConfig.FilterIdLow = 0x0000;					//32位下，存储要过滤ID的低16位
     sFilterConfig.FilterMaskIdHigh = 0x0000;			//掩码模式下，存储的是掩码
     sFilterConfig.FilterMaskIdLow = 0x0000;
@@ -83,7 +83,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 				}					
 				
 				/************将收到的帧存储到帧缓存区************/
-				if(frameEofFlag && (Counter >= 0 && Counter <=17))
+				if(frameEofFlag && (Counter >= 0 && Counter <=17) && sizeof(motec_CanFrame)!=0)
 				{
 					for(i=0; i<8; i++){
 						motec_CanFrame[Counter][i] = RxData[i];
