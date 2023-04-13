@@ -61,7 +61,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			
 			if(RxMessage.StdId == 0x5F0)
 			{
-				/************帧计数器到达18自动清零，避免越界************/
+				/************帧计数器到达18自动清零，避免越界**************/
 				if(Counter == 18) 
 				{
 					/************一组报文接收完毕，接收标志位置0，等待新一组报文头部。************/
