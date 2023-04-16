@@ -1,19 +1,19 @@
 stm32f407zet6/ui.o: ..\LVGL\ui_design\ui.c ..\LVGL\ui_design\ui.h \
   ..\LVGL\lvgl.h ..\LVGL\src\misc\lv_log.h \
   ..\LVGL\src\misc\..\lv_conf_internal.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\LVGL\src\lv_conf_kconfig.h ..\LVGL\lv_conf.h \
   ..\LVGL\src\misc\lv_types.h ..\LVGL\src\misc\lv_timer.h \
   ..\LVGL\src\misc\..\hal\lv_hal_tick.h \
   ..\LVGL\src\misc\..\hal\..\lv_conf_internal.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\misc\lv_math.h ..\LVGL\src\misc\lv_mem.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\misc\lv_async.h ..\LVGL\src\misc\lv_anim_timeline.h \
   ..\LVGL\src\misc\lv_anim.h ..\LVGL\src\misc\lv_printf.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   ..\LVGL\src\hal\lv_hal.h ..\LVGL\src\misc\..\hal\lv_hal_disp.h \
   ..\LVGL\src\misc\..\hal\lv_hal.h \
   ..\LVGL\src\misc\..\hal\..\draw\lv_draw.h \
@@ -194,8 +194,8 @@ stm32f407zet6/ui.o: ..\LVGL\ui_design\ui.c ..\LVGL\ui_design\ui.h \
   ..\Drivers\CMSIS\Include\cmsis_version.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   ..\Drivers\CMSIS\Include\cmsis_armclang.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\arm_compat.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\arm_acle.h \
   ..\Drivers\CMSIS\Include\mpu_armv7.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\system_stm32f4xx.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h \
@@ -222,6 +222,7 @@ stm32f407zet6/ui.o: ..\LVGL\ui_design\ui.c ..\LVGL\ui_design\ui.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\applicationVar.h ..\Bsp\BC260Y\bsp_BC260Y.h \
-  ..\Core\Inc\gpio.h ..\Core\Inc\tim.h ..\Bsp\shApplication\SH_Data.h
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\Core\Inc\usart.h ..\Core\Inc\applicationVar.h \
+  ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h ..\Core\Inc\tim.h \
+  ..\Bsp\shApplication\SH_Data.h

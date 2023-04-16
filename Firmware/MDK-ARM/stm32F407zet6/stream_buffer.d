@@ -1,9 +1,9 @@
 stm32f407zet6/stream_buffer.o: \
   ..\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
+  D:\Keil5\keil_v5\ARM\ARMCLANG\Bin\..\include\stddef.h \
   ..\Core\Inc\FreeRTOSConfig.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h \

@@ -117,7 +117,7 @@ void uploadCarData()
 osThreadId_t iotUploadTaskHandle;
 const osThreadAttr_t iotUploadTask_attributes = {
   .name = "iotUploadTask",
-  .stack_size = 512 * 10,
+  .stack_size = 512 * 8,
   .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for LVGL_Task */
@@ -145,7 +145,7 @@ const osThreadAttr_t LVGL_Lap_Timer_attributes = {
 osThreadId_t BC260Y_initHandle;
 const osThreadAttr_t BC260Y_init_attributes = {
   .name = "BC260Y_init",
-  .stack_size = 512 * 18,
+  .stack_size = 512 * 16,
   .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for RPM_LED_Task */
