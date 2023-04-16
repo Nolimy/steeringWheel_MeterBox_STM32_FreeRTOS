@@ -346,6 +346,11 @@ void Start_LVGL_Meter(void *argument)
 				}
 				appStatus.simhubStatus = 0;
 				meterAnimation();
+				
+				/*************解析CAN报文**************/
+				if(!frameEofFlag)
+					motec_ECU_decode();
+				
 				if(carType == 0) //电车
 				{
 					lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
