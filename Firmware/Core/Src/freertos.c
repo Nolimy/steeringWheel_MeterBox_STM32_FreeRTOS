@@ -117,14 +117,14 @@ void uploadCarData()
 osThreadId_t iotUploadTaskHandle;
 const osThreadAttr_t iotUploadTask_attributes = {
   .name = "iotUploadTask",
-  .stack_size = 512 * 8,
+  .stack_size = 512 * 4,
   .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for LVGL_Task */
 osThreadId_t LVGL_TaskHandle;
 const osThreadAttr_t LVGL_Task_attributes = {
   .name = "LVGL_Task",
-  .stack_size = 512 * 16,
+  .stack_size = 512 * 18,
   .priority = (osPriority_t) osPriorityRealtime2,
 };
 /* Definitions for LVGL_Meter */
@@ -145,7 +145,7 @@ const osThreadAttr_t LVGL_Lap_Timer_attributes = {
 osThreadId_t BC260Y_initHandle;
 const osThreadAttr_t BC260Y_init_attributes = {
   .name = "BC260Y_init",
-  .stack_size = 512 * 16,
+  .stack_size = 512 * 8,
   .priority = (osPriority_t) osPriorityRealtime,
 };
 /* Definitions for RPM_LED_Task */
@@ -346,11 +346,6 @@ void Start_LVGL_Meter(void *argument)
 				}
 				appStatus.simhubStatus = 0;
 				meterAnimation();
-				
-				/*************解析CAN报文**************/
-				if(!frameEofFlag)
-					motec_ECU_decode();
-				
 				if(carType == 0) //电车
 				{
 					lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);

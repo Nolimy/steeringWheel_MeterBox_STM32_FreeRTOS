@@ -66,7 +66,6 @@ struct SH_CarData
 };
 
 extern uint8_t m800_ECU_canData[144];
-extern uint8_t frameEofFlag;  //MoTeC CAN报文接收完成标志位
 extern uint8_t carType;//驾驶车辆类型：0.电车 1.油车
 extern uint8_t motec_CanFrame[18][8];
 extern struct RacingCarData racingCarData;

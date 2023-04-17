@@ -10,7 +10,7 @@
 
 
 
-
+uint8_t frameEofFlag;
 
 
 extern osEventFlagsId_t getCarDataHandle;
@@ -62,13 +62,16 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			if(RxMessage.StdId == 0x5F0)
 			{
 				/************帧计数器到达18自动清零，避免越界************/
-				if(Counter == 18) 
+				if(Counter == 18 && motec_CanFrame[0][4] == 0XFC && motec_CanFrame[0][5] == 0XFB && motec_CanFrame[0][6] == 0XFA && motec_CanFrame[14][2] == 0x01 && motec_CanFrame[14][3] == 0xf4) 
 				{
 					/************一组报文接收完毕，接收标志位置0，等待新一组报文头部。************/
 					frameEofFlag = 0;
 					
-					/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
-					osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
+					/************解析CAN报文************/
+					motec_ECU_decode(); //完整解析上一组CAN报文
+					
+					/************清零************/
+					memset(motec_CanFrame, 0x00, sizeof(motec_CanFrame));
 					
 				}
 				/************判断是否为报文头部，若是，则计数器清零************/
@@ -89,6 +92,10 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 					Counter++;
 				}		
 			}	
+			
+			/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
+			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
+			
 			/************若MQTT初始化成功则4G模块开始数据上报************/
 			if(MQTTinitOkFlag)
 				uploadFlag = 1;				
