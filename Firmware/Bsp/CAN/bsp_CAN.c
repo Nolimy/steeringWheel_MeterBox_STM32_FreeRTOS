@@ -308,16 +308,16 @@ void motec_ECU_decode()
 					racingCarData.FrontSpeed = 0;
 					break;
 				case 1:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed / 2.615 / (36 / 11);
+					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 2.615 / 3.27;
 					break;
 				case 2:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed / 1.857 / (36 / 11);
+					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.857 / 3.27;
 					break;
 				case 3:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed / 1.565 / (36 / 11);
+					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.565 / 3.27;
 					break;
 				case 4:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed / 1.350 / (36 / 11);
+					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.350 / 3.27;
 					break;
 			}
 }
