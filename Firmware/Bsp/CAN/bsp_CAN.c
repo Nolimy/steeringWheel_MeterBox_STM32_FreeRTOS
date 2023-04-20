@@ -292,34 +292,49 @@ void canDataPack()
 
 #if Receiver
 //0X5F0
-
+//	uint8_t oilTemp;
+//	uint8_t oilPressure;
+//	uint8_t throttlePosition;
+//	float lowBatVol;
+//  uint16_t lambda1;
+//	uint8_t ecu_Temp;
+//	uint8_t gear;
+//  uint8_t engineTemp;
+//  uint8_t FrontSpeed
 void motec_ECU_decode()
 {
 	carType = 1; 
-			
-			racingCarData.EngOil_temp = (motec_CanFrame[3][6] << 8 | motec_CanFrame[3][7]) / 10;  //机油温度
-			racingCarData.EngOil_presure = (motec_CanFrame[4][0] << 8 | motec_CanFrame[4][1]) / 10;  //机油压力
-			racingCarData.lmotorSpeed = motec_CanFrame[1][0] << 8 | motec_CanFrame[1][1];   //发动机转速
-			racingCarData.gearMode = (motec_CanFrame[14][0] << 8 |motec_CanFrame[14][1]);    //挡位
-			racingCarData.Throttle_Angel = (motec_CanFrame[1][2] << 8 |motec_CanFrame[1][3]) / 10; //节气门开度
-			switch(racingCarData.gearMode)
-			{
-				case 0:
-					racingCarData.FrontSpeed = 0;
-					break;
-				case 1:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 2.615 / 3.27;
-					break;
-				case 2:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.857 / 3.27;
-					break;
-				case 3:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.565 / 3.27;
-					break;
-				case 4:
-					racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.350 / 3.27;
-					break;
-			}
+	
+	racingCarData.lmotorSpeed = motec_CanFrame[1][0] << 8 | motec_CanFrame[1][1];   //发动机转速
+	racingCarData.throttlePosition = (motec_CanFrame[1][2] << 8 |motec_CanFrame[1][3]) / 10; //节气门开度
+	racingCarData.engineTemp = (motec_CanFrame[2][0] << 8 | motec_CanFrame[2][1]) / 10;  //发动机温度
+	racingCarData.lambda1 = (motec_CanFrame[2][2] << 8 | motec_CanFrame[2][3]) / 1000;  //氧传感器信号
+	racingCarData.oilTemp = (motec_CanFrame[3][6] << 8 | motec_CanFrame[3][7]) / 10;  //机油温度
+	racingCarData.oilPressure = (motec_CanFrame[4][0] << 8 | motec_CanFrame[4][1]) / 10;  //机油压力
+	racingCarData.lowBatVol = (motec_CanFrame[6][4] << 8 | motec_CanFrame[6][5]) / 100;  //低压电池电压
+	racingCarData.ecu_Temp = (motec_CanFrame[6][6] << 8 | motec_CanFrame[6][7]) / 10;  //ECU温度
+	racingCarData.gear = (motec_CanFrame[14][0] << 8 | motec_CanFrame[14][1]);    //挡位
+	
+
+	/****************************通过齿比、挡位和发动机转速关系换算车速****************************/
+	switch(racingCarData.gear)
+	{
+		case 0:
+			racingCarData.FrontSpeed = 0;
+			break;
+		case 1:
+			racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 2.615 / 3.27;
+			break;
+		case 2:
+			racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.857 / 3.27;
+			break;
+		case 3:
+			racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.565 / 3.27;
+			break;
+		case 4:
+			racingCarData.FrontSpeed = racingCarData.lmotorSpeed * 1.44 * 60 / 1000 / 1.350 / 3.27;
+			break;
+	}
 }
 
 void decodeCanData(uint32_t canID, uint8_t *canData)

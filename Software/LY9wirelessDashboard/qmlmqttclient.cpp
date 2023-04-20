@@ -10,7 +10,24 @@ QmlMqttClient::QmlMqttClient(QObject *parent)
 {
 
 }
-
+//"{\"cSpeed\": %d,
+//\"Pos\": %d,
+//\"bAlarm\": %d,"
+//"\"lmSpeed\": %d,"
+//"\"rmSpeed\": %d,"
+//"\"bTemp\": %d,"
+//"\"bLevel\": %d,"
+//"\"gMode\": %d,"
+//"\"cMode\": %d,"
+//"\"lmTorque\":%d,"
+//"\"rmTorque\":%d,"
+//"\"batVol\": %d,"
+//"\"carDistce\": %d,"
+//"\"mcu1Temp\": %d,"
+//"\"mcu2Temp\": %d,"
+//"\"brakeTravel\": %d,"
+//"\"lmoTemp\": %d,"
+//"\"rmoTemp\": %d}";
 //{"cSpeed": 122,"Pos": 0,"bAlarm": 0,"lmSpeed": 5700,"rmSpeed": 5700,"bTemp": 40,"bLevel": 100,"gMode": 17,"cMode": 148}
 //{"lmTorque":1000,"rmTorque":1000,"batVol": 51,"carDistce": 199,"mcu1Temp": 40,"mcu2Temp": 40,"brakeTravel": 0,"lmoTemp": 40,"rmoTemp": 40}
 void QmlMqttClient::parse(QByteArray package)
@@ -27,22 +44,22 @@ void QmlMqttClient::parse(QByteArray package)
     {
         QJsonObject root_Obj = root_Doc.object();
 
-        setCarSpeed(root_Obj.value("cSpeed").toInt());
-        setThroPos(root_Obj.value("Pos").toInt());
-        setLmotorTemp(root_Obj.value("lmoTemp").toInt());
-        setRmotorTemp(root_Obj.value("rmoTemp").toInt());
-        setLmotorSpeed(root_Obj.value("lmSpeed").toInt());
+        setCarSpeed(root_Obj.value("cSpeed").toInt());  //地速
+        setThroPos(root_Obj.value("Pos").toInt());  //油门开度
+        setLmotorTemp(root_Obj.value("lmoTemp").toInt()); //机油压力
+        setRmotorTemp(root_Obj.value("rmoTemp").toInt()); //氧传感器
+        setLmotorSpeed(root_Obj.value("lmSpeed").toInt());//发动机转速
         setRmotorSpeed(root_Obj.value("rmSpeed").toInt());
-        setMcu1Temp(root_Obj.value("mcu1Temp").toInt());
-        setMcu2Temp(root_Obj.value("mcu2Temp").toInt());
-        setBatTemp(root_Obj.value("bTemp").toInt());
+        setMcu1Temp(root_Obj.value("mcu1Temp").toInt()); //机油温度
+        setMcu2Temp(root_Obj.value("mcu2Temp").toInt()); //发动机温度
+        setBatTemp(root_Obj.value("bTemp").toInt());   //ECU温度
         setBatLevel(root_Obj.value("bLevel").toInt());
-        setGearMode(root_Obj.value("gMode").toInt());
+        setGearMode(root_Obj.value("gMode").toInt()); //挡位 Gear
         setCarMode(root_Obj.value("cMode").toInt());
-        setBatAlarm(root_Obj.value("bAlarm").toInt());
+        setBatAlarm(root_Obj.value("bAlarm").toInt());  //低压电池电量报警
         setMotorSpeed(root_Obj.value("lmSpeed").toInt());
         setTimeCount(root_Obj.value("timeCount").toInt());
-        setBatVol(root_Obj.value("batVol").toInt());
+        setBatVol(root_Obj.value("batVol").toInt());   //低压电池电量
         setCarDistance(root_Obj.value("carDistce").toInt());
         setBrakeTravel(root_Obj.value("brakeTravel").toInt());
 

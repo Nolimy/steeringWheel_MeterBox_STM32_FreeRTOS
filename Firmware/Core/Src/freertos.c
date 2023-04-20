@@ -386,22 +386,22 @@ void Start_LVGL_Meter(void *argument)
 				{
 					lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
 					lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.lmotorSpeed);
-					lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.Throttle_Angel);
-					lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.oil_temp);
-					lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.EngOil_temp);
+					lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.throttlePosition);
+					lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.oilTemp);
+					lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.oilPressure);
 					
-					lv_bar_set_value(ui_socValue, racingCarData.Throttle_Angel, LV_ANIM_ON);
-					if(racingCarData.gearMode == 0)
+					lv_bar_set_value(ui_socValue, racingCarData.throttlePosition, LV_ANIM_ON);
+					if(racingCarData.gear == 0)
 						lv_label_set_text(ui_gearLable, "N");
-					else if(racingCarData.gearMode == 1)
+					else if(racingCarData.gear == 1)
 						lv_label_set_text(ui_gearLable, "1");
-					else if(racingCarData.gearMode == 2)
+					else if(racingCarData.gear == 2)
 						lv_label_set_text(ui_gearLable, "2");
-					else if(racingCarData.gearMode == 3)
+					else if(racingCarData.gear == 3)
 						lv_label_set_text(ui_gearLable, "3");
-					else if(racingCarData.gearMode == 4)
+					else if(racingCarData.gear == 4)
 						lv_label_set_text(ui_gearLable, "4");
-					else if(racingCarData.gearMode == 5)
+					else if(racingCarData.gear == 5)
 						lv_label_set_text(ui_gearLable, "5");
 					if(racingCarData.carMode == 0)
 					{

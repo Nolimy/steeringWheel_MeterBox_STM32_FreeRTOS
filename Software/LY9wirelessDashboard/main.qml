@@ -44,8 +44,8 @@ Window {
     property int rpm_test: 0
     property int count: 0
     property int m_port:1883
-    property var m_topic: "hello"
-    property var tempSubscription: 0
+    property string m_topic: "hello"
+    property int tempSubscription: 0
     MqttClient{
         id:carData
         hostname: "82.156.207.102"
@@ -528,7 +528,7 @@ Window {
         width: 153
         height: 27
         color: "#99ccff"
-        text: qsTr("电机转速")
+        text: qsTr("发动机转速")
         font.family: "Tensentype ZhiHeiJ-W4"
         font.pointSize: 12
         horizontalAlignment: Text.AlignHCenter
@@ -628,32 +628,6 @@ Window {
     }
 
     StatusIndicator {
-        id: modeStatus
-        x: 1458
-        y: 323
-        width: 101
-        height: 67
-        color: "#6095c9"
-
-        active: false
-
-        Label {
-            id: sportLabel
-            x: 17
-            y: 73
-            width: 68
-            height: 22
-            color: "#99ccff"
-            text: qsTr("SPORT")
-            font.bold: true
-            font.family: "big-numbers"
-            font.capitalization: Font.AllUppercase
-            font.pointSize: 12
-            horizontalAlignment: Text.AlignHCenter
-        }
-    }
-
-    StatusIndicator {
 
         id: runStuatus
         x: 1726
@@ -682,7 +656,7 @@ Window {
 
     StatusIndicator {
         id: mqttStatus
-        x: 1582
+        x: 1449
         y: 323
         width: 101
         height: 67
@@ -718,7 +692,7 @@ Window {
             x: 9
             y: 63
             color: "#b4cfe5"
-            text: qsTr("左电机温度")
+            text: qsTr("机油压力")
             font.family: "Tensentype ZhiHeiJ-W4"
             font.pixelSize: 15
         }
@@ -763,7 +737,7 @@ Window {
             x: 9
             y: 63
             color: "#b4cfe5"
-            text: qsTr("右电机温度")
+            text: qsTr("氧传感器")
             font.family: "Tensentype ZhiHeiJ-W4"
             font.pixelSize: 15
         }
@@ -836,7 +810,7 @@ Window {
             x: 17
             y: 62
             color: "#b4cfe5"
-            text: qsTr("电芯温度")
+            text: qsTr("ECU温度")
             font.family: "Tensentype ZhiHeiJ-W4"
             font.pixelSize: 15
         }
@@ -895,7 +869,7 @@ Window {
             x: 31
             y: 61
             color: "#b4cfe5"
-            text: qsTr("电池电压")
+            text: qsTr("低压电池电压")
             font.family: "Tensentype ZhiHeiJ-W4"
             font.pixelSize: 15
         }
@@ -1694,7 +1668,7 @@ Window {
             x: -11
             y: 59
             color: "#b4cfe5"
-            text: qsTr("电机控制器1温度")
+            text: qsTr("机油温度")
             font.family: "Tensentype ZhiHeiJ-W4"
             font.pixelSize: 15
         }
@@ -1795,10 +1769,10 @@ Window {
         height: 100
         Text {
             id: rMcuTemp
-            x: -11
-            y: 59
+            x: 13
+            y: 57
             color: "#b4cfe5"
-            text: qsTr("电机控制器2温度")
+            text: qsTr("发动机温度")
             font.family: "Tensentype ZhiHeiJ-W4"
             font.pixelSize: 15
         }
@@ -1831,6 +1805,24 @@ Window {
             horizontalAlignment: Text.AlignHCenter
         }
     }
+
+    Text {
+        id: gearText
+        x: 1605
+        y: 310
+        width: 54
+        height: 51
+        color: "#45a0ff"
+        text: carData.gearMode == 0 ? "N" : parseInt(carData.gearMode)
+        font.pixelSize: 100
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.weight: Font.Bold
+        font.bold: true
+        font.family: "Playfair Display SC Black"
+        minimumPointSize: 15
+        minimumPixelSize: 20
+    }
     //彩蛋对话框提示函数
     function $message(data) {
         if (data && data.show) {
@@ -1852,3 +1844,9 @@ Window {
         message.openTimer() //调用Message组件下定时器方法
     }
 }
+
+/*##^##
+Designer {
+    D{i:0;formeditorZoom:0.5}
+}
+##^##*/

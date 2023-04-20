@@ -42,12 +42,15 @@ struct RacingCarData
 	uint8_t mcu2Temp;            //电机控制器2温度
 	
 	//Motec
-	uint8_t oil_temp;
-	uint8_t oil_presure;
-	uint8_t EngOil_temp;
-	uint8_t EngOil_presure;
-	uint8_t Throttle_Angel;
-	uint8_t lowBatVol;
+	uint8_t oilTemp;
+	uint8_t oilPressure;
+	uint8_t throttlePosition;
+	float lowBatVol;
+  uint16_t lambda1;
+	uint8_t ecu_Temp;
+	uint8_t gear;
+	uint8_t engineTemp;
+	
 };
 
 struct SH_CarData
