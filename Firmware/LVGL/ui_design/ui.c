@@ -69,8 +69,8 @@ void meterAnimation()
     lv_anim_set_exec_cb(&a, meter_set_value);
 	if(appStatus.canOpenStatus)  //实车模式 仪表指针指示速度
 		{
-			lv_anim_set_values(&a, lastSpeed, racingCarData.lmotorSpeed / 10);
-			lastSpeed = racingCarData.lmotorSpeed / 10;
+			lv_anim_set_values(&a, lastSpeed, racingCarData.lmotorSpeed / 100);
+			lastSpeed = racingCarData.lmotorSpeed / 100;
 		}
 		if(appStatus.simhubStatus)  //模拟器模式 仪表指针指示油门开度
 		{
