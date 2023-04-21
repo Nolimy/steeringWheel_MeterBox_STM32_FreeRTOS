@@ -384,11 +384,11 @@ void Start_LVGL_Meter(void *argument)
 				}
 				else if(carType == 1) //油车
 				{
-					lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);
-					lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.lmotorSpeed);
-					lv_label_set_text_fmt(ui_batTemp, "%03d", racingCarData.throttlePosition);
-					lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.oilTemp);
-					lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.oilPressure);
+					lv_label_set_text_fmt(ui_speedNum, "%03d", racingCarData.FrontSpeed);   //车速
+					lv_label_set_text_fmt(ui_rpmNum, "%04d", racingCarData.lmotorSpeed);    //发动机转速
+					lv_label_set_text_fmt(ui_batTemp, "%.1f", racingCarData.lowBatVol);     //低压电池电压
+					lv_label_set_text_fmt(ui_lMotorTemp, "%02d", racingCarData.oilTemp);    //机油温度
+					lv_label_set_text_fmt(ui_rMotorTemp, "%02d", racingCarData.oilPressure);//机油压力
 					
 					lv_bar_set_value(ui_socValue, racingCarData.throttlePosition, LV_ANIM_ON);
 					if(racingCarData.gear == 0)

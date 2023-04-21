@@ -157,7 +157,7 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>230</LineNumber>
+          <LineNumber>245</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -173,7 +173,7 @@
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>227</LineNumber>
+          <LineNumber>242</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -189,7 +189,7 @@
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>228</LineNumber>
+          <LineNumber>239</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -205,7 +205,7 @@
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>229</LineNumber>
+          <LineNumber>235</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -221,7 +221,7 @@
         <Bp>
           <Number>4</Number>
           <Type>0</Type>
-          <LineNumber>238</LineNumber>
+          <LineNumber>231</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -237,7 +237,7 @@
         <Bp>
           <Number>5</Number>
           <Type>0</Type>
-          <LineNumber>234</LineNumber>
+          <LineNumber>228</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -253,7 +253,7 @@
         <Bp>
           <Number>6</Number>
           <Type>0</Type>
-          <LineNumber>241</LineNumber>
+          <LineNumber>238</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -269,7 +269,7 @@
         <Bp>
           <Number>7</Number>
           <Type>0</Type>
-          <LineNumber>240</LineNumber>
+          <LineNumber>234</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -285,7 +285,7 @@
         <Bp>
           <Number>8</Number>
           <Type>0</Type>
-          <LineNumber>244</LineNumber>
+          <LineNumber>240</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>0</Address>
           <ByteObject>0</ByteObject>
@@ -1195,7 +1195,7 @@
 
   <Group>
     <GroupName>BSP/WS2812B</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

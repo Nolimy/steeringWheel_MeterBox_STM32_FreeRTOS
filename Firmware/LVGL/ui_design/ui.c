@@ -435,7 +435,7 @@ void ui_home_screen_init(void)
     lv_meter_set_scale_ticks(ui_speedMeter, scale, 60, 0, 0, lv_color_hex(0x000000));//set the minor tick
     lv_meter_set_scale_major_ticks(ui_speedMeter, scale, 1, 3, 20, lv_color_hex(0x1772b4), -100);
 		if(appStatus.canOpenStatus)
-			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 150, 270, 90);
+			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 120, 270, 90);
 		
 		if(appStatus.simhubStatus)
 			lv_meter_set_scale_range(ui_speedMeter, scale, 0, 100, 270, 90);

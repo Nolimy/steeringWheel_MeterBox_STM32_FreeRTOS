@@ -95,7 +95,7 @@ void RPM_LED_Shine()
 	#if simhubOPEN
 	if(appStatus.canOpenStatus)
 	{
-		ledNums = racingCarData.lmotorSpeed / 400;
+		ledNums = racingCarData.lmotorSpeed / 800;
 	
 		for(i = 0; i < ledNums; i++)//Öð¸öµãÁÁLED
 		{
