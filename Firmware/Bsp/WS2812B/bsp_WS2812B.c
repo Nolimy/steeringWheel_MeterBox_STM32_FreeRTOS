@@ -95,7 +95,7 @@ void RPM_LED_Shine()
 	#if simhubOPEN
 	if(appStatus.canOpenStatus)
 	{
-		ledNums = racingCarData.lmotorSpeed / 800;
+		ledNums = racingCarData.lmotorSpeed / 1250;
 	
 		for(i = 0; i < ledNums; i++)//Öð¸öµãÁÁLED
 		{
@@ -107,7 +107,7 @@ void RPM_LED_Shine()
 			osDelay(80);
 			ws2812_init(12);
 			osDelay(80);
-			ledNums = racingCarData.lmotorSpeed / 400;
+			ledNums = racingCarData.lmotorSpeed / 1250;
 		}
 	}
 	
