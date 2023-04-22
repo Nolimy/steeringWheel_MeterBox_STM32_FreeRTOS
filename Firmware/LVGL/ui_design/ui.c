@@ -275,16 +275,17 @@ void ui_home_screen_init(void)
     lv_obj_set_y(ui_socValue, -20);
     lv_obj_set_align(ui_socValue, LV_ALIGN_CENTER);
 
-    ui_socIcon = lv_label_create(ui_home);
-    lv_obj_set_width(ui_socIcon, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_socIcon, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_socIcon, 214);
-    lv_obj_set_y(ui_socIcon, 84);
-    lv_obj_set_align(ui_socIcon, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_socIcon, "");
-    lv_obj_set_style_text_color(ui_socIcon, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_socIcon, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_socIcon, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
+//    ui_socIcon = lv_label_create(ui_home);
+//    lv_obj_set_width(ui_socIcon, LV_SIZE_CONTENT);   /// 1
+//    lv_obj_set_height(ui_socIcon, LV_SIZE_CONTENT);    /// 1
+//    lv_obj_set_x(ui_socIcon, 214);
+//    lv_obj_set_y(ui_socIcon, 84);
+//    lv_obj_set_align(ui_socIcon, LV_ALIGN_CENTER);
+////    lv_label_set_text(ui_socIcon, "");
+//		lv_label_set_text(ui_socIcon, "Push");
+//    lv_obj_set_style_text_color(ui_socIcon, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+//    lv_obj_set_style_text_opa(ui_socIcon, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+//    lv_obj_set_style_text_font(ui_socIcon, &ui_font_icon_bettery, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_speedMode = lv_label_create(ui_home);
     lv_obj_set_width(ui_speedMode, LV_SIZE_CONTENT);   /// 1

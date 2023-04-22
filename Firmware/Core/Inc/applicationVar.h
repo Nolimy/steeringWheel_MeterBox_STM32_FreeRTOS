@@ -45,7 +45,7 @@ struct RacingCarData
 	uint8_t oilTemp;
 	uint8_t oilPressure;
 	uint8_t throttlePosition;
-	float lowBatVol;
+	uint8_t lowBatVol;
   uint16_t lambda1;
 	uint8_t ecu_Temp;
 	uint8_t gear;

@@ -311,7 +311,7 @@ void motec_ECU_decode()
 	racingCarData.lambda1 = (motec_CanFrame[2][2] << 8 | motec_CanFrame[2][3]) / 1000;  //氧传感器信号
 	racingCarData.oilTemp = (motec_CanFrame[3][6] << 8 | motec_CanFrame[3][7]) / 10;  //机油温度
 	racingCarData.oilPressure = (motec_CanFrame[4][0] << 8 | motec_CanFrame[4][1]) / 10;  //机油压力
-	racingCarData.lowBatVol = (motec_CanFrame[6][4] << 8 | motec_CanFrame[6][5]) / 100;  //低压电池电压
+	racingCarData.lowBatVol = (motec_CanFrame[6][4] << 8 | motec_CanFrame[6][5]) / 10;  //低压电池电压
 	racingCarData.ecu_Temp = (motec_CanFrame[6][6] << 8 | motec_CanFrame[6][7]) / 10;  //ECU温度
 	racingCarData.gear = (motec_CanFrame[14][0] << 8 | motec_CanFrame[14][1]);    //挡位
 	
