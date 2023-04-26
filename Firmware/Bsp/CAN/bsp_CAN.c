@@ -5,10 +5,6 @@
 #include "cmsis_os2.h"
 #include "applicationVar.h"
 
-#define LY9_VCU  1
-#define LY8_M800 0
-
-
 
 uint8_t frameEofFlag;
 
@@ -59,6 +55,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 			appStatus.simhubStatus  = 0; //关闭模拟器模式
 	
 			
+			
 			if(RxMessage.StdId == 0x5F0)
 			{
 				/************帧计数器到达18自动清零，避免越界************/
@@ -91,7 +88,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 					/************更新计数器************/
 					Counter++;
 				}		
-			}	
+			}
 			
 			/************收到CAN报文，发送相应标志位，FreeRTOS响应事件************/
 			osEventFlagsSet(getCarDataHandle, 0x0f); // 0000 1111   //
