@@ -340,7 +340,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../LVGL;../LVGL/demos;../LVGL/porting;../LVGL/src;../LVGL/ui_design;../Bsp/W25Q16_Bsp;../FATFS;../Bsp/LCD;../Bsp/BC260Y;../Bsp/CAN;../Bsp/WS2812B;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Bsp/Json;..\Bsp\USB_Composite;../Bsp/shApplication;../Composite;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc</IncludePath>
+              <IncludePath>../Core/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;../Drivers/CMSIS/Include;../LVGL;../LVGL/demos;../LVGL/porting;../LVGL/src;../LVGL/ui_design;../Bsp/W25Q16_Bsp;../FATFS;../Bsp/LCD;../Bsp/BC260Y;../Bsp/CAN;../Bsp/WS2812B;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2;../Bsp/Json;..\Bsp\USB_Composite;../Bsp/shApplication;../Composite;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/COMPOSITE/Inc;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Core/Inc;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/App;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Target;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/CDC_ACM/Inc;../Middlewares/Third_Party/AL94_USB_Composite/COMPOSITE/Class/HID_MOUSE/Inc;..\App\shApplication;..\App\M800_ECU_Application;..\App\MQTT_Application;..\App\SLM_Application;..\App\CAN_Application</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -1576,6 +1576,66 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>APP/MQTT</GroupName>
+          <Files>
+            <File>
+              <FileName>MQTT_App.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\MQTT_Application\MQTT_App.c</FilePath>
+            </File>
+            <File>
+              <FileName>MQTT_App.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\MQTT_Application\MQTT_App.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>APP/SLM</GroupName>
+          <Files>
+            <File>
+              <FileName>SLM_App.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\SLM_Application\SLM_App.c</FilePath>
+            </File>
+            <File>
+              <FileName>SLM_App.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\SLM_Application\SLM_App.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>APP/CAN</GroupName>
+          <Files>
+            <File>
+              <FileName>CAN_App.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\CAN_Application\CAN_App.c</FilePath>
+            </File>
+            <File>
+              <FileName>CAN_App.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\CAN_Application\CAN_App.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>APP/SHAPP</GroupName>
+          <Files>
+            <File>
+              <FileName>SH_Data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\App\shApplication\SH_Data.c</FilePath>
+            </File>
+            <File>
+              <FileName>SH_Data.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\App\shApplication\SH_Data.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>BSP/LCD</GroupName>
           <Files>
             <File>
@@ -1645,21 +1705,6 @@
               <FileName>Bsp_USB_Composite.h</FileName>
               <FileType>5</FileType>
               <FilePath>..\Bsp\USB_Composite\Bsp_USB_Composite.h</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>BSP/SHAPP</GroupName>
-          <Files>
-            <File>
-              <FileName>SH_Data.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Bsp\shApplication\SH_Data.c</FilePath>
-            </File>
-            <File>
-              <FileName>SH_Data.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Bsp\shApplication\SH_Data.h</FilePath>
             </File>
           </Files>
         </Group>

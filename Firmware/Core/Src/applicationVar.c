@@ -10,7 +10,7 @@ struct appStatus_t appStatus;
 #define  NUM_OF_TEETH 20.0    //码盘齿数
 
 
-
+uint8_t frameEofFlag; //Motec ECU 18帧CAN报文接收完毕标志位
 uint8_t m800_ECU_canData[144];
 
 uint8_t motec_CanFrame[18][8];

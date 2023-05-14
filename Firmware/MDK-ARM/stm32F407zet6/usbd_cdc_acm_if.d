@@ -52,7 +52,7 @@ stm32f407zet6/usbd_cdc_acm_if.o: \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ctlreq.h \
   ..\Composite\AL94.I-CUBE-USBD-COMPOSITE_conf.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
-  ..\Bsp\shApplication\SH_Data.h \
+  ..\App\shApplication\SH_Data.h \
   ..\Bsp\USB_Composite\Bsp_USB_Composite.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usb_device.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \

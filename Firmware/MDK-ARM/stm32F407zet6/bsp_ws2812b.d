@@ -44,4 +44,4 @@ stm32f407zet6/bsp_ws2812b.o: ..\Bsp\WS2812B\bsp_WS2812B.c \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
   ..\Core\Inc\applicationVar.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
-  ..\Bsp\shApplication\SH_Data.h
+  ..\App\shApplication\SH_Data.h

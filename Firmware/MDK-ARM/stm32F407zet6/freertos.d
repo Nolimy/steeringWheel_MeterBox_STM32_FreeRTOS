@@ -50,17 +50,14 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os.h \
   ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
-  ..\Bsp\BC260Y\bsp_BC260Y.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h ..\Core\Inc\usart.h \
-  ..\Core\Inc\gpio.h ..\Bsp\CAN\bsp_CAN.h ..\Core\Inc\can.h \
-  ..\Core\Inc\applicationVar.h ..\LVGL\lvgl.h ..\LVGL\src\misc\lv_log.h \
+  ..\LVGL\lvgl.h ..\LVGL\src\misc\lv_log.h \
   ..\LVGL\src\misc\..\lv_conf_internal.h ..\LVGL\src\lv_conf_kconfig.h \
   ..\LVGL\lv_conf.h ..\LVGL\src\misc\lv_types.h \
   ..\LVGL\src\misc\lv_timer.h ..\LVGL\src\misc\..\hal\lv_hal_tick.h \
   ..\LVGL\src\misc\..\hal\..\lv_conf_internal.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   ..\LVGL\src\misc\lv_math.h ..\LVGL\src\misc\lv_mem.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\LVGL\src\misc\lv_async.h ..\LVGL\src\misc\lv_anim_timeline.h \
   ..\LVGL\src\misc\lv_anim.h ..\LVGL\src\misc\lv_printf.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\inttypes.h \
@@ -234,16 +231,20 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\LVGL\src\extra\widgets\span\lv_span.h \
   ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h \
   ..\LVGL\porting\lv_port_disp.h ..\LVGL\ui_design\ui.h \
-  ..\Core\Inc\tim.h ..\Bsp\WS2812B\bsp_WS2812B.h \
-  ..\Bsp\shApplication\SH_Data.h \
+  ..\Core\Inc\tim.h ..\App\SLM_Application\SLM_App.h \
+  ..\Bsp\WS2812B\bsp_WS2812B.h ..\App\shApplication\SH_Data.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_cdc_acm_if.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\CDC_ACM\Inc\usbd_cdc_acm.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ioreq.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_def.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Target\usbd_conf.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_core.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ctlreq.h \
   ..\Composite\AL94.I-CUBE-USBD-COMPOSITE_conf.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usb_device.h \
-  ..\Bsp\USB_Composite\Bsp_USB_Composite.h
+  ..\Bsp\USB_Composite\Bsp_USB_Composite.h ..\Core\Inc\applicationVar.h \
+  ..\App\MQTT_Application\MQTT_App.h ..\Bsp\BC260Y\bsp_BC260Y.h \
+  ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\Bsp\CAN\bsp_CAN.h \
+  ..\Core\Inc\can.h

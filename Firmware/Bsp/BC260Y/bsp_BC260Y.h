@@ -7,7 +7,7 @@
 #include "gpio.h"
 #include "bsp_CAN.h"
 #include "applicationVar.h"
-
+#include "cmsis_os2.h"
 
 
 
@@ -15,9 +15,7 @@
 //extern struct RacingCarData racingCarData;
 
 uint8_t BC260Y_init();
-uint8_t MQTT_Init();
-uint8_t mqttServiceStartup();
-void jsonPack();
+
 
 #endif //__BSP_BC260Y_H__
 

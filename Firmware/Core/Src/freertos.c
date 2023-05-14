@@ -25,19 +25,17 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-//#include "bsp_LCD.h"
-#include "bsp_BC260Y.h"
-//#include "bsp_WS2812B.h"
 #include "lvgl.h"
 #include "lv_port_disp.h"
 #include "ui.h" 
 #include "tim.h"
-#include "bsp_WS2812B.h"
+#include "SLM_App.h"
 #include "SH_Data.h"
 #include "usbd_cdc_acm_if.h"
 #include "usb_device.h"
 #include "Bsp_USB_Composite.h"
 #include "applicationVar.h"
+#include "MQTT_App.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

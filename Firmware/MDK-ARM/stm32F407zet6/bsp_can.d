@@ -42,6 +42,7 @@ stm32f407zet6/bsp_can.o: ..\Bsp\CAN\bsp_CAN.c ..\Bsp\CAN\bsp_CAN.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_pcd_ex.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\usart.h \
   ..\Core\Inc\applicationVar.h \
+  ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   ..\Bsp\BC260Y\bsp_BC260Y.h ..\Core\Inc\gpio.h ..\LVGL\ui_design\ui.h \
   ..\LVGL\lvgl.h ..\LVGL\src\misc\lv_log.h \
@@ -222,5 +223,4 @@ stm32f407zet6/bsp_can.o: ..\Bsp\CAN\bsp_CAN.c ..\Bsp\CAN\bsp_CAN.h \
   ..\LVGL\src\extra\widgets\imgbtn\lv_imgbtn.h \
   ..\LVGL\src\extra\widgets\imgbtn\..\..\..\lvgl.h \
   ..\LVGL\src\extra\widgets\span\lv_span.h \
-  ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h \
-  ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.h
+  ..\LVGL\src\extra\widgets\span\..\..\..\lvgl.h

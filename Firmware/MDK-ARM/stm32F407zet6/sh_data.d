@@ -1,5 +1,5 @@
-stm32f407zet6/sh_data.o: ..\Bsp\shApplication\SH_Data.c \
-  ..\Bsp\shApplication\SH_Data.h ..\Core\Inc\main.h \
+stm32f407zet6/sh_data.o: ..\App\shApplication\SH_Data.c \
+  ..\App\shApplication\SH_Data.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
