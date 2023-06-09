@@ -1,4 +1,6 @@
 #include "SLM_App.h"
+#include "applicationVar.h"
+#include "cmsis_os2.h"
 
 void RPM_LED_Shine()
 {
@@ -7,7 +9,6 @@ void RPM_LED_Shine()
 	#if canOPEN
 	#endif
 	
-	#if simhubOPEN
 	if(appStatus.canOpenStatus)
 	{
 		ledNums = racingCarData.lmotorSpeed / 1250;
@@ -49,6 +50,5 @@ void RPM_LED_Shine()
 		ws2812_blue(12);//RGB
 	}
 	
-	#endif
 	
 }

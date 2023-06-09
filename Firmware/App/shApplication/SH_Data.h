@@ -3,11 +3,11 @@
 
 #include "main.h"
 //#include "jansson.h"
-	
+#include "applicationVar.h"	
 
 
 
-extern struct SH_CarData sh_CarData;
+
 extern uint8_t get_data_flag;
 extern uint8_t buf[];
 extern uint32_t data_nums;

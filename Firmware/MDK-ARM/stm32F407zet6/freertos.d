@@ -233,6 +233,7 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\LVGL\porting\lv_port_disp.h ..\LVGL\ui_design\ui.h \
   ..\Core\Inc\tim.h ..\App\SLM_Application\SLM_App.h \
   ..\Bsp\WS2812B\bsp_WS2812B.h ..\App\shApplication\SH_Data.h \
+  ..\Core\Inc\applicationVar.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usbd_cdc_acm_if.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Class\CDC_ACM\Inc\usbd_cdc_acm.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ioreq.h \
@@ -244,7 +245,7 @@ stm32f407zet6/freertos.o: ..\Core\Src\freertos.c \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\Core\Inc\usbd_ctlreq.h \
   ..\Composite\AL94.I-CUBE-USBD-COMPOSITE_conf.h \
   ..\Middlewares\Third_Party\AL94_USB_Composite\COMPOSITE\App\usb_device.h \
-  ..\Bsp\USB_Composite\Bsp_USB_Composite.h ..\Core\Inc\applicationVar.h \
+  ..\Bsp\USB_Composite\Bsp_USB_Composite.h \
   ..\App\MQTT_Application\MQTT_App.h ..\Bsp\BC260Y\bsp_BC260Y.h \
   ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\Bsp\CAN\bsp_CAN.h \
   ..\Core\Inc\can.h
