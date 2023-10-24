@@ -12,6 +12,7 @@
 6. 具备可编程按键，实时调整车辆状态。
 
 本项目适用于[大学生方程式赛事](http://www.formulastudent.com.cn/)(👈戳我了解)，因此方向盘外形是依照大学生方程式赛事规则进行设计的。功能上，实车模式开发基于[河北工程大学凌云车队](https://lingyun.site)(👈戳我了解)凌云Ⅸ号电动方程式赛车。模拟器功能基于[神力科莎](https://store.steampowered.com/app/244210/Assetto_Corsa/)(👈戳我了解)进行测试。
+硬件工程已完整开源在嘉立创开源平台：https://oshwhub.com/nolimy/steeringWheel_project，您可以通过该网址访问硬件工程。
 
 如果项目对您有所帮助，请帮忙点亮一个免费的STAR，开源不易，感谢支持！
 ![](media/20231006164021.jpg)
