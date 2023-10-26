@@ -10,10 +10,19 @@
 4. 实现控制器功能，能够控制如神力科莎（Assetto Corsa）、神力科莎：争锋（Assetto Corsa Competizione）、F1系列等模拟类赛车游戏。
 5. 为了保证实车的可用性，需要具备高亮度的屏幕保证仪表在阳光下的可视效果。
 6. 具备可编程按键，实时调整车辆状态。
+   
+实车使用效果：
+
+![steeringWheel_2023_Real.gif](readme%20md/v2-f42fa3a2392dac5f2627d846ee7dabcf_b.gif)
+
+模拟器使用效果：
+
+![steeringWheel_2023_simhub.gif](readme%20md/v2-695641028c10e3bd953c63e2c4ef1353_b.gif)
+
 
 本项目适用于[大学生方程式赛事](http://www.formulastudent.com.cn/)(👈戳我了解)，因此方向盘外形是依照大学生方程式赛事规则进行设计的。功能上，实车模式开发基于[河北工程大学凌云车队](https://lingyun.site)(👈戳我了解)凌云Ⅸ号电动方程式赛车。模拟器功能基于[神力科莎](https://store.steampowered.com/app/244210/Assetto_Corsa/)(👈戳我了解)进行测试。
-
 硬件工程已完整开源在[嘉立创硬件开源平台](https://oshwhub.com/nolimy/steeringWheel_project)(👈戳我了解)，您可以通过该网址访问硬件工程。
+项目视频请参考[bilibili](https://www.bilibili.com/video/BV1q24y1T7iM/)(👈戳我了解)
 
 如果项目对您有所帮助，请帮忙点亮一个免费的STAR，开源不易，感谢支持！
 ![](media/20231006164021.jpg)
