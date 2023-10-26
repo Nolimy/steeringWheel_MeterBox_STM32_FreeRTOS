@@ -1,3 +1,5 @@
+![steeringWheel_2023.png](readme%20md/76a4b50580a1516cb32cc5551be5096e.jpg)
+
 # LY streeringWheel MeterBox
 
 # 关于本项目
